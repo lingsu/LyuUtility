@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Lyu.Scaffolding.Domain;
 using Lyu.Scaffolding.Models;
+using Lyu.Scaffolding.Utils;
 
 namespace Lyu.Scaffolding.Scaffolders.Abp
 {
@@ -11,6 +12,7 @@ namespace Lyu.Scaffolding.Scaffolders.Abp
             var type = typeof (Product);
             var templateParams = new TemplateParams();
             templateParams.EntityName = type.Name;
+            templateParams.FunctionFolderName = VmUtils.ToPlural(templateParams.EntityName);
             templateParams.EntityNamespace = type.Namespace;
             templateParams.ModuleNamespace = getModuleNamespace(templateParams.EntityNamespace);
             templateParams.ModuleName = getModuleName(templateParams.ModuleNamespace);

@@ -61,12 +61,16 @@
     <Compile Include="Models\TemplateParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scaffolders\Abp\ModuleScaffolder.cs" />
+    <Compile Include="Utils\VmUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scaffolders\Abp\AbpTemplate.tt" />
     <Content Include="Scaffolders\Abp\ModuleScaffolder.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastOutputs>.\ModuleScaffolder.text</LastOutputs>
+      <LastOutputs>
+..\..\Application\Products\IProductAppService.cs
+.\ModuleScaffolder.text
+</LastOutputs>
       <LastGenOutput>ModuleScaffolder.text</LastGenOutput>
     </Content>
     <Content Include="Scaffolders\Abp\Templates\Module\{FunctionFolderName}\IEntityAppService.tt" />

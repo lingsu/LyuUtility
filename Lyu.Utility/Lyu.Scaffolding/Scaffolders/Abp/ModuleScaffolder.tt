@@ -13,6 +13,7 @@
 <#@ import namespace="Lyu.Scaffolding.Models" #>
 <#@ import namespace="Lyu.Scaffolding.Scaffolders.Abp" #>
 <#@ import namespace="Lyu.Scaffolding.Domain" #>
+<#@ import namespace="Lyu.Scaffolding.Utils" #>
 <#@ include file="T4Toolbox.tt" #>
 
 <#@ include file="Templates\Module\{FunctionFolderName}\IEntityAppService.tt" #>
@@ -25,7 +26,7 @@
             templateParams.EntityNamespace = type.Namespace;
             templateParams.ModuleNamespace = getModuleNamespace(templateParams.EntityNamespace);
             templateParams.ModuleName = getModuleName(templateParams.ModuleNamespace);
-		
+			templateParams.FunctionFolderName = VmUtils.ToPlural(templateParams.EntityName);
 		 var templates = new[] { 
 						@"Application\{FunctionFolderName}\Dtos\{Entity}Dto.cs"
 						, @"Application\{FunctionFolderName}\Dtos\{Entity}QueryDto.cs"
@@ -48,9 +49,8 @@
 				string outputPath = Path.Combine(projectPath,iEntityAppService.FileName());
 
 				iEntityAppService.Output.Encoding = Encoding.UTF8;
-				//iEntityAppService.RenderToFile(Path.Combine(projectPath,iEntityAppService.FileName()));
+				iEntityAppService.RenderToFile(outputPath);
    
-
 
    IServiceProvider serviceProvider = (IServiceProvider)this.Host;
 

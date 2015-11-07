@@ -3,14 +3,14 @@
 
 
 
-//currentPath F:\oschina\Lyu\Lyu.Utility\Lyu.Scaffolding\Scaffolders\Abp 
-//projectPath F:\oschina\Lyu\Lyu.Utility\Lyu.Scaffolding 
-//projectPath F:\oschina\Lyu\Lyu.Utility\Lyu.Scaffolding\as.cs 
-//this.Host.TemplateFile F:\oschina\Lyu\Lyu.Utility\Lyu.Scaffolding\Scaffolders\Abp\ModuleScaffolder.tt 
+//currentPath F:\oschina\LyuUtility\Lyu.Utility\Lyu.Scaffolding\Scaffolders\Abp 
+//projectPath F:\oschina\LyuUtility\Lyu.Utility\Lyu.Scaffolding 
+//projectPath F:\oschina\LyuUtility\Lyu.Utility\Lyu.Scaffolding\as.cs 
+//this.Host.TemplateFile F:\oschina\LyuUtility\Lyu.Utility\Lyu.Scaffolding\Scaffolders\Abp\ModuleScaffolder.tt 
 //this.Host.TemplateFile Microsoft.VisualStudio.TextTemplating.VSHost.TextTemplatingService 
 //templateParams.EntityName: Product 
 //templateParams.EntityNamespace: Lyu.Scaffolding.Domain 
 //templateParams.ModuleName: Scaffolding 
-//iEntityAppService.FileName: Application\Dtos\ProductDto.cs 
-//outputPath: F:\oschina\Lyu\Lyu.Utility\Lyu.Scaffolding\Application\Dtos\ProductDto.cs 
+//iEntityAppService.FileName: Application\Products\IProductAppService.cs 
+//outputPath: F:\oschina\LyuUtility\Lyu.Utility\Lyu.Scaffolding\Application\Products\IProductAppService.cs 
 
