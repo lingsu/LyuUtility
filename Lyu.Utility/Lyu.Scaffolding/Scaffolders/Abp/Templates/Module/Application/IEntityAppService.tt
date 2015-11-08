@@ -1,0 +1,91 @@
+﻿<#+
+
+public class IEntityAppService : AbpTemplate
+{
+
+	public IEntityAppService(TemplateParams templateParams) : base(templateParams)
+        {
+            _filename = @"Application\{FunctionFolderName}\I{Entity}AppService.cs";
+        }
+
+	public override string TransformText()
+	{
+		base.TransformText();
+#>
+
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Abp.Application.Services;
+using Abp.Application.Services.Dto;
+
+namespace <#= ModuleNamespace #>.Application
+{
+    public interface I<#= EntityName #>AppService : IApplicationService
+    {
+
+		 #region <#= FunctionName #>管理
+
+        /// <summary>
+        /// 根据查询条件获取<#= FunctionName #>分页列表
+        /// </summary>
+        Task<QueryResultOutput<<#= EntityName #>QueryDto>> Get<#= EntityName #>Query(Get<#= EntityName #>QueryInput input);
+
+		<#+
+    if (IsDisplayOrderable) {
+#>
+        /// <summary>
+        /// 获取所有<#= FunctionName #>列表
+        /// </summary>
+        Task<IEnumerable<<#= EntityName #>Dto>> Get<#= EntityName #>List();
+
+<#+
+    }
+#>
+
+ /// <summary>
+        /// 获取指定id的<#= FunctionName #>信息
+        /// </summary>
+        Task<<#= EntityName #>Dto> Get<#= EntityName #>(Guid id);
+
+        /// <summary>
+        /// 新增或更改<#= FunctionName #>
+        /// </summary>
+        Task CreateOrUpdate<#= EntityName #>(<#= EntityName #>Dto input);
+
+        /// <summary>
+        /// 新增<#= FunctionName #>
+        /// </summary>
+        Task<<#= EntityName #>Dto> Create<#= EntityName #>(<#= EntityName #>Dto input);
+
+        /// <summary>
+        /// 更新<#= FunctionName #>
+        /// </summary>
+        Task Update<#= EntityName #>(<#= EntityName #>Dto input);
+
+        /// <summary>
+        /// 删除<#= FunctionName #>
+        /// </summary>
+        Task Delete<#= EntityName #>(IdInput input);
+
+		<#+
+    if (AllowBatchDelete) {
+#>
+        /// <summary>
+        /// 批量删除<#= FunctionName #>
+        /// </summary>
+        Task BatchDelete<#= EntityName #>(IEnumerable<Guid> input);
+
+<#+
+    }
+#>
+
+		  #endregion
+			 }
+}
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+
+}
+#>

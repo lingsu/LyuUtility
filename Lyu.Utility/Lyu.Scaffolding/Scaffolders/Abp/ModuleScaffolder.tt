@@ -14,43 +14,45 @@
 <#@ import namespace="Lyu.Scaffolding.Scaffolders.Abp" #>
 <#@ import namespace="Lyu.Scaffolding.Domain" #>
 <#@ import namespace="Lyu.Scaffolding.Utils" #>
-<#@ include file="T4Toolbox.tt" #>
 
-<#@ include file="Templates\Module\{FunctionFolderName}\IEntityAppService.tt" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="AbpTemplate.tt" #>
+<#@ include file="../CSharpHelpers.tt" #>
+
+<#@ include file="Templates\Module\Application\IEntityAppService.tt" #>
+<#@ include file="Templates\Module\Application\EntityAppService.tt" #>
+<#@ include file="Templates\Module\Domain\Repositories\IRepository.tt" #>
+<#@ include file="Templates\Module\Repository\Repositories\Repository.tt" #>
 
 <#
 
 			var type = typeof (Product);
             var templateParams = new TemplateParams();
             templateParams.EntityName = type.Name;
+            templateParams.entityName = ToCamelCase(templateParams.EntityName);
             templateParams.EntityNamespace = type.Namespace;
             templateParams.ModuleNamespace = getModuleNamespace(templateParams.EntityNamespace);
             templateParams.ModuleName = getModuleName(templateParams.ModuleNamespace);
 			templateParams.FunctionFolderName = VmUtils.ToPlural(templateParams.EntityName);
-		 var templates = new[] { 
-						@"Application\{FunctionFolderName}\Dtos\{Entity}Dto.cs"
-						, @"Application\{FunctionFolderName}\Dtos\{Entity}QueryDto.cs"
-						, @"Application\{FunctionFolderName}\Dtos\Get{Entity}QueryInput.cs"
-						, @"Application\{FunctionFolderName}\I{Entity}AppService.cs"
-						, @"Application\{FunctionFolderName}\{Entity}AppService.cs"
-						, @"Application\{FunctionFolderName}\_{Entity}Permissions.cs"
-						, @"Domain\{FunctionFolderName}\Repositories\I{Entity}Repository.cs"
-						, @"Repository\{FunctionFolderName}\Repositories\{Entity}Repository.cs"
-					};
-
+			templateParams.FunctionName ="FunctionName";
+			templateParams.AllowBatchDelete = true;
+		
+			 var templates = new AbpTemplate[]{
+					new IEntityAppService(templateParams),
+					new EntityAppService(templateParams),
+					new Repository(templateParams),
+					new IRepository(templateParams)
+			 };
 				string currentPath = Path.GetDirectoryName(Host.TemplateFile);
-				string projectPath =currentPath.Substring(0, currentPath.IndexOf(@"\Scaffolders"));
+				string projectPath = currentPath.Substring(0, currentPath.IndexOf(@"\Scaffolders"));
 
 				var functionFolderName = "functionFolderName";
-			
-
-
-				var iEntityAppService =  new IEntityAppService(templateParams);
-				string outputPath = Path.Combine(projectPath,iEntityAppService.FileName());
-
-				iEntityAppService.Output.Encoding = Encoding.UTF8;
-				iEntityAppService.RenderToFile(outputPath);
-   
+				string outputPath = Path.Combine(projectPath,@"_GeneratedCode\");
+				foreach(var template in templates){
+					
+					template.Output.Encoding = Encoding.UTF8;
+					template.RenderToFile(Path.Combine(outputPath,template.FileName()));
+				}
 
    IServiceProvider serviceProvider = (IServiceProvider)this.Host;
 
@@ -63,8 +65,6 @@
 //templateParams.EntityName: <#=templateParams.EntityName#> 
 //templateParams.EntityNamespace: <#=templateParams.EntityNamespace#> 
 //templateParams.ModuleName: <#=templateParams.ModuleName#> 
-//iEntityAppService.FileName: <#=iEntityAppService.FileName()#> 
-//outputPath: <#=outputPath#> 
 
 <#+
 

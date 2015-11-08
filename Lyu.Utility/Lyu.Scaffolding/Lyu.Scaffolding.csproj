@@ -61,6 +61,8 @@
     <Compile Include="Models\TemplateParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scaffolders\Abp\ModuleScaffolder.cs" />
+    <Compile Include="Scaffolders\Abp\Templates\Module\Application\EntityAppService.cs" />
+    <Compile Include="Scaffolders\Abp\Templates\Module\Application\IEntityAppService.cs" />
     <Compile Include="Utils\VmUtils.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,12 +70,19 @@
     <Content Include="Scaffolders\Abp\ModuleScaffolder.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastOutputs>
-..\..\Application\Products\IProductAppService.cs
+..\..\_GeneratedCode\Application\Products\IProductAppService.cs
+..\..\_GeneratedCode\Application\Products\ProductAppService.cs
+..\..\_GeneratedCode\Domain\Products\Repositories\IProductRepository.cs
+..\..\_GeneratedCode\Repository\Products\Repositories\ProductRepository.cs
 .\ModuleScaffolder.text
 </LastOutputs>
       <LastGenOutput>ModuleScaffolder.text</LastGenOutput>
     </Content>
-    <Content Include="Scaffolders\Abp\Templates\Module\{FunctionFolderName}\IEntityAppService.tt" />
+    <Content Include="Scaffolders\Abp\Templates\Module\Application\EntityAppService.tt" />
+    <Content Include="Scaffolders\Abp\Templates\Module\Application\IEntityAppService.tt" />
+    <Content Include="Scaffolders\Abp\Templates\Module\Domain\Repositories\IRepository.tt" />
+    <Content Include="Scaffolders\Abp\Templates\Module\Repository\Repositories\Repository.tt" />
+    <Content Include="Scaffolders\CSharpHelpers.tt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -85,6 +94,7 @@
       <DependentUpon>ModuleScaffolder.tt</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

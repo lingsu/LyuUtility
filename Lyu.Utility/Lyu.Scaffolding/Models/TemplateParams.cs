@@ -8,6 +8,7 @@
          public string ModuleNamespace { get; set; }
          public string ModuleName { get; set; }
          public string EntityName { get; set; }
+         public string entityName { get; set; }
          public string FunctionName { get; set; }
          public MetaTableInfo DtoMetaTable { get; set; }
          public MetaTableInfo ItemMetaTable { get; set; }

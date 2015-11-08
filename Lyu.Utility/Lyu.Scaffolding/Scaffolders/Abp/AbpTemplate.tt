@@ -36,6 +36,7 @@ public abstract class AbpTemplate : CSharpTemplate
         public string ModuleName { get { return _templateParams.ModuleName; } }
         public string EntityName { get { return _templateParams.EntityName; } }
         public string FunctionName { get { return _templateParams.FunctionName; } }
+		public string entityName { get { return _templateParams.entityName; } }
         public MetaTableInfo DtoMetaTable { get { return _templateParams.DtoMetaTable; } }
         public MetaTableInfo ItemMetaTable { get { return _templateParams.ItemMetaTable; } }
         public bool AllowBatchDelete { get { return _templateParams.AllowBatchDelete; } }

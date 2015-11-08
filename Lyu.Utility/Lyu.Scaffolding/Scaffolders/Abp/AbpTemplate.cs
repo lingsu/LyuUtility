@@ -31,6 +31,7 @@ namespace Lyu.Scaffolding.Scaffolders.Abp
         public string ModuleNamespace { get { return _templateParams.ModuleNamespace; } }
         public string ModuleName { get { return _templateParams.ModuleName; } }
         public string EntityName { get { return _templateParams.EntityName; } }
+        public string entityName { get { return _templateParams.entityName; } }
         public string FunctionName { get { return _templateParams.FunctionName; } }
         public MetaTableInfo DtoMetaTable { get { return _templateParams.DtoMetaTable; } }
         public MetaTableInfo ItemMetaTable { get { return _templateParams.ItemMetaTable; } }
@@ -40,11 +41,5 @@ namespace Lyu.Scaffolding.Scaffolders.Abp
     }
 
 
-    public class IEntityAppService : AbpTemplate
-    {
-        public IEntityAppService(TemplateParams templateParams) : base(templateParams)
-        {
-            _filename = "";
-        }
-    }
+  
 }

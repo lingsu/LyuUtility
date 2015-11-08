@@ -1,6 +1,8 @@
 ﻿using System.Linq;
+using System.Reflection;
 using Lyu.Scaffolding.Domain;
 using Lyu.Scaffolding.Models;
+using Lyu.Scaffolding.Scaffolders.Abp.Templates.Module.FunctionFolderName;
 using Lyu.Scaffolding.Utils;
 
 namespace Lyu.Scaffolding.Scaffolders.Abp
@@ -16,6 +18,13 @@ namespace Lyu.Scaffolding.Scaffolders.Abp
             templateParams.EntityNamespace = type.Namespace;
             templateParams.ModuleNamespace = getModuleNamespace(templateParams.EntityNamespace);
             templateParams.ModuleName = getModuleName(templateParams.ModuleNamespace);
+
+            var templates = new AbpTemplate[]{
+                    new IEntityAppService(templateParams),
+                    new EntityAppService(templateParams)
+             };
+
+            type.GetInterfaces()
 
         }
 

@@ -1,0 +1,58 @@
+﻿<#+
+
+public class IRepository : AbpTemplate
+{
+
+	public IRepository(TemplateParams templateParams) : base(templateParams)
+        {
+            _filename = @"Domain\{FunctionFolderName}\Repositories\I{Entity}Repository.cs";
+        }
+
+	public override string TransformText()
+	{
+		base.TransformText();
+#>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data.Entity;
+using Abp.EntityFramework;
+using Abp.Domain.Repositories;
+using Abp.Extensions;
+using YMC.ECCentral.Core;
+using <#= ModuleNamespace #>.Domain;
+using <#= EntityNamespace #>;
+
+namespace <#= ModuleNamespace #>.Repository
+{
+    public class <#= EntityName #>Repository : <#= ModuleName #>RepositoryBase<<#= EntityName #>>, I<#= EntityName #>Repository
+    {
+        public <#= EntityName #>Repository(IDbContextProvider<<#= ModuleName #>DbContext> dbContextProvider)
+            : base(dbContextProvider)
+        {
+        }
+
+        ///// <summary>
+        ///// 判断唯一性
+        ///// </summary>
+        //public async Task<bool> IsExists<#= EntityName #>ByName(string name, Guid? id = null)
+        //{
+        //    var query = GetAll().Where(m => m.Name == name);
+        //    if (id.HasValue)
+        //    {
+        //        query = query.Where(m => m.Id != id.Value);
+        //    }
+        //    return await query.AnyAsync();
+        //}
+    }
+}
+
+
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>

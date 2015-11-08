@@ -1,0 +1,181 @@
+﻿<#+
+
+public class EntityAppService : AbpTemplate
+{
+	public EntityAppService(TemplateParams templateParams) : base(templateParams)
+        {
+            _filename = @"Application\{FunctionFolderName}\{Entity}AppService.cs";
+        }
+
+	public override string TransformText()
+	{
+		base.TransformText();
+		 //var entityName = ToCamelCase(EntityName);
+#>
+
+
+using <#= ModuleNamespace #>.Domain;
+using <#= EntityNamespace #>;
+
+ 
+namespace <#= ModuleNamespace #>.Application
+{
+    [AbpAuthorize(<#= ModuleName #>Permissions.<#= EntityName #>)]
+    public class <#= EntityName #>AppService : AppServiceBase, I<#= EntityName #>AppService
+    {
+        private readonly I<#= EntityName #>Repository _<#= entityName #>Repository;
+
+        public <#= EntityName #>AppService(
+            I<#= EntityName #>Repository <#= entityName #>Repository
+            )
+        {
+            _<#= entityName #>Repository = <#= entityName #>Repository;
+        }
+
+        #region <#= FunctionName #>管理
+
+        /// <summary>
+        /// 根据查询条件获取<#= FunctionName #>分页列表
+        /// </summary>
+        public async Task<QueryResultOutput<<#= EntityName #>QueryDto>> Get<#= EntityName #>Query(Get<#= EntityName #>QueryInput input)
+        {
+            var result = await _<#= entityName #>Repository.GetAll()
+                //TODO:根据传入的参数添加过滤条件
+<#+
+    if (!IsDisplayOrderable) {
+#>
+<#+
+    if (!EntityName.Contains("Category")) {
+#>
+                //.WhereIf(input.<#= EntityName#>CategoryId.HasValue, m => m.<#= EntityName#>CategoryId == input.<#= EntityName#>CategoryId)
+<#+
+    }
+#>
+                //.WhereIf(!input.Keywords.IsNullOrWhiteSpace(), m => m.Title.Contains(input.Keywords))
+<#+
+    }
+#>
+                .Query(input).ToOutputAsync<<#= EntityName #>QueryDto>();
+            return result;
+        }
+
+<#+
+    if (IsDisplayOrderable) {
+#>
+        /// <summary>
+        /// 获取所有<#= FunctionName #>列表
+        /// </summary>
+        public async Task<IEnumerable<<#= EntityName #>Dto>> Get<#= EntityName #>List()
+        {
+            var query = _<#= entityName #>Repository.GetAll().OrderBy(item => item.DisplayOrder);
+            var list = await query.Query().To<<#= EntityName #>Dto>().Take(100).ToListAsync();
+            return list;
+        }
+
+<#+
+    }
+#>
+        /// <summary>
+        /// 获取指定id的<#= FunctionName #>信息
+        /// </summary>
+        public async Task<<#= EntityName #>Dto> Get<#= EntityName #>(Guid id)
+        {
+            var entity = await _<#= entityName #>Repository.GetAsync(id);
+            return entity.MapTo<<#= EntityName #>Dto>();
+        }
+
+        /// <summary>
+        /// 新增或更改<#= FunctionName #>
+        /// </summary>
+        public async Task CreateOrUpdate<#= EntityName #>(<#= EntityName #>Dto input)
+        {
+            if (input.Id == Guid.Empty)
+            {
+                await Create<#= EntityName #>(input);
+            }
+            else
+            {
+                await Update<#= EntityName #>(input);
+            }
+        }
+
+        /// <summary>
+        /// 新增<#= FunctionName #>
+        /// </summary>
+        [AbpAuthorize(<#= ModuleName #>Permissions.<#= EntityName #>_Create<#= EntityName #>)]
+        public virtual async Task<<#= EntityName #>Dto> Create<#= EntityName #>(<#= EntityName #>Dto input)
+        {
+            //if (await _<#= entityName #>Repository.IsExists<#= EntityName #>ByName(input.CategoryName))
+            //{
+            //    throw new UserFriendlyException(L("NameIsExists"));
+            //}
+            var entity = await _<#= entityName #>Repository.InsertAsync(input.MapTo<<#= EntityName #>>());
+            return entity.MapTo<<#= EntityName #>Dto>();
+        }
+
+        /// <summary>
+        /// 更新<#= FunctionName #>
+        /// </summary>
+        [AbpAuthorize(<#= ModuleName #>Permissions.<#= EntityName #>_Update<#= EntityName #>)]
+        public virtual async Task Update<#= EntityName #>(<#= EntityName #>Dto input)
+        {
+            //if (await _<#= entityName #>Repository.IsExists<#= EntityName #>ByName(input.CategoryName, input.Id))
+            //{
+            //    throw new UserFriendlyException(L("NameIsExists"));
+            //}
+            var entity = await _<#= entityName #>Repository.GetAsync(input.Id);
+            await _<#= entityName #>Repository.UpdateAsync(input.MapTo(entity));
+        }
+
+        /// <summary>
+        /// 删除<#= FunctionName #>
+        /// </summary>
+        [AbpAuthorize(<#= ModuleName #>Permissions.<#= EntityName #>_Delete<#= EntityName #>)]
+        public async Task Delete<#= EntityName #>(IdInput input)
+        {
+            //TODO:删除前的逻辑判断，是否允许删除
+            await _<#= entityName #>Repository.DeleteAsync(input.Id);
+        }
+
+<#+
+    if (AllowBatchDelete) {
+#>
+        /// <summary>
+        /// 批量删除<#= FunctionName #>
+        /// </summary>
+        [AbpAuthorize(<#= ModuleName #>Permissions.<#= EntityName #>_Delete<#= EntityName #>)]
+        public async Task BatchDelete<#= EntityName #>(IEnumerable<Guid> input)
+        {
+            //TODO:批量删除前的逻辑判断，是否允许删除
+            await _<#= entityName #>Repository.DeleteAsync(input);
+        }
+
+<#+
+    }
+#>
+<#+
+    if (IsDisplayOrderable) {
+#>
+        /// <summary>
+        /// 更新<#= FunctionName #>排序
+        /// </summary>
+        [AbpAuthorize(<#= ModuleName #>Permissions.<#= EntityName #>_Update<#= EntityName #>DisplayOrder)]
+        public async Task Update<#= EntityName #>DisplayOrder(IEnumerable<Guid> input)
+        {
+            await _<#= entityName #>Repository.BatchUpdateDisplayOrderAsync(input);
+        }
+
+<#+
+    }
+#>
+        #endregion
+
+    }
+}
+
+
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>
