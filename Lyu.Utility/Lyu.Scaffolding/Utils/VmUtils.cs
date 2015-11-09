@@ -13,8 +13,8 @@ namespace Lyu.Scaffolding.Utils
         {
             if (!t.IsGenericType)
                 return Aliases.ContainsKey(t)
-                            ? Aliases[t]
-                            : t.Name;
+                    ? Aliases[t]
+                    : t.Name;
             string genericTypeName = t.GetGenericTypeDefinition().Name;
             genericTypeName = genericTypeName.Substring(0,
                 genericTypeName.IndexOf('`'));
@@ -44,12 +44,12 @@ namespace Lyu.Scaffolding.Utils
                 {typeof (string), "string"},
                 {typeof (void), "void"}
             };
-    }
 
-    /// <summary>
-    /// 单词变成单数形式
-    /// </summary>
-    public static string ToSingular(string word)
+
+        /// <summary>
+        /// 单词变成单数形式
+        /// </summary>
+        public static string ToSingular(string word)
         {
             Regex plural1 = new Regex("(?<keep>[^aeiou])ies$");
             Regex plural2 = new Regex("(?<keep>[aeiou]y)s$");
@@ -71,7 +71,7 @@ namespace Lyu.Scaffolding.Utils
         /// <summary>
         /// 单词变成复数形式
         /// </summary>
-        public static string ToPlural( string word)
+        public static string ToPlural(string word)
         {
             Regex plural1 = new Regex("(?<keep>[^aeiou])y$");
             Regex plural2 = new Regex("(?<keep>[aeiou]y)$");
@@ -90,7 +90,7 @@ namespace Lyu.Scaffolding.Utils
             return word;
         }
 
-     
+
         public static string getCName(string name, string docComment)
         {
             if (MustNameTable.Keys.Contains(name))

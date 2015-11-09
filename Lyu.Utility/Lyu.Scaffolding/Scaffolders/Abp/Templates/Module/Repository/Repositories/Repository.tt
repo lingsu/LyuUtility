@@ -24,7 +24,6 @@ using System.Data.Entity;
 using Abp.EntityFramework;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
-using YMC.ECCentral.Core;
 using <#= ModuleNamespace #>.Domain;
 using <#= EntityNamespace #>;
 

@@ -3,12 +3,7 @@
 
 
 
-//currentPath N:\GitHub\LyuUtility\Lyu.Utility\Lyu.Scaffolding\Scaffolders\Abp 
-//projectPath N:\GitHub\LyuUtility\Lyu.Utility\Lyu.Scaffolding 
-//projectPath N:\GitHub\LyuUtility\Lyu.Utility\Lyu.Scaffolding\as.cs 
-//this.Host.TemplateFile N:\GitHub\LyuUtility\Lyu.Utility\Lyu.Scaffolding\Scaffolders\Abp\ModuleScaffolder.tt 
-//this.Host.TemplateFile Microsoft.VisualStudio.TextTemplating.VSHost.TextTemplatingService 
-//templateParams.EntityName: Product 
-//templateParams.EntityNamespace: Lyu.Scaffolding.Domain 
-//templateParams.ModuleName: Scaffolding 
+
+111
+Lyutemplate.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 

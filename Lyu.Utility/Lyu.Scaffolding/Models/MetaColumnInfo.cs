@@ -1,7 +1,10 @@
 ﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using EnvDTE;
+using Lyu.Scaffolding.Utils;
 
 namespace Lyu.Scaffolding.Models
 {
@@ -107,15 +110,17 @@ namespace Lyu.Scaffolding.Models
 
         public MetaColumnInfo(PropertyInfo property)
         {
-            string strName = property.Name;
-            string strType = property.Type.AsString;
-            string strDisplayName = "aaaa";//VmUtils.getCName(property)
+
+            var aliase = VmUtils.ToGenericTypeString(property.PropertyType);
+            var descAttributes = property.GetCustomAttributes(typeof(DisplayNameAttribute), true);
+            var strDisplayName = descAttributes.Length == 1 ? ((DisplayNameAttribute)descAttributes[0]).DisplayName : aliase;
+
             this.Name = property.Name;
-            this.ShortTypeName = property.Type.AsString;
+            this.ShortTypeName = property.PropertyType.FullName;
             //this.strDataType = strType.Replace("?", "").Replace("System.", "").ToLower();
             //this.strDataType = strType.Replace("System.", "");
-            this.strDataType = strType.Split('.').Last();
-            this.DataType = GetColumnType(strType);
+            this.strDataType = aliase;
+            this.DataType = GetColumnType(aliase);
             DisplayName = strDisplayName ?? this.Name;
             Nullable = true;
             Required = false;
@@ -145,31 +150,27 @@ namespace Lyu.Scaffolding.Models
             return true;
         }
 
-        private void setPropWithAttributes(CodeProperty property)
+        private void setPropWithAttributes(PropertyInfo property)
         {
-            foreach (var ele in property.Attributes)
+            var requiredAttributes = property.GetCustomAttributes(typeof(RequiredAttribute), true);
+            if (requiredAttributes.Any())
             {
-                var prop = ele as CodeAttribute;
-                if (prop.Name == "Required")
-                {
-                    this.Required = true;
-                    this.Nullable = false;
-                }
-                if (prop.Name == "MaxLength")
-                {
-                    int v = 0;
-                    int.TryParse(prop.Value, out v);
-                    this.MaxLength = v;
-                }
-                if (prop.Name == "Range")
-                {
-                    var arr = prop.Value.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    int n1 = 0, n2 = 0;
-                    int.TryParse(arr[0], out n1);
-                    int.TryParse(arr[1], out n2);
-                    this.RangeMin = n1;
-                    this.RangeMax = n2;
-                }
+                this.Required = true;
+                this.Nullable = false;
+            }
+
+            var maxLengthAttributes = property.GetCustomAttributes(typeof(MaxLengthAttribute), true);
+            if (maxLengthAttributes.Any())
+            {
+                this.MaxLength = ((MaxLengthAttribute)maxLengthAttributes[0]).Length;
+            }
+
+            var rangeAttributes = property.GetCustomAttributes(typeof(RangeAttribute), true);
+            if (rangeAttributes.Any())
+            {
+                var rangeAtt = ((RangeAttribute) rangeAttributes[0]);
+                this.RangeMin = (int)rangeAtt.Minimum;
+                this.RangeMax = (int)rangeAtt.Maximum;
             }
         }
 
@@ -221,7 +222,7 @@ namespace Lyu.Scaffolding.Models
 
         private static euColumnType ParseEnum(string value)
         {
-            value = value.Replace("?", "").Replace("System.", "").ToLower() + "CT";
+            value = value.ToLower() + "CT";
             euColumnType result;
             if (Enum.TryParse<euColumnType>(value, true, out result))
             {

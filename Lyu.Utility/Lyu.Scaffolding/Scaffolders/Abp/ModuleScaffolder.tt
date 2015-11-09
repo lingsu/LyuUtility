@@ -2,7 +2,9 @@
 <#@ output extension="text" #>
 
 <#@ Assembly Name="System.Core" #>
-<#@ Assembly Name="$(SolutionDir)\Lyu.Scaffolding\bin\Debug\Lyu.Scaffolding.dll" #>
+<#@ Assembly Name="$(ProjectDir)\bin\Debug\Lyu.Scaffolding.dll" #>
+<#@ Assembly Name="$(SolutionDir)\Lyutemplate.Web\bin\Abp.dll" #>
+<#@ Assembly Name="$(SolutionDir)\Lyutemplate.Web\bin\Abp.Zero.dll" #>
 <#@ assembly name="EnvDTE" #>
 <#@ import namespace="System.IO" #>
 <#@ Import Namespace="System.Linq" #>
@@ -14,6 +16,7 @@
 <#@ import namespace="Lyu.Scaffolding.Scaffolders.Abp" #>
 <#@ import namespace="Lyu.Scaffolding.Domain" #>
 <#@ import namespace="Lyu.Scaffolding.Utils" #>
+<#@ import namespace="Lyu.Scaffolding.Models" #>
 
 <#@ include file="T4Toolbox.tt" #>
 <#@ include file="AbpTemplate.tt" #>
@@ -26,23 +29,36 @@
 
 <#
 
-			var type = typeof (Product);
-            var templateParams = new TemplateParams();
-            templateParams.EntityName = type.Name;
-            templateParams.entityName = ToCamelCase(templateParams.EntityName);
-            templateParams.EntityNamespace = type.Namespace;
-            templateParams.ModuleNamespace = getModuleNamespace(templateParams.EntityNamespace);
-            templateParams.ModuleName = getModuleName(templateParams.ModuleNamespace);
-			templateParams.FunctionFolderName = VmUtils.ToPlural(templateParams.EntityName);
-			templateParams.FunctionName ="FunctionName";
-			templateParams.AllowBatchDelete = true;
-		
-			 var templates = new AbpTemplate[]{
-					new IEntityAppService(templateParams),
-					new EntityAppService(templateParams),
-					new Repository(templateParams),
-					new IRepository(templateParams)
-			 };
+			 byte[] fileData = System.IO.File.ReadAllBytes(@"N:\Vs\Lyutemplate\Lyutemplate.Core\bin\Debug\Lyutemplate.Core.dll");
+
+            Assembly assembly = Assembly.Load(fileData);
+            
+			 foreach (var type in assembly.GetTypes().Where(m => m.GetInterface("IEntity",true) != null && !m.IsAbstract))
+            {
+				var templateParams = new TemplateParams();
+				templateParams.EntityName = type.Name;
+				templateParams.entityName = ToCamelCase(templateParams.EntityName);
+				templateParams.EntityNamespace = type.Namespace;
+				templateParams.ModuleNamespace = getModuleNamespace(templateParams.EntityNamespace);
+				templateParams.ModuleName = getModuleName(templateParams.ModuleNamespace);
+				templateParams.FunctionFolderName = VmUtils.ToPlural(templateParams.EntityName);
+				templateParams.FunctionName ="FunctionName";
+				templateParams.AllowBatchDelete = true;
+
+                MetaTableInfo dataModel = new MetaTableInfo();
+                foreach (var propertyInfo in type.GetProperties())
+                {
+                    var metaColumnInfo = new MetaColumnInfo(propertyInfo);
+                    dataModel.Columns.Add(metaColumnInfo);
+                }
+                templateParams.DtoMetaTable = dataModel;
+
+				var templates = new AbpTemplate[]{
+						new IEntityAppService(templateParams),
+						new EntityAppService(templateParams),
+						new Repository(templateParams),
+						new IRepository(templateParams)
+				 };
 				string currentPath = Path.GetDirectoryName(Host.TemplateFile);
 				string projectPath = currentPath.Substring(0, currentPath.IndexOf(@"\Scaffolders"));
 
@@ -53,18 +69,15 @@
 					template.Output.Encoding = Encoding.UTF8;
 					template.RenderToFile(Path.Combine(outputPath,template.FileName()));
 				}
+			}
+				
 
    IServiceProvider serviceProvider = (IServiceProvider)this.Host;
 
 #>
-//currentPath <#=currentPath#> 
-//projectPath <#=projectPath#> 
-//projectPath <#=Path.Combine(projectPath, "as.cs")#> 
-//this.Host.TemplateFile <#=this.Host.TemplateFile#> 
-//this.Host.TemplateFile <#=serviceProvider#> 
-//templateParams.EntityName: <#=templateParams.EntityName#> 
-//templateParams.EntityNamespace: <#=templateParams.EntityNamespace#> 
-//templateParams.ModuleName: <#=templateParams.ModuleName#> 
+
+111
+<#=assembly.FullName#>
 
 <#+
 

@@ -43,6 +43,7 @@
     <Reference Include="Microsoft.AspNet.Scaffolding.EntityFramework.12.0, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86" />
     <Reference Include="Microsoft.VisualStudio.Editor, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -70,10 +71,14 @@
     <Content Include="Scaffolders\Abp\ModuleScaffolder.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastOutputs>
-..\..\_GeneratedCode\Application\Products\IProductAppService.cs
-..\..\_GeneratedCode\Application\Products\ProductAppService.cs
-..\..\_GeneratedCode\Domain\Products\Repositories\IProductRepository.cs
-..\..\_GeneratedCode\Repository\Products\Repositories\ProductRepository.cs
+..\..\_GeneratedCode\Application\Articles\ArticleAppService.cs
+..\..\_GeneratedCode\Application\Articles\IArticleAppService.cs
+..\..\_GeneratedCode\Application\Newses\INewsAppService.cs
+..\..\_GeneratedCode\Application\Newses\NewsAppService.cs
+..\..\_GeneratedCode\Domain\Articles\Repositories\IArticleRepository.cs
+..\..\_GeneratedCode\Domain\Newses\Repositories\INewsRepository.cs
+..\..\_GeneratedCode\Repository\Articles\Repositories\ArticleRepository.cs
+..\..\_GeneratedCode\Repository\Newses\Repositories\NewsRepository.cs
 .\ModuleScaffolder.text
 </LastOutputs>
       <LastGenOutput>ModuleScaffolder.text</LastGenOutput>

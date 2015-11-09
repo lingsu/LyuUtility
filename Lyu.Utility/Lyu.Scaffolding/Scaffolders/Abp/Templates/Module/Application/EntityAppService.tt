@@ -144,7 +144,7 @@ namespace <#= ModuleNamespace #>.Application
         /// 批量删除<#= FunctionName #>
         /// </summary>
         [AbpAuthorize(<#= ModuleName #>Permissions.<#= EntityName #>_Delete<#= EntityName #>)]
-        public async Task BatchDelete<#= EntityName #>(IEnumerable<Guid> input)
+        public async Task BatchDelete<#= EntityName #>(IEnumerable<int> input)
         {
             //TODO:批量删除前的逻辑判断，是否允许删除
             await _<#= entityName #>Repository.DeleteAsync(input);
@@ -160,7 +160,7 @@ namespace <#= ModuleNamespace #>.Application
         /// 更新<#= FunctionName #>排序
         /// </summary>
         [AbpAuthorize(<#= ModuleName #>Permissions.<#= EntityName #>_Update<#= EntityName #>DisplayOrder)]
-        public async Task Update<#= EntityName #>DisplayOrder(IEnumerable<Guid> input)
+        public async Task Update<#= EntityName #>DisplayOrder(IEnumerable<int> input)
         {
             await _<#= entityName #>Repository.BatchUpdateDisplayOrderAsync(input);
         }

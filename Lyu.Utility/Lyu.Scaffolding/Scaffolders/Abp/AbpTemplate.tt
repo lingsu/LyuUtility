@@ -1,10 +1,5 @@
-﻿<#@ Assembly Name="$(SolutionDir)\Lyu.Scaffolding\bin\Debug\Lyu.Scaffolding.dll" #>
-<#@ import namespace="Lyu.Scaffolding.Models" #>
+﻿<#@ import namespace="Lyu.Scaffolding.Models" #>
 <#+
-
-// <copyright file="Abpcc.tt" company="">
-//  Copyright © . All Rights Reserved.
-// </copyright>
 
 public abstract class AbpTemplate : CSharpTemplate
 {
