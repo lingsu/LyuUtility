@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
 using Lyu.Scaffolding.Domain;
 using Lyu.Scaffolding.Models;
@@ -11,20 +12,25 @@ namespace Lyu.Scaffolding.Scaffolders.Abp
     {
         public ModuleScaffolder()
         {
-            var type = typeof (Product);
+            var type = typeof(Product);
             var templateParams = new TemplateParams();
             templateParams.EntityName = type.Name;
-            templateParams.FunctionFolderName = VmUtils.ToPlural(templateParams.EntityName);
             templateParams.EntityNamespace = type.Namespace;
             templateParams.ModuleNamespace = getModuleNamespace(templateParams.EntityNamespace);
             templateParams.ModuleName = getModuleName(templateParams.ModuleNamespace);
 
-            var templates = new AbpTemplate[]{
-                    new IEntityAppService(templateParams),
-                    new EntityAppService(templateParams)
-             };
+            MetaTableInfo dataModel = new MetaTableInfo();
+            foreach (var propertyInfo in type.GetProperties())
+            {
+                var metaColumnInfo = new MetaColumnInfo();
+                var aliase = VmUtils.ToGenericTypeString(propertyInfo.PropertyType);
+                var descAttributes = propertyInfo.GetCustomAttributes(typeof(DescriptionAttribute), true);
+                var description = descAttributes.Length == 1 ? ((DescriptionAttribute)descAttributes[0]).Description : aliase;
 
-            type.GetInterfaces()
+            }
+
+
+            templateParams.DtoMetaTable = dataModel;
 
         }
 

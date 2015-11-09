@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using EnvDTE;
 
 namespace Lyu.Scaffolding.Models
@@ -104,7 +105,7 @@ namespace Lyu.Scaffolding.Models
         //}
 
 
-        public MetaColumnInfo(CodeProperty property)
+        public MetaColumnInfo(PropertyInfo property)
         {
             string strName = property.Name;
             string strType = property.Type.AsString;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Linq;
@@ -7,10 +8,48 @@ namespace Lyu.Scaffolding.Utils
 {
     public static class VmUtils
     {
-        /// <summary>
-        /// 单词变成单数形式
-        /// </summary>
-        public static string ToSingular(string word)
+
+        public static string ToGenericTypeString(Type t)
+        {
+            if (!t.IsGenericType)
+                return Aliases.ContainsKey(t)
+                            ? Aliases[t]
+                            : t.Name;
+            string genericTypeName = t.GetGenericTypeDefinition().Name;
+            genericTypeName = genericTypeName.Substring(0,
+                genericTypeName.IndexOf('`'));
+            string genericArgs = string.Join(",",
+                t.GetGenericArguments()
+                    .Select(ToGenericTypeString).ToArray());
+            return genericTypeName + "<" + genericArgs + ">";
+        }
+
+        public static readonly Dictionary<Type, string> Aliases =
+            new Dictionary<Type, string>()
+            {
+                {typeof (byte), "byte"},
+                {typeof (sbyte), "sbyte"},
+                {typeof (short), "short"},
+                {typeof (ushort), "ushort"},
+                {typeof (int), "int"},
+                {typeof (uint), "uint"},
+                {typeof (long), "long"},
+                {typeof (ulong), "ulong"},
+                {typeof (float), "float"},
+                {typeof (double), "double"},
+                {typeof (decimal), "decimal"},
+                {typeof (object), "object"},
+                {typeof (bool), "bool"},
+                {typeof (char), "char"},
+                {typeof (string), "string"},
+                {typeof (void), "void"}
+            };
+    }
+
+    /// <summary>
+    /// 单词变成单数形式
+    /// </summary>
+    public static string ToSingular(string word)
         {
             Regex plural1 = new Regex("(?<keep>[^aeiou])ies$");
             Regex plural2 = new Regex("(?<keep>[aeiou]y)s$");
