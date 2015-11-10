@@ -1,0 +1,30 @@
+﻿<#+
+// <copyright file="EntityQueryDto.tt" company="">
+//  Copyright © . All Rights Reserved.
+// </copyright>
+
+public class EntityQueryDto : AbpTemplate
+{
+public EntityQueryDto(TemplateParams templateParams) : base(templateParams)
+        {
+            _filename = @"Application\{FunctionFolderName}\Dtos\{Entity}QueryDto.cs";
+        }
+
+	public override string TransformText()
+	{
+		base.TransformText();
+#>
+namespace <#= DefaultNamespace #>
+{
+	public class <#= Identifier("Sample Class") #>
+	{
+		private string <#= FieldName("Sample Field") #>;
+
+		public string <#= PropertyName("Sample Property") #> { get; set; }
+	}
+}
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>

@@ -1,0 +1,30 @@
+﻿<#+
+// <copyright file="GetEntityQueryInput.tt" company="">
+//  Copyright © . All Rights Reserved.
+// </copyright>
+
+public class GetEntityQueryInput : AbpTemplate
+{
+		public GetEntityQueryInput(TemplateParams templateParams) : base(templateParams)
+        {
+            _filename =  @"Application\{FunctionFolderName}\Dtos\Get{Entity}QueryInput.cs";
+        }
+
+	public override string TransformText()
+	{
+		base.TransformText();
+#>
+namespace <#= DefaultNamespace #>
+{
+	public class <#= Identifier("Sample Class") #>
+	{
+		private string <#= FieldName("Sample Field") #>;
+
+		public string <#= PropertyName("Sample Property") #> { get; set; }
+	}
+}
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>

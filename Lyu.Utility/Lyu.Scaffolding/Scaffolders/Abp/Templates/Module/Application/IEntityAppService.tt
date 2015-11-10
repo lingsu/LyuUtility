@@ -46,7 +46,7 @@ namespace <#= ModuleNamespace #>.Application
  /// <summary>
         /// 获取指定id的<#= FunctionName #>信息
         /// </summary>
-        Task<<#= EntityName #>Dto> Get<#= EntityName #>(Guid id);
+        Task<<#= EntityName #>Dto> Get<#= EntityName #>(int id);
 
         /// <summary>
         /// 新增或更改<#= FunctionName #>
@@ -74,7 +74,7 @@ namespace <#= ModuleNamespace #>.Application
         /// <summary>
         /// 批量删除<#= FunctionName #>
         /// </summary>
-        Task BatchDelete<#= EntityName #>(IEnumerable<Guid> input);
+        Task BatchDelete<#= EntityName #>(IEnumerable<int> input);
 
 <#+
     }

@@ -1,0 +1,31 @@
+﻿<#+
+// <copyright file="EntityDto.tt" company="">
+//  Copyright © . All Rights Reserved.
+// </copyright>
+
+public class EntityDto : AbpTemplate
+{
+
+public EntityDto(TemplateParams templateParams) : base(templateParams)
+        {
+            _filename = @"Application\{FunctionFolderName}\Dtos\{Entity}Dto.cs";
+        }
+
+	public override string TransformText()
+	{
+		base.TransformText();
+#>
+namespace <#= DefaultNamespace #>
+{
+	public class <#= Identifier("Sample Class") #>
+	{
+		private string <#= FieldName("Sample Field") #>;
+
+		public string <#= PropertyName("Sample Property") #> { get; set; }
+	}
+}
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>

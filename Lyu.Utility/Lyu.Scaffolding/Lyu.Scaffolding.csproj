@@ -71,18 +71,21 @@
     <Content Include="Scaffolders\Abp\ModuleScaffolder.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastOutputs>
-..\..\_GeneratedCode\Application\Articles\ArticleAppService.cs
-..\..\_GeneratedCode\Application\Articles\IArticleAppService.cs
-..\..\_GeneratedCode\Application\Newses\INewsAppService.cs
-..\..\_GeneratedCode\Application\Newses\NewsAppService.cs
-..\..\_GeneratedCode\Domain\Articles\Repositories\IArticleRepository.cs
-..\..\_GeneratedCode\Domain\Newses\Repositories\INewsRepository.cs
-..\..\_GeneratedCode\Repository\Articles\Repositories\ArticleRepository.cs
-..\..\_GeneratedCode\Repository\Newses\Repositories\NewsRepository.cs
+..\..\_GeneratedCode\Application\LyuTemplates\IProductAppService.cs
+..\..\_GeneratedCode\Application\LyuTemplates\IProductCategoryAppService.cs
+..\..\_GeneratedCode\Application\LyuTemplates\ProductAppService.cs
+..\..\_GeneratedCode\Application\LyuTemplates\ProductCategoryAppService.cs
+..\..\_GeneratedCode\Domain\LyuTemplates\Repositories\IProductCategoryRepository.cs
+..\..\_GeneratedCode\Domain\LyuTemplates\Repositories\IProductRepository.cs
+..\..\_GeneratedCode\Repository\LyuTemplates\Repositories\ProductCategoryRepository.cs
+..\..\_GeneratedCode\Repository\LyuTemplates\Repositories\ProductRepository.cs
 .\ModuleScaffolder.text
 </LastOutputs>
       <LastGenOutput>ModuleScaffolder.text</LastGenOutput>
     </Content>
+    <Content Include="Scaffolders\Abp\Templates\Module\Application\Dtos\EntityDto.tt" />
+    <Content Include="Scaffolders\Abp\Templates\Module\Application\Dtos\EntityQueryDto.tt" />
+    <Content Include="Scaffolders\Abp\Templates\Module\Application\Dtos\GetEntityQueryInput.tt" />
     <Content Include="Scaffolders\Abp\Templates\Module\Application\EntityAppService.tt" />
     <Content Include="Scaffolders\Abp\Templates\Module\Application\IEntityAppService.tt" />
     <Content Include="Scaffolders\Abp\Templates\Module\Domain\Repositories\IRepository.tt" />
