@@ -4,6 +4,7 @@
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="$(ProjectDir)\bin\Debug\Lyu.Scaffolding.dll" #>
 <#@ Assembly Name="$(SolutionDir)\Lyutemplate.Web\bin\Abp.dll" #>
+<#@ Assembly Name="$(SolutionDir)\Lyutemplate.Web\bin\Abp.Zero.dll" #>
 
 <#@ assembly name="EnvDTE" #>
 <#@ import namespace="System.IO" #>
@@ -26,10 +27,13 @@
 <#@ include file="Templates\Module\Application\EntityAppService.tt" #>
 <#@ include file="Templates\Module\Domain\Repositories\IRepository.tt" #>
 <#@ include file="Templates\Module\Repository\Repositories\Repository.tt" #>
-
+<#@ include file="Templates\Module\Application\Dtos\EntityDto.tt" #>
+<#@ include file="Templates\Module\Application\Dtos\EntityQueryDto.tt" #>
+<#@ include file="Templates\Module\Application\Dtos\GetEntityQueryInput.tt" #>
 <#
 
-			 byte[] fileData = System.IO.File.ReadAllBytes(@"C:\Users\q25a2\Downloads\LyuTemplate\LyuTemplate.Core\bin\Debug\Lyutemplate.Core.dll");
+			// byte[] fileData = System.IO.File.ReadAllBytes(@"C:\Users\q25a2\Downloads\LyuTemplate\LyuTemplate.Core\bin\Debug\Lyutemplate.Core.dll");
+			 byte[] fileData = System.IO.File.ReadAllBytes(@"N:\Vs\Lyutemplate\Lyutemplate.Core\bin\Debug\Lyutemplate.Core.dll");
 
             Assembly assembly = Assembly.Load(fileData);
             
@@ -41,19 +45,20 @@
 				templateParams.EntityNamespace = type.Namespace;
 				templateParams.ModuleNamespace = getModuleNamespace(templateParams.EntityNamespace);
 				templateParams.ModuleName = getModuleName(templateParams.ModuleNamespace);
-				templateParams.FunctionFolderName = VmUtils.ToPlural(templateParams.ModuleName);
+				templateParams.FunctionFolderName = getModuleName(templateParams.EntityNamespace);
 				templateParams.FunctionName ="FunctionName";
 				templateParams.AllowBatchDelete = true;
-				WriteLog(templateParams.EntityName);
-				WriteLog(templateParams.entityName);
-				WriteLog(templateParams.EntityNamespace);
-				WriteLog(templateParams.ModuleNamespace);
-				WriteLog(templateParams.ModuleName);
+				//WriteLog(templateParams.EntityName);
+				//WriteLog(templateParams.entityName);
+				//WriteLog(templateParams.EntityNamespace);
+				//WriteLog(templateParams.ModuleNamespace);
+				//WriteLog(templateParams.ModuleName);
                 MetaTableInfo dataModel = new MetaTableInfo();
                 foreach (var propertyInfo in type.GetProperties())
                 {
                     var metaColumnInfo = new MetaColumnInfo(propertyInfo);
-                    dataModel.Columns.Add(metaColumnInfo);
+					if(metaColumnInfo.Name != "Id")
+						dataModel.Columns.Add(metaColumnInfo);
                 }
                 templateParams.DtoMetaTable = dataModel;
 
@@ -61,12 +66,13 @@
 						new IEntityAppService(templateParams),
 						new EntityAppService(templateParams),
 						new Repository(templateParams),
-						new IRepository(templateParams)
+						new IRepository(templateParams),
+						new EntityDto(templateParams)
 				 };
 				string currentPath = Path.GetDirectoryName(Host.TemplateFile);
 				string projectPath = currentPath.Substring(0, currentPath.IndexOf(@"\Scaffolders"));
 
-				var functionFolderName = "functionFolderName";
+				
 				string outputPath = Path.Combine(projectPath,@"_GeneratedCode\");
 				foreach(var template in templates){
 					

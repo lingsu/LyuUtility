@@ -15,15 +15,66 @@ public EntityDto(TemplateParams templateParams) : base(templateParams)
 	{
 		base.TransformText();
 #>
-namespace <#= DefaultNamespace #>
-{
-	public class <#= Identifier("Sample Class") #>
-	{
-		private string <#= FieldName("Sample Field") #>;
 
-		public string <#= PropertyName("Sample Property") #> { get; set; }
-	}
+using System;
+using System.ComponentModel.DataAnnotations;
+using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
+using Abp.Runtime.Validation;
+using Abp.Extensions;
+using <#= EntityNamespace #>;
+using <#= ModuleNamespace #>.Domain;
+
+namespace <#= ModuleNamespace #>.Application
+{
+
+<#+
+        if (!string.IsNullOrWhiteSpace(FunctionName)){
+#>
+    /// <summary>
+    /// <#= FunctionName #>
+    /// </summary>
+<#+
+        }
+#>
+
+  [AutoMap(typeof(<#= EntityName #>))]
+    public class <#= EntityName #>Dto : EntityDto, IValidate
+    {
+<#+
+    foreach (MetaColumnInfo column in DtoMetaTable.Columns) {
+        if (!column.IsDtoVisible) continue;
+#>
+<#+
+        if (column.DisplayName != column.Name){
+#>
+        /// <summary>
+        /// <#= column.DisplayName #>
+        /// </summary>
+<#+
+        }
+#>
+<#+
+        if (column.Required){
+#>
+        [Required]
+<#+      }
+
+        if (column.HasMetaAttribute){
+#>
+        <#= column.MetaAttribute #>
+<#+
+        }
+#>
+        public <#= column.strDataType #> <#= column.Name #> { get; set; }
+
+<#+
+    }
+#>
+    }
 }
+
+
 <#+
         return this.GenerationEnvironment.ToString();
 	}
