@@ -4,7 +4,7 @@
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="$(ProjectDir)\bin\Debug\Lyu.Scaffolding.dll" #>
 <#@ Assembly Name="$(SolutionDir)\Lyutemplate.Web\bin\Abp.dll" #>
-<#@ Assembly Name="$(SolutionDir)\Lyutemplate.Web\bin\Abp.Zero.dll" #>
+<#// Assembly Name="$(SolutionDir)\Lyutemplate.Web\bin\Abp.Zero.dll" #>
 
 <#@ assembly name="EnvDTE" #>
 <#@ import namespace="System.IO" #>
@@ -32,8 +32,8 @@
 <#@ include file="Templates\Module\Application\Dtos\GetEntityQueryInput.tt" #>
 <#
 
-			// byte[] fileData = System.IO.File.ReadAllBytes(@"C:\Users\q25a2\Downloads\LyuTemplate\LyuTemplate.Core\bin\Debug\Lyutemplate.Core.dll");
-			 byte[] fileData = System.IO.File.ReadAllBytes(@"N:\Vs\Lyutemplate\Lyutemplate.Core\bin\Debug\Lyutemplate.Core.dll");
+			 byte[] fileData = System.IO.File.ReadAllBytes(@"C:\Users\q25a2\Downloads\LyuTemplate\LyuTemplate.Core\bin\Debug\Lyutemplate.Core.dll");
+			// byte[] fileData = System.IO.File.ReadAllBytes(@"N:\Vs\Lyutemplate\Lyutemplate.Core\bin\Debug\Lyutemplate.Core.dll");
 
             Assembly assembly = Assembly.Load(fileData);
             
@@ -67,7 +67,9 @@
 						new EntityAppService(templateParams),
 						new Repository(templateParams),
 						new IRepository(templateParams),
-						new EntityDto(templateParams)
+						new EntityDto(templateParams),
+						new EntityQueryDto(templateParams),
+						new GetEntityQueryInput(templateParams)
 				 };
 				string currentPath = Path.GetDirectoryName(Host.TemplateFile);
 				string projectPath = currentPath.Substring(0, currentPath.IndexOf(@"\Scaffolders"));

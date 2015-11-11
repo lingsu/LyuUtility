@@ -14,15 +14,52 @@ public class GetEntityQueryInput : AbpTemplate
 	{
 		base.TransformText();
 #>
-namespace <#= DefaultNamespace #>
-{
-	public class <#= Identifier("Sample Class") #>
-	{
-		private string <#= FieldName("Sample Field") #>;
+using System;
+using Abp.Application.Services.Dto;
+using Abp.Extensions;
+using Abp.Runtime.Validation;
+using <#= EntityNamespace #>;
+using YMC.ECCentral.Core;
 
-		public string <#= PropertyName("Sample Property") #> { get; set; }
-	}
+namespace <#= ModuleNamespace #>.Application
+{
+    public class Get<#= EntityName #>QueryInput : QueryRequestInput<#+if (IsDisplayOrderable) {#>, IShouldNormalize<#+}#>
+    {
+        //DOTO:在这里增加查询参数
+<#+
+    if (!EntityName.Contains("Category")) {
+#>
+
+        /// <summary>
+        /// <#= FunctionName #>分类
+        /// </summary>
+        //public int? <#= EntityName #>CategoryId { get; set; }
+<#+
+    }
+#>
+
+<#+
+    if (IsDisplayOrderable) {
+#>
+
+        /// <summary>
+        /// 规格化输入参数值
+        /// </summary>
+        public virtual void Normalize()
+        {
+            PageSize = Consts.MaxPageSize;  
+
+            if (string.IsNullOrEmpty(Sorting))
+            {
+                Sorting = "DisplayOrder, CreationTime";
+            }
+        }
+<#+
+    }
+#>
+    }
 }
+
 <#+
         return this.GenerationEnvironment.ToString();
 	}

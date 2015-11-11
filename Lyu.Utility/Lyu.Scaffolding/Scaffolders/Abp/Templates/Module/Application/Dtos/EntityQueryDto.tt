@@ -14,15 +14,40 @@ public EntityQueryDto(TemplateParams templateParams) : base(templateParams)
 	{
 		base.TransformText();
 #>
-namespace <#= DefaultNamespace #>
-{
-	public class <#= Identifier("Sample Class") #>
-	{
-		private string <#= FieldName("Sample Field") #>;
+using System;
+using System.ComponentModel.DataAnnotations;
+using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
+using Abp.Extensions;
+using <#= EntityNamespace #>;
+using <#= ModuleNamespace #>.Domain;
 
-		public string <#= PropertyName("Sample Property") #> { get; set; }
-	}
+namespace <#= ModuleNamespace #>.Application
+{
+    [AutoMapFrom(typeof(<#= EntityName #>))]
+    public class <#= EntityName #>QueryDto : EntityDto
+    {
+<#+
+    foreach (MetaColumnInfo column in DtoMetaTable.Columns) {
+        if (!column.IsItemVisible) continue;
+#>
+<#+
+        if (column.DisplayName != column.Name){
+#>
+        /// <summary>
+        /// <#= column.DisplayName #>
+        /// </summary>
+<#+
+        }
+#>
+        public <#= column.strDataType #> <#= column.Name #> { get; set; }
+
+<#+
+    }
+#>
+    }
 }
+
 <#+
         return this.GenerationEnvironment.ToString();
 	}
