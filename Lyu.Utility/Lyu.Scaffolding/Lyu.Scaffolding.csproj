@@ -61,6 +61,7 @@
     <Compile Include="Domain\Product.cs" />
     <Compile Include="Models\TemplateParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scaffolders\Abp\AreaScaffolder.cs" />
     <Compile Include="Scaffolders\Abp\ModuleScaffolder.cs" />
     <Compile Include="Scaffolders\Abp\Templates\Module\Application\EntityAppService.cs" />
     <Compile Include="Scaffolders\Abp\Templates\Module\Application\IEntityAppService.cs" />
@@ -68,6 +69,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scaffolders\Abp\AbpTemplate.tt" />
+    <Content Include="Scaffolders\Abp\AreaScaffolder.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AreaScaffolder.text</LastGenOutput>
+      <LastOutputs>
+..\..\_GeneratedCode\Areas\LyuTemplate\Controllers\ProductController.cs
+..\..\_GeneratedCode\Areas\LyuTemplate\js\Product.js
+..\..\_GeneratedCode\Areas\LyuTemplate\LyuTemplateAreaRegistration.cs
+..\..\_GeneratedCode\Areas\LyuTemplate\Views\_ViewStart.cshtml
+..\..\_GeneratedCode\Areas\LyuTemplate\Views\Product\Edit.cshtml
+..\..\_GeneratedCode\Areas\LyuTemplate\Views\Product\Index.cshtml
+..\..\_GeneratedCode\Areas\LyuTemplate\Views\web.config
+.\AreaScaffolder.text
+</LastOutputs>
+    </Content>
     <Content Include="Scaffolders\Abp\ModuleScaffolder.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastOutputs>
@@ -89,6 +104,13 @@
 </LastOutputs>
       <LastGenOutput>ModuleScaffolder.text</LastGenOutput>
     </Content>
+    <Content Include="Scaffolders\Abp\Templates\Areas\AreaRegistration.tt" />
+    <Content Include="Scaffolders\Abp\Templates\Areas\Controllers\Controller.tt" />
+    <Content Include="Scaffolders\Abp\Templates\Areas\js\Entity.tt" />
+    <Content Include="Scaffolders\Abp\Templates\Areas\Views\Entity\Edit.tt" />
+    <Content Include="Scaffolders\Abp\Templates\Areas\Views\Entity\Index.tt" />
+    <Content Include="Scaffolders\Abp\Templates\Areas\Views\web.tt" />
+    <Content Include="Scaffolders\Abp\Templates\Areas\Views\_ViewStart.tt" />
     <Content Include="Scaffolders\Abp\Templates\Module\Application\Dtos\EntityDto.tt" />
     <Content Include="Scaffolders\Abp\Templates\Module\Application\Dtos\EntityQueryDto.tt" />
     <Content Include="Scaffolders\Abp\Templates\Module\Application\Dtos\GetEntityQueryInput.tt" />
@@ -102,6 +124,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Scaffolders\Abp\AreaScaffolder.text">
+      <DependentUpon>AreaScaffolder.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </None>
     <None Include="Scaffolders\Abp\ModuleScaffolder.text">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

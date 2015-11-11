@@ -1,0 +1,24 @@
+﻿<#+
+// <copyright file="_ViewStart.tt" company="">
+//  Copyright © . All Rights Reserved.
+// </copyright>
+
+public class ViewStart : AbpTemplate
+{
+	public ViewStart(TemplateParams templateParams) : base(templateParams)
+        {
+            _filename = @"Areas\{Module}\Views\_ViewStart.cshtml";
+        }
+
+	public override string TransformText()
+	{
+		base.TransformText();
+#>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>

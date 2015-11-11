@@ -1,0 +1,100 @@
+﻿<#+
+// <copyright file="Edit.tt" company="">
+//  Copyright © . All Rights Reserved.
+// </copyright>
+
+public class Edit : AbpTemplate
+{
+	public Edit(TemplateParams templateParams) : base(templateParams)
+        {
+            _filename = @"Areas\{Module}\Views\{Entity}\Edit.cshtml";
+        }
+
+	public override string TransformText()
+	{
+		base.TransformText();
+#>
+@model <#= EntityName #>Dto
+<!--html代码区域-->
+<div class="page-content">
+    <form id="myform" method="post">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <div class="container form-horizontal padding-top-30">
+<#+
+    if (DtoMetaTable.Columns.Count >= 10)
+    {
+#>
+            <!--<div class="alert alert-info fs16 bold mt10">分节标题</div>-->
+<#+  } #>
+            <div class="clearfix">
+<#+
+    foreach (MetaColumnInfo column in DtoMetaTable.Columns) 
+    {
+        if (!column.IsDtoVisible) continue;
+        if (GenerateTwoCol)  //两栏布局
+        {
+            if (IsFullWidthCol(column))  //整行宽度的列(Textarea、TextEditor)
+            {
+#>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-3 colspan-xs-3 control-label"><#= GetFormControlLabel(column) #></label>
+                        <div class="col-sm-8 colspan-xs-8 clearfix">
+<#+                          WriteColControl(column, "    "); #>
+                        </div>
+                    </div>
+                </div>
+<#+          }
+            else
+            { #>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"><#= GetFormControlLabel(column) #></label>
+                        <div class="col-sm-8">
+<#+                          WriteColControl(column, "    "); #>
+                            <span class="help-inline"></span>
+                        </div>
+                    </div>
+                </div>
+<#+          }
+        }
+        else
+        { #>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><#= GetFormControlLabel(column) #></label>
+                    <div class="col-sm-10">
+<#+                      WriteColControl(column, ""); #>
+                        <span class="help-inline"></span>
+                    </div>
+                </div>
+<#+      }
+    }
+#>
+            </div>
+        </div>
+        <div class="wx-form-footer fixed">
+            <button id="btn-save" type="submit" class="btn btn-primary btn-lg w100">保存</button>
+            <button id="btn-cancel" type="button" class="btn btn-default btn-lg w100">取消</button>
+        </div>
+    </form>
+</div>
+
+@section js{
+    <!--模块js-->
+    @Scripts.Render("~/js/form")
+    <script>
+        //调用表单验证
+        abp.form.submit("#myform", {
+            url: abp.appPath + 'api/services/<#= ModuleName #>/<#= EntityName #>/CreateOrUpdate<#= EntityName #>',
+        }, {
+            rules: { 
+            },
+        });
+    </script>
+}
+
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>

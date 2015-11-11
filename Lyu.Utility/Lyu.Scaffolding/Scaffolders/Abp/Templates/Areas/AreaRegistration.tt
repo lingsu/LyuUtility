@@ -1,0 +1,45 @@
+﻿<#+
+
+public class AreaRegistration : AbpTemplate
+{
+	public AreaRegistration(TemplateParams templateParams) : base(templateParams)
+        {
+            _filename =@"Areas\{Module}\{Module}AreaRegistration.cs";
+        }
+
+	public override string TransformText()
+	{
+		base.TransformText();
+
+#>
+
+using System.Web.Mvc;
+
+namespace <#= ProjectNamespace #>
+{
+    public class <#= ModuleName #>AreaRegistration : AreaRegistration 
+    {
+        public override string AreaName 
+        {
+            get 
+            {
+                return "<#= ModuleName #>";
+            }
+        }
+
+        public override void RegisterArea(AreaRegistrationContext context) 
+        {
+            context.MapRoute(
+                "<#= ModuleName #>_default",
+                "<#= ModuleName #>/{controller}/{action}/{id}",
+                new { action = "Index", id = UrlParameter.Optional }
+            );
+        }
+    }
+}
+
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>

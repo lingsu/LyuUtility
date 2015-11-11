@@ -1,0 +1,158 @@
+﻿<#+
+
+public class Entity : AbpTemplate
+{
+
+	public Entity(TemplateParams templateParams) : base(templateParams)
+        {
+            _filename = @"Areas\{Module}\js\{Entity}.js";
+        }
+
+	public override string TransformText()
+	{
+	
+		base.TransformText();
+		
+#>
+
+var listColumns = [
+		<#+ if (!IsDisplayOrderable) { #>
+			listCheckboxColumn,
+		<#+ } #>
+			{ "name": "id", "data": "id", title: "ID", "sortable": false, "visible": false },
+		<#+
+			foreach (MetaColumnInfo column in ItemMetaTable.Columns) {
+		#>
+			{ "name": "<#= ToCamelCase(column.Name) #>", "data": "<#= ToCamelCase(column.Name) #>", title: "<#= column.DisplayName #>"<#= GetColAttr(column) #> },
+		<#+
+			}
+		#>
+		];
+
+$(function () {
+    abp.grid.init([
+    	{
+<#+ if (!IsDisplayOrderable) { #>
+            order: [[abp.grid.getColumnIndex('creationTime'), 'desc']],
+<#+ } #>
+    	    table: "#mytable",
+    	    ajax: abp.grid.ajaxLoadEx({
+    	        "url": abp.appPath + "api/services/<#= ModuleName #>/<#= EntityName #>/Get<#= EntityName #>Query",
+    	        "initData": "#listCacheJson"
+    	    }),
+    	    columns: listColumns,
+<#+ if (IsDisplayOrderable) { #>
+    	    paging: false,
+    	    isDrag: true,
+            dragAjax: function (idList) {
+                $('#btnSaveDisplayOrder').removeClass("disabled").data('idList', JSON.stringify(idList));
+            }
+<#+ } #>
+    	},
+		{ switchs: false } //{ detail: { exclude: [0, 1] } }
+    ]);
+
+    //新增
+    $("#btnNew").click(function () {
+        abp.dialog({
+<#+ if (GenerateTwoCol) { #>
+            width: "1100px",
+            height: "800px",
+<#+ } else { #>
+            width: "1000px",
+            height: "700px",
+<#+ } #>
+            title: "新增<#= FunctionName #>",
+            href: abp.appPath + '<#= ModuleName #>/<#= EntityName #>/Edit',
+            callback: abp.grid.reloadList
+        });
+    });
+
+    //编辑
+    $("#btnEdit").on('click', function () {
+        var row = abp.grid.getSelectedOneRowData();
+        if (!row) return;
+        abp.dialog({
+<#+ if (GenerateTwoCol) { #>
+            width: "1100px",
+            height: "800px",
+<#+ } else { #>
+            width: "800px",
+            height: "500px",
+<#+ } #>
+            title: "编辑<#= FunctionName #>",
+            href: abp.appPath + '<#= ModuleName #>/<#= EntityName #>/Edit/' + row.id,
+            callback: abp.grid.reloadList
+        });
+    });
+
+<#+
+    if (AllowBatchDelete) {
+#>
+    //批量删除
+    $("#btnDelete").on('click', function () {
+        var idList = abp.grid.getSelectedIdList();
+        if (idList.length == 0) return;
+        abp.confirm(abp.utils.formatString("您确认要删除选中的{0}行吗？", idList.length), function (result) {
+            if (!result) return; //取消
+            abp.ajax({
+                url: abp.appPath + 'api/services/<#= ModuleName #>/<#= EntityName #>/BatchDelete<#= EntityName #>',
+                data: idList
+            }).done(function (ret) {
+                abp.success("删除成功");
+                abp.grid.reloadList();
+            });
+        });
+    });
+<#+
+    }
+    else 
+    {
+#>
+    //删除
+    $("#btnDelete").on('click', function () {
+        var row = abp.grid.getSelectedOneRowData();
+        if (!row) return;
+        abp.confirm("您确认要删除选中的行吗？", function (result) {
+            if (!result) return; //取消
+            var data = { id: row.id };
+            abp.ajax({
+                url: abp.appPath + 'api/services/<#= ModuleName #>/<#= EntityName #>/Delete<#= EntityName #>',
+                data: data
+            }).done(function (ret) {
+                abp.success("删除成功");
+                abp.grid.reloadList();
+            });
+        });
+    });
+<#+
+    }
+#>
+
+<#+
+    if (IsDisplayOrderable) {
+#>
+    //保存拖拽排序
+    $("#btnSaveDisplayOrder").click(function () {
+        var idList = $('#btnSaveDisplayOrder').data('idList');
+        abp.ajax({
+            url: abp.appPath + "api/services/<#= ModuleName #>/<#= EntityName #>/Update<#= EntityName #>DisplayOrder",
+            data: idList
+        }).done(function (result) {
+            $('#btnSaveDisplayOrder').addClass("disabled");
+            abp.success("操作成功");
+            abp.grid.reloadList();
+        });
+    });
+
+<#+
+    }
+#>
+})
+
+
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>
