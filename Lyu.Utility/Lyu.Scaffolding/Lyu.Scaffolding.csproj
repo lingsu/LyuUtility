@@ -84,20 +84,13 @@
     <Content Include="Scaffolders\Abp\ModuleScaffolder.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastOutputs>
-..\..\_GeneratedCode\Application\Products\Dtos\GetProductCategoryQueryInput.cs
-..\..\_GeneratedCode\Application\Products\Dtos\GetProductQueryInput.cs
-..\..\_GeneratedCode\Application\Products\Dtos\ProductCategoryDto.cs
-..\..\_GeneratedCode\Application\Products\Dtos\ProductCategoryQueryDto.cs
-..\..\_GeneratedCode\Application\Products\Dtos\ProductDto.cs
-..\..\_GeneratedCode\Application\Products\Dtos\ProductQueryDto.cs
-..\..\_GeneratedCode\Application\Products\IProductAppService.cs
-..\..\_GeneratedCode\Application\Products\IProductCategoryAppService.cs
-..\..\_GeneratedCode\Application\Products\ProductAppService.cs
-..\..\_GeneratedCode\Application\Products\ProductCategoryAppService.cs
-..\..\_GeneratedCode\Domain\Products\Repositories\IProductCategoryRepository.cs
-..\..\_GeneratedCode\Domain\Products\Repositories\IProductRepository.cs
-..\..\_GeneratedCode\Repository\Products\Repositories\ProductCategoryRepository.cs
-..\..\_GeneratedCode\Repository\Products\Repositories\ProductRepository.cs
+..\..\_GeneratedCode\Application\Users\Dtos\GetUserQueryInput.cs
+..\..\_GeneratedCode\Application\Users\Dtos\UserDto.cs
+..\..\_GeneratedCode\Application\Users\Dtos\UserQueryDto.cs
+..\..\_GeneratedCode\Application\Users\IUserAppService.cs
+..\..\_GeneratedCode\Application\Users\UserAppService.cs
+..\..\_GeneratedCode\Domain\Users\Repositories\IUserRepository.cs
+..\..\_GeneratedCode\Repository\Users\Repositories\UserRepository.cs
 .\ModuleScaffolder.text
 </LastOutputs>
       <LastGenOutput>ModuleScaffolder.text</LastGenOutput>
@@ -122,6 +115,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Scaffolders\Abp\AreaScaffolder.text">
       <DependentUpon>AreaScaffolder.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -133,7 +127,12 @@
       <DependentUpon>ModuleScaffolder.tt</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Lyu.Utility\Lyu.Utility.csproj">
+      <Project>{a8eee703-3dd5-4529-82d2-ac74200654d1}</Project>
+      <Name>Lyu.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -19,7 +19,7 @@ using Abp.Application.Services.Dto;
 using Abp.Extensions;
 using Abp.Runtime.Validation;
 using <#= EntityNamespace #>;
-using YMC.ECCentral.Core;
+using Lyu.Utility.Application.Services.Dto;
 
 namespace <#= ModuleNamespace #>.Application
 {

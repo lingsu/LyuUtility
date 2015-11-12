@@ -3,8 +3,11 @@
 
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="$(ProjectDir)\bin\Debug\Lyu.Scaffolding.dll" #>
-<#@ Assembly Name="$(SolutionDir)\Lyutemplate.Web\bin\Abp.dll" #>
-<#// Assembly Name="$(SolutionDir)\Lyutemplate.Web\bin\Abp.Zero.dll" #>
+
+<#@ Assembly Name="$(SolutionDir)\LyuAdmin.Web\bin\Abp.dll" #>
+<#@ Assembly Name="$(SolutionDir)\LyuAdmin.Core\bin\Debug\LyuAdmin.Core.dll" #>
+<#@ Assembly Name="$(SolutionDir)\LyuAdmin.Core\bin\Debug\Microsoft.AspNet.Identity.Core.dll" #>
+<#@ Assembly Name="$(SolutionDir)\LyuAdmin.Web\bin\Abp.Zero.dll" #>
 
 <#@ assembly name="EnvDTE" #>
 <#@ import namespace="System.IO" #>
@@ -19,6 +22,10 @@
 <#@ import namespace="Lyu.Scaffolding.Utils" #>
 <#@ import namespace="Lyu.Scaffolding.Models" #>
 
+
+//模型
+<#@ import namespace="LyuAdmin.Users" #>
+
 <#@ include file="T4Toolbox.tt" #>
 <#@ include file="AbpTemplate.tt" #>
 <#@ include file="../CSharpHelpers.tt" #>
@@ -32,14 +39,37 @@
 <#@ include file="Templates\Module\Application\Dtos\GetEntityQueryInput.tt" #>
 <#
 
-			 byte[] fileData = System.IO.File.ReadAllBytes(@"C:\Users\q25a2\Downloads\LyuTemplate\LyuTemplate.Core\bin\Debug\Lyutemplate.Core.dll");
+   IServiceProvider serviceProvider = (IServiceProvider)this.Host;
+
+   ScaffolderByType();
+
+#>
+
+
+
+<#+
+		public void ScaffolderByAssembly(string path){
+
+			 byte[] fileData = System.IO.File.ReadAllBytes(path);
+			 //byte[] fileData = System.IO.File.ReadAllBytes(@"C:\Users\q25a2\Downloads\LyuTemplate\LyuTemplate.Core\bin\Debug\Lyutemplate.Core.dll");
 			// byte[] fileData = System.IO.File.ReadAllBytes(@"N:\Vs\Lyutemplate\Lyutemplate.Core\bin\Debug\Lyutemplate.Core.dll");
 
             Assembly assembly = Assembly.Load(fileData);
             
 			 foreach (var type in assembly.GetTypes().Where(m => m.GetInterface("IEntity",true) != null && !m.IsAbstract))
             {
-				var templateParams = new TemplateParams();
+				var templateParams = GetModelTemplateParams(type);
+				AddModelFile(templateParams);
+			}
+		}
+		public void ScaffolderByType(){
+			var type = typeof(User);
+			var templateParams = GetModelTemplateParams(type);
+			AddModelFile(templateParams);
+		}
+		public TemplateParams GetModelTemplateParams(Type type){
+			
+			var templateParams = new TemplateParams();
 				templateParams.EntityName = type.Name;
 				templateParams.entityName = ToCamelCase(templateParams.EntityName);
 				templateParams.EntityNamespace = type.Namespace;
@@ -62,7 +92,11 @@
                 }
                 templateParams.DtoMetaTable = dataModel;
 
-				var templates = new AbpTemplate[]{
+				return templateParams;
+		}
+		public void AddModelFile(TemplateParams templateParams){
+
+			var templates = new AbpTemplate[]{
 						new IEntityAppService(templateParams),
 						new EntityAppService(templateParams),
 						new Repository(templateParams),
@@ -81,17 +115,7 @@
 					template.Output.Encoding = Encoding.UTF8;
 					template.RenderToFile(Path.Combine(outputPath,template.FileName()));
 				}
-			}
-				
-
-   IServiceProvider serviceProvider = (IServiceProvider)this.Host;
-
-#>
-
-
-
-<#+
-
+		}
 		private void WriteLog(string str)
         {
             File.AppendAllText("D:\\Scaffolder.log.txt", str + "\r\n");
