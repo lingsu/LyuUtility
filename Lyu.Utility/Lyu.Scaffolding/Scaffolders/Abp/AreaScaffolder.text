@@ -8,12 +8,13 @@
 
 
 ---------------------------
-type.FullName:LyuTemplate.Domain.Products.Product
-templateParams.EntityName:Product
-templateParams.entityName:product
-templateParams.EntityNamespace:LyuTemplate.Domain.Products
-templateParams.ModuleNamespace:LyuTemplate
-templateParams.ModuleName:LyuTemplate
+type.FullName:LyuAdmin.Users.User
+templateParams.EntityName:User
+templateParams.entityName:user
+templateParams.EntityNamespace:LyuAdmin.Users
+templateParams.ModuleNamespace:LyuAdmin.Users
+templateParams.ModuleName:Users
+templateParams.ProjectNamespace:LyuAdmin
 
 
 

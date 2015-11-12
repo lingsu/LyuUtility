@@ -18,12 +18,12 @@ public class Controller : AbpTemplate
 using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using YMC.ECCentral.Core;
 using <#= ModuleNamespace #>.Application;
+using <#= ModuleNamespace #>.Application.Dto;
 
-namespace <#= ProjectNamespace #>.Controllers
+namespace <#= ProjectNamespace #>.Web.Areas.Admin.Controllers
 {
-    public class <#= EntityName #>Controller : WebControllerBase
+    public class <#= EntityName #>Controller : AdminControllerBase
     {
 
         private readonly I<#= EntityName #>AppService _<#= entityName #>AppService;

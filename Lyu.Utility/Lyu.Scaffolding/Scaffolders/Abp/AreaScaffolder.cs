@@ -38,7 +38,7 @@ namespace Lyu.Scaffolding.Scaffolders.Abp
                     dataModel.Columns.Add(metaColumnInfo);
                 }
                 templateParams.DtoMetaTable = dataModel;
-
+                //templateParams.ModuleNamespace.Split(',').ToList().RemoveAt();
                 //var templates = new AbpTemplate[]{
                 //        new IEntityAppService(templateParams),
                 //        new EntityAppService(templateParams),
