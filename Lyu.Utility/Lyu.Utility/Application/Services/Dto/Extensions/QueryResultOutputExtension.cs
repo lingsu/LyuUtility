@@ -1,7 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper.QueryableExtensions;
 using Lyu.Utility.Extensions;
 
 namespace Lyu.Utility.Application.Services.Dto.Extensions

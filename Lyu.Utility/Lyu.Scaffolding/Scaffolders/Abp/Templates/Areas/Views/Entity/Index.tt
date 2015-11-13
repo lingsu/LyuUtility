@@ -64,15 +64,29 @@ public class Index : AbpTemplate
     </div>
     <table id="mytable" class="wx-listview table table-bordered"></table>
 </div>
-@section js{
-    <!--公共js区域-->
+
+@section Styles{
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/Content/AdminLTE/plugins/datatables/dataTables.bootstrap.css">    
+}
+
+@section Scripts{
+
+  <!--公共js区域-->
     @Scripts.Render("~/js/datatables")
-<#+ if (IsDisplayOrderable) { #>
-    @Scripts.Render("~/js/jqueryui")
-<#+ } #>
+	<#+ if (IsDisplayOrderable) { #>
+		@Scripts.Render("~/js/jqueryui")
+	<#+ } #>
     <!--模块js-->
     <script src="~/Areas/<#= ModuleName #>/js/<#= EntityName #>.js"></script>
+    <!-- DataTables -->
+    <script src="~/Content/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">
+        
+    </script>
 }
+
+
 
 <#+
         return this.GenerationEnvironment.ToString();
