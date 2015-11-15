@@ -143,13 +143,7 @@ namespace Lyu.Utility.Extensions
             return string.IsNullOrEmpty(value);
         }
 
-        /// <summary>
-        /// 指示指定的字符串是 null、空还是仅由空白字符组成。
-        /// </summary>
-        public static bool IsNullOrWhiteSpace(this string value)
-        {
-            return string.IsNullOrWhiteSpace(value);
-        }
+        
 
         /// <summary>
         /// 为指定格式的字符串填充相应对象来生成字符串
