@@ -73,11 +73,11 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AreaScaffolder.text</LastGenOutput>
       <LastOutputs>
-..\..\_GeneratedCode\Areas\Users\Controllers\UserController.cs
-..\..\_GeneratedCode\Areas\Users\js\User.js
-..\..\_GeneratedCode\Areas\Users\UsersAreaRegistration.cs
-..\..\_GeneratedCode\Areas\Users\Views\User\Edit.cshtml
-..\..\_GeneratedCode\Areas\Users\Views\User\Index.cshtml
+..\..\_GeneratedCode\Areas\Roles\Controllers\RoleController.cs
+..\..\_GeneratedCode\Areas\Roles\js\Roles\index.js
+..\..\_GeneratedCode\Areas\Roles\RolesAreaRegistration.cs
+..\..\_GeneratedCode\Areas\Roles\Views\Role\Edit.cshtml
+..\..\_GeneratedCode\Areas\Roles\Views\Role\Index.cshtml
 .\AreaScaffolder.text
 </LastOutputs>
     </Content>

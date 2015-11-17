@@ -24,6 +24,7 @@
 
 //模型
 <#@ import namespace="LyuAdmin.Users" #>
+<#@ import namespace="LyuAdmin.Authorization.Roles" #>
 
 <#@ include file="T4Toolbox.tt" #>
 <#@ include file="AbpTemplate.tt" #>
@@ -42,7 +43,7 @@
 				string currentPath = Path.GetDirectoryName(Host.TemplateFile);
 				string projectPath = currentPath.Substring(0, currentPath.IndexOf(@"\Scaffolders"));
             
-				var type = typeof(User);
+				var type = typeof(Role);
 				var templateParams = new TemplateParams();
 				templateParams.EntityName = type.Name;
 				templateParams.entityName = ToCamelCase(templateParams.EntityName);

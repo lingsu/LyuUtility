@@ -5,7 +5,7 @@ public class Entity : AbpTemplate
 
 	public Entity(TemplateParams templateParams) : base(templateParams)
         {
-            _filename = @"Areas\{Module}\js\{Entity}.js";
+            _filename = @"Areas\{Module}\js\{Module}\index.js";
         }
 
 	public override string TransformText()
