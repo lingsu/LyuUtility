@@ -23,9 +23,9 @@ using Abp.AutoMapper;
 using Abp.Runtime.Validation;
 using Abp.Extensions;
 using <#= EntityNamespace #>;
-using <#= ModuleNamespace #>.Domain;
 
-namespace <#= ModuleNamespace #>.Application
+
+namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>.Dto
 {
 
 <#+

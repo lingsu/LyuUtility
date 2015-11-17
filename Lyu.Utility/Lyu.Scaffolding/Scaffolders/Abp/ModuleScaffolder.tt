@@ -25,6 +25,7 @@
 
 //模型
 <#@ import namespace="LyuAdmin.Users" #>
+<#@ import namespace="LyuAdmin.Authorization.Roles" #>
 
 <#@ include file="T4Toolbox.tt" #>
 <#@ include file="AbpTemplate.tt" #>
@@ -39,11 +40,19 @@
 <#@ include file="Templates\Module\Application\Dtos\GetEntityQueryInput.tt" #>
 <#
 
+// Default Namespace needed for Import Statements
+	var hostServiceProvider = (IServiceProvider)Host;
+	var dte = (EnvDTE.DTE)hostServiceProvider.GetService(typeof(EnvDTE.DTE));
+	var activeSolutionProjects = (Array)dte.ActiveSolutionProjects;
+	var dteProject = (EnvDTE.Project)activeSolutionProjects.GetValue(0);
+	var defaultNamespace = dteProject.Properties.Item("DefaultNamespace").Value;
+	//var ff = dteProject.GetDefaultNamespace();
    IServiceProvider serviceProvider = (IServiceProvider)this.Host;
 
    ScaffolderByType();
 
 #>
+<#=defaultNamespace#>
 
 
 
@@ -63,7 +72,7 @@
 			}
 		}
 		public void ScaffolderByType(){
-			var type = typeof(User);
+			var type = typeof(Role);
 			var templateParams = GetModelTemplateParams(type);
 			AddModelFile(templateParams);
 		}
@@ -71,12 +80,13 @@
 			
 			var templateParams = new TemplateParams();
 				templateParams.EntityName = type.Name;
+				templateParams.ProjectNamespace = "LyuAdmin";
 				templateParams.entityName = ToCamelCase(templateParams.EntityName);
 				templateParams.EntityNamespace = type.Namespace;
 				templateParams.ModuleNamespace = getModuleNamespace(templateParams.EntityNamespace);
 				templateParams.ModuleName = getModuleName(templateParams.ModuleNamespace);
 				templateParams.FunctionFolderName = getModuleName(templateParams.EntityNamespace);
-				templateParams.FunctionName ="FunctionName";
+				templateParams.FunctionName ="角色管理";
 				templateParams.AllowBatchDelete = true;
 				//WriteLog(templateParams.EntityName);
 				//WriteLog(templateParams.entityName);

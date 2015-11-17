@@ -23,7 +23,7 @@ public abstract class AbpTemplate : CSharpTemplate
 
         public string ProjectNamespace
         {
-            get { return _templateParams.ProjectNamespace; }
+            get { return _templateParams.ProjectNamespace??""; }
         }
 
 		public override string TransformText()
@@ -188,5 +188,6 @@ public abstract class AbpTemplate : CSharpTemplate
         public bool AllowBatchDelete { get { return _templateParams.AllowBatchDelete; } }
         public bool GenerateTwoCol { get { return _templateParams.GenerateTwoCol; } }
         public bool IsDisplayOrderable { get { return _templateParams.IsDisplayOrderable; } }
+        public string FunctionFolderName { get { return _templateParams.FunctionFolderName; } }
 }
 #>

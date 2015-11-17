@@ -84,13 +84,13 @@
     <Content Include="Scaffolders\Abp\ModuleScaffolder.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastOutputs>
-..\..\_GeneratedCode\Application\Users\Dtos\GetUserQueryInput.cs
-..\..\_GeneratedCode\Application\Users\Dtos\UserDto.cs
-..\..\_GeneratedCode\Application\Users\Dtos\UserQueryDto.cs
-..\..\_GeneratedCode\Application\Users\IUserAppService.cs
-..\..\_GeneratedCode\Application\Users\UserAppService.cs
-..\..\_GeneratedCode\Domain\Users\Repositories\IUserRepository.cs
-..\..\_GeneratedCode\Repository\Users\Repositories\UserRepository.cs
+..\..\_GeneratedCode\Application\Roles\Dtos\GetRoleQueryInput.cs
+..\..\_GeneratedCode\Application\Roles\Dtos\RoleDto.cs
+..\..\_GeneratedCode\Application\Roles\Dtos\RoleQueryDto.cs
+..\..\_GeneratedCode\Application\Roles\IRoleAppService.cs
+..\..\_GeneratedCode\Application\Roles\RoleAppService.cs
+..\..\_GeneratedCode\Domain\Roles\Repositories\IRoleRepository.cs
+..\..\_GeneratedCode\Repository\Roles\Repositories\RoleRepository.cs
 .\ModuleScaffolder.text
 </LastOutputs>
       <LastGenOutput>ModuleScaffolder.text</LastGenOutput>
