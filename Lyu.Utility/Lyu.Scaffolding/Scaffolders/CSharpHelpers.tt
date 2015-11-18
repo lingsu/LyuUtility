@@ -1,4 +1,75 @@
 ﻿<#+
+
+
+public bool IsDisplayOrderable(Type entity)
+        {
+            return entity.GetInterface("IDisplayOrderable",true) != null;
+        }
+
+public string getModuleName(string moduleNamespace)
+        {
+            return moduleNamespace.Split('.').Last();
+        }
+
+		
+
+        public string getModuleNamespace(string entityNamespace)
+        {
+            var list = entityNamespace.Split('.').ToList();
+            if (entityNamespace.Contains("YMC.Entities."))  //YMC.Entities.Content  
+            {
+                return "YMC.ECCentral." + list[2];
+            }
+            if (list.Contains("Domain"))  //命名空间包含Domain时， 去除Domain以后的
+            {
+                int index = list.IndexOf("Domain");
+                if (index > 0)
+                {
+                    list.RemoveRange(index, list.Count - index);
+                }
+            }
+            return string.Join(".", list);
+        }
+
+public string getProjectNamespace(Type type)
+        {
+			var fullName = type.Assembly.FullName;
+			var typeProjectName = fullName.Split(',')[0];
+			var hostServiceProvider = (IServiceProvider)Host;
+			var dte = (EnvDTE.DTE)hostServiceProvider.GetService(typeof(EnvDTE.DTE));
+			var activeSolutionProjects = dte.Solution.Projects;
+			
+				    foreach (EnvDTE.Project item in activeSolutionProjects)  
+					{  
+						if(item.Name == typeProjectName){
+						try{
+										Property pop = item.Properties.Item("DefaultNamespace");
+										if (pop != null){
+
+											return pop.Value.ToString();
+										}
+								}catch{
+
+								}
+						}
+					} 
+
+            return "";
+        }
+
+		public void WriteLog(string str)
+        {
+            File.AppendAllText("D:\\Scaffolder.log.txt", str + "\r\n");
+        }
+		public void WriteLog(TemplateParams templateParams){
+				return;
+				WriteLog(templateParams.EntityName);
+				WriteLog(templateParams.entityName);
+				WriteLog(templateParams.EntityNamespace);
+				WriteLog(templateParams.ModuleNamespace);
+				WriteLog(templateParams.ModuleName);
+		}
+
     public string ToCamelCase(string str)
     {
         if (string.IsNullOrWhiteSpace(str))

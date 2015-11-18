@@ -14,7 +14,7 @@ templateParams.entityName:role
 templateParams.EntityNamespace:LyuAdmin.Authorization.Roles
 templateParams.ModuleNamespace:LyuAdmin.Authorization.Roles
 templateParams.ModuleName:Roles
-templateParams.ProjectNamespace:LyuAdmin.Authorization
+templateParams.ProjectNamespace:LyuAdmin
 
 
 

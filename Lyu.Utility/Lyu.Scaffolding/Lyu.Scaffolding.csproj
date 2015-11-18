@@ -58,7 +58,6 @@
     <Compile Include="Models\euControlType.cs" />
     <Compile Include="Models\MetaColumnInfo.cs" />
     <Compile Include="Models\MetaTableInfo.cs" />
-    <Compile Include="Domain\Product.cs" />
     <Compile Include="Models\TemplateParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scaffolders\Abp\AreaScaffolder.cs" />

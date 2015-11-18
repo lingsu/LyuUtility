@@ -15,13 +15,12 @@ public class GetEntityQueryInput : AbpTemplate
 		base.TransformText();
 #>
 using System;
-using Abp.Application.Services.Dto;
 using Abp.Extensions;
 using Abp.Runtime.Validation;
-using <#= EntityNamespace #>;
 using Lyu.Utility.Application.Services.Dto;
+using <#= EntityNamespace #>;
 
-namespace <#= ModuleNamespace #>.Application
+namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>.Dto
 {
     public class Get<#= EntityName #>QueryInput : QueryRequestInput<#+if (IsDisplayOrderable) {#>, IShouldNormalize<#+}#>
     {

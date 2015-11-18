@@ -12,13 +12,15 @@ public class EntityAppService : AbpTemplate
 		base.TransformText();
 		 //var entityName = ToCamelCase(EntityName);
 #>
-
-
-using <#= ModuleNamespace #>.Domain;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using <#= ProjectNamespace #>.<#= FunctionFolderName #>.Dto;
 using <#= EntityNamespace #>;
+using Lyu.Utility.Application.Services.Dto;
 
- 
-namespace <#= ModuleNamespace #>.Application
+
+namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>
 {
     [AbpAuthorize(<#= ModuleName #>Permissions.<#= EntityName #>)]
     public class <#= EntityName #>AppService : AppServiceBase, I<#= EntityName #>AppService

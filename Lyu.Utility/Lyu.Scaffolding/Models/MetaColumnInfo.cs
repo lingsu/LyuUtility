@@ -145,7 +145,7 @@ namespace Lyu.Scaffolding.Models
         {
             if (DataType == euColumnType.RelatedModel) return false;
             //if (VmUtils.ItemUnSelectFields.Contains(Name)) return false;
-            if (DataType == euColumnType.stringCT && !MaxLength.HasValue) return false; //没有字符数限制的string
+            //if (DataType == euColumnType.stringCT && !MaxLength.HasValue) return false; //没有字符数限制的string
             return true;
         }
 

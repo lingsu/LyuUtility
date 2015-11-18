@@ -10,15 +10,16 @@
 <#@ Assembly Name="$(SolutionDir)\LyuAdmin.Web\bin\Abp.Zero.dll" #>
 
 <#@ assembly name="EnvDTE" #>
+<#@ import namespace="EnvDTE" #>
 <#@ import namespace="System.IO" #>
 <#@ Import Namespace="System.Linq" #>
 <#@ Import Namespace="System.Text" #>
 <#@ import namespace="System.Reflection" #>
+<#@ import namespace="System.ComponentModel" #>
 <#@ Import Namespace="System.Collections.Generic" #>
 <#@ Import Namespace="Microsoft.VisualStudio.TextTemplating" #>
 <#@ import namespace="Lyu.Scaffolding.Models" #>
 <#@ import namespace="Lyu.Scaffolding.Scaffolders.Abp" #>
-<#@ import namespace="Lyu.Scaffolding.Domain" #>
 <#@ import namespace="Lyu.Scaffolding.Utils" #>
 <#@ import namespace="Lyu.Scaffolding.Models" #>
 
@@ -48,13 +49,20 @@
 	var defaultNamespace = dteProject.Properties.Item("DefaultNamespace").Value;
 	//var ff = dteProject.GetDefaultNamespace();
    IServiceProvider serviceProvider = (IServiceProvider)this.Host;
+   var currentProjects = dte.Solution.Projects;
 
-   ScaffolderByType();
+
 
 #>
-<#=defaultNamespace#>
+1.defaultNamespace : <#=defaultNamespace#>
+
+<#=activeSolutionProjects.Length#>
+
+<#
 
 
+   ScaffolderByType();
+#>
 
 <#+
 		public void ScaffolderByAssembly(string path){
@@ -64,7 +72,7 @@
 			// byte[] fileData = System.IO.File.ReadAllBytes(@"N:\Vs\Lyutemplate\Lyutemplate.Core\bin\Debug\Lyutemplate.Core.dll");
 
             Assembly assembly = Assembly.Load(fileData);
-            
+             WriteLine("assembly.FullName:"+assembly.FullName);   
 			 foreach (var type in assembly.GetTypes().Where(m => m.GetInterface("IEntity",true) != null && !m.IsAbstract))
             {
 				var templateParams = GetModelTemplateParams(type);
@@ -80,19 +88,20 @@
 			
 			var templateParams = new TemplateParams();
 				templateParams.EntityName = type.Name;
-				templateParams.ProjectNamespace = "LyuAdmin";
+				templateParams.ProjectNamespace = getProjectNamespace(type);
 				templateParams.entityName = ToCamelCase(templateParams.EntityName);
 				templateParams.EntityNamespace = type.Namespace;
 				templateParams.ModuleNamespace = getModuleNamespace(templateParams.EntityNamespace);
 				templateParams.ModuleName = getModuleName(templateParams.ModuleNamespace);
 				templateParams.FunctionFolderName = getModuleName(templateParams.EntityNamespace);
-				templateParams.FunctionName ="角色管理";
+				//templateParams.FunctionName ="角色管理";
 				templateParams.AllowBatchDelete = true;
-				//WriteLog(templateParams.EntityName);
-				//WriteLog(templateParams.entityName);
-				//WriteLog(templateParams.EntityNamespace);
-				//WriteLog(templateParams.ModuleNamespace);
-				//WriteLog(templateParams.ModuleName);
+				
+				var descriptions = type.GetCustomAttributes(typeof(DescriptionAttribute), true);
+                templateParams.FunctionName = descriptions.Length > 0 ? ((DescriptionAttribute)descriptions[0]).Description : null;
+
+				WriteLog(templateParams);
+
                 MetaTableInfo dataModel = new MetaTableInfo();
                 foreach (var propertyInfo in type.GetProperties())
                 {
@@ -126,31 +135,9 @@
 					template.RenderToFile(Path.Combine(outputPath,template.FileName()));
 				}
 		}
-		private void WriteLog(string str)
-        {
-            File.AppendAllText("D:\\Scaffolder.log.txt", str + "\r\n");
-        }
+		
 
-		private string getModuleName(string moduleNamespace)
-        {
-            return moduleNamespace.Split('.').Last();
-        }
+		
 
-        private string getModuleNamespace(string entityNamespace)
-        {
-            var list = entityNamespace.Split('.').ToList();
-            if (entityNamespace.Contains("YMC.Entities."))  //YMC.Entities.Content  
-            {
-                return "YMC.ECCentral." + list[2];
-            }
-            if (list.Contains("Domain"))  //命名空间包含Domain时， 去除Domain以后的
-            {
-                int index = list.IndexOf("Domain");
-                if (index > 0)
-                {
-                    list.RemoveRange(index, list.Count - index);
-                }
-            }
-            return string.Join(".", list);
-        }
+		
 #>

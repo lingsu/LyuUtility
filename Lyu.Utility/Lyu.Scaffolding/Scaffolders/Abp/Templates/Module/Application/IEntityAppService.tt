@@ -16,10 +16,10 @@ public class IEntityAppService : AbpTemplate
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Abp.Application.Services;
-using Abp.Application.Services.Dto;
+using <#= ProjectNamespace #>.<#= FunctionFolderName #>.Dto;
+using Lyu.Utility.Application.Services.Dto;
 
-namespace <#= ModuleNamespace #>.Application
+namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>
 {
     public interface I<#= EntityName #>AppService : IApplicationService
     {

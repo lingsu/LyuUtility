@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -19,6 +20,7 @@ namespace Lyu.Scaffolding.Scaffolders.Abp
 
             foreach (var type in assembly.GetTypes().Where(m => m.GetInterface("IEntity", true) != null && !m.IsAbstract))
             {
+
                 var templateParams = new TemplateParams();
                 templateParams.EntityName = type.Name;
                 templateParams.entityName = ToCamelCase(templateParams.EntityName);
@@ -26,8 +28,11 @@ namespace Lyu.Scaffolding.Scaffolders.Abp
                 templateParams.ModuleNamespace = getModuleNamespace(templateParams.EntityNamespace);
                 templateParams.ModuleName = getModuleName(templateParams.ModuleNamespace);
                 templateParams.FunctionFolderName = VmUtils.ToPlural(templateParams.ModuleName);
-                templateParams.FunctionName = "FunctionName";
                 templateParams.AllowBatchDelete = true;
+
+                var descriptions = type.GetCustomAttributes(typeof(DescriptionAttribute), true);
+                templateParams.FunctionName = descriptions.Length > 0 ? ((DescriptionAttribute)descriptions[0]).Description : null;
+
                 WriteLog(templateParams.EntityName);
                 WriteLog(templateParams.entityName);
                 WriteLog(templateParams.EntityNamespace);
