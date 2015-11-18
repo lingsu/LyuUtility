@@ -1,0 +1,76 @@
+﻿<#+
+
+
+public class Permissions : AbpTemplate
+{
+		public Permissions(TemplateParams templateParams) : base(templateParams)
+        {
+		
+            _filename = @"Application\{FunctionFolderName}\{Entity}Permissions.cs";
+        }
+
+	public override string TransformText()
+	{
+		
+#>
+
+namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>
+{
+    public partial class <#= ModuleName #>Permissions
+    {
+        //TODO:★请将以下内容剪切到<#= ModuleName #>Permissions.cs
+
+        /// <summary>
+        /// <#= FunctionName #>管理权限
+        /// </summary>
+        public const string <#= EntityName #> = "<#= ModuleName #>.<#= EntityName #>";
+        public const string <#= EntityName #>_Create<#= EntityName #> = "<#= ModuleName #>.<#= EntityName #>.Create<#= EntityName #>";
+        public const string <#= EntityName #>_Update<#= EntityName #> = "<#= ModuleName #>.<#= EntityName #>.Update<#= EntityName #>";
+        public const string <#= EntityName #>_Delete<#= EntityName #> = "<#= ModuleName #>.<#= EntityName #>.Delete<#= EntityName #>";
+<#+
+    if (IsDisplayOrderable) {
+#>
+        public const string <#= EntityName #>_Update<#= EntityName #>DisplayOrder = "<#= ModuleName #>.<#= EntityName #>.Update<#= EntityName #>DisplayOrder";
+<#+
+    }
+#>
+    }
+}
+
+//TODO:★请将以下内容剪切到<#= ModuleName #>AuthorizationProvider.cs
+/*
+            //<#= FunctionName #>管理
+            var <#= entityName #> = module.CreateChildPermission(<#= ModuleName #>Permissions.<#= EntityName #>, L("<#= EntityName #>"));
+            <#= entityName #>.CreateChildPermission(<#= ModuleName #>Permissions.<#= EntityName #>_Create<#= EntityName #>, L("Create<#= EntityName #>"));
+            <#= entityName #>.CreateChildPermission(<#= ModuleName #>Permissions.<#= EntityName #>_Update<#= EntityName #>, L("Update<#= EntityName #>"));
+            <#= entityName #>.CreateChildPermission(<#= ModuleName #>Permissions.<#= EntityName #>_Delete<#= EntityName #>, L("Delete<#= EntityName #>"));
+<#+
+    if (IsDisplayOrderable) {
+#>
+            <#= entityName #>.CreateChildPermission(<#= ModuleName #>Permissions.<#= EntityName #>_Update<#= EntityName #>DisplayOrder, L("Update<#= EntityName #>DisplayOrder"));
+<#+
+    }
+#>
+*/
+
+//TODO:★请将以下内容剪切到Web站点Permissions.xml
+/*
+    <!-- <#= FunctionName #>管理 -->
+    <text name="<#= EntityName #>" value="<#= FunctionName #>管理" />
+    <text name="Create<#= EntityName #>" value="新增<#= FunctionName #>" />
+    <text name="Update<#= EntityName #>" value="更新<#= FunctionName #>" />
+    <text name="Delete<#= EntityName #>" value="删除<#= FunctionName #>" />
+<#+
+    if (IsDisplayOrderable) {
+#>
+    <text name="Update<#= EntityName #>DisplayOrder" value="更新<#= FunctionName #>排序" />
+<#+
+    }
+#>
+*/
+
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>

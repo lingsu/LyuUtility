@@ -34,6 +34,7 @@
 
 <#@ include file="Templates\Module\Application\IEntityAppService.tt" #>
 <#@ include file="Templates\Module\Application\EntityAppService.tt" #>
+<#@ include file="Templates\Module\Application\Permissions.tt" #>
 <#@ include file="Templates\Module\Domain\Repositories\IRepository.tt" #>
 <#@ include file="Templates\Module\Repository\Repositories\Repository.tt" #>
 <#@ include file="Templates\Module\Application\Dtos\EntityDto.tt" #>
@@ -122,6 +123,7 @@
 						new IRepository(templateParams),
 						new EntityDto(templateParams),
 						new EntityQueryDto(templateParams),
+						new Permissions(templateParams),
 						new GetEntityQueryInput(templateParams)
 				 };
 				string currentPath = Path.GetDirectoryName(Host.TemplateFile);

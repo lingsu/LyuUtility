@@ -88,6 +88,7 @@
 ..\..\_GeneratedCode\Application\Roles\Dtos\RoleQueryDto.cs
 ..\..\_GeneratedCode\Application\Roles\IRoleAppService.cs
 ..\..\_GeneratedCode\Application\Roles\RoleAppService.cs
+..\..\_GeneratedCode\Application\Roles\RolePermissions.cs
 ..\..\_GeneratedCode\Domain\Roles\Repositories\IRoleRepository.cs
 ..\..\_GeneratedCode\Repository\Roles\Repositories\RoleRepository.cs
 .\ModuleScaffolder.text
@@ -106,6 +107,7 @@
     <Content Include="Scaffolders\Abp\Templates\Module\Application\Dtos\GetEntityQueryInput.tt" />
     <Content Include="Scaffolders\Abp\Templates\Module\Application\EntityAppService.tt" />
     <Content Include="Scaffolders\Abp\Templates\Module\Application\IEntityAppService.tt" />
+    <Content Include="Scaffolders\Abp\Templates\Module\Application\Permissions.tt" />
     <Content Include="Scaffolders\Abp\Templates\Module\Domain\Repositories\IRepository.tt" />
     <Content Include="Scaffolders\Abp\Templates\Module\Repository\Repositories\Repository.tt" />
     <Content Include="Scaffolders\CSharpHelpers.tt" />
@@ -114,7 +116,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scaffolders\Abp\AreaScaffolder.text">
       <DependentUpon>AreaScaffolder.tt</DependentUpon>
       <AutoGen>True</AutoGen>
