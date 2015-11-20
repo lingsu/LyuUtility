@@ -81,7 +81,7 @@
 			}
 		}
 		public void ScaffolderByType(){
-			var type = typeof(Role);
+			var type = typeof(User);
 			var templateParams = GetModelTemplateParams(type);
 			AddModelFile(templateParams);
 		}

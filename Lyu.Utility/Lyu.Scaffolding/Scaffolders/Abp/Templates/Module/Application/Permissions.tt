@@ -69,6 +69,18 @@ namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>
 #>
 */
 
+//TODO:★请将以下内容剪切到AdministrationNavigationProvider.cs
+/*
+	 var <#= entityName #> = new MenuItemDefinition(
+                <#= ModuleName #>Permissions.<#= EntityName #>,
+                new LocalizableString("<#= EntityName #>", LyuAdminConsts.PermissionsSourceName),
+                "fa fa-th",
+                "/admin/<#= entityName #>",
+                true,
+                <#= ModuleName #>Permissions.<#= EntityName #>
+                );
+
+*/
 <#+
         return this.GenerationEnvironment.ToString();
 	}
