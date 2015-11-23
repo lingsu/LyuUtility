@@ -270,7 +270,13 @@ namespace Lyu.Utility.Extensions
             }
             return encoding.GetString(bytes);
         }
-
+        /// <summary>
+        /// 将<see cref="bool"/>转换为字符串 true:false
+        /// </summary>
+        public static string ToJsonString(this bool bol)
+        {
+            return bol ? "true" : "false";
+        }
         #endregion
     }
 }

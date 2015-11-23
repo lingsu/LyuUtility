@@ -80,7 +80,7 @@ namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>
         /// <summary>
         /// 获取指定id的<#= FunctionName #>信息
         /// </summary>
-        public async Task<<#= EntityName #>Dto> Get<#= EntityName #>(Guid id)
+        public async Task<<#= EntityName #>Dto> Get<#= EntityName #>(int id)
         {
             var entity = await _<#= entityName #>Repository.GetAsync(id);
             return entity.MapTo<<#= EntityName #>Dto>();
@@ -91,7 +91,7 @@ namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>
         /// </summary>
         public async Task CreateOrUpdate<#= EntityName #>(<#= EntityName #>Dto input)
         {
-            if (input.Id == Guid.Empty)
+            if (input.Id == 0)
             {
                 await Create<#= EntityName #>(input);
             }
@@ -133,7 +133,7 @@ namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>
         /// 删除<#= FunctionName #>
         /// </summary>
         [AbpAuthorize(<#= ModuleName #>Permissions.<#= EntityName #>_Delete<#= EntityName #>)]
-        public async Task Delete<#= EntityName #>(IdInput input)
+        public async Task Delete<#= EntityName #>(EntityRequestInput input)
         {
             //TODO:删除前的逻辑判断，是否允许删除
             await _<#= entityName #>Repository.DeleteAsync(input.Id);
