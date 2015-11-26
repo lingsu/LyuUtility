@@ -68,6 +68,9 @@ namespace Lyu.Utility.Extensions
         /// </summary>
         public static bool IsEmail(this string value)
         {
+            if (string.IsNullOrEmpty(value))
+                return false;
+            
             const string pattern = @"^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$";
             return value.IsMatch(pattern);
         }
@@ -77,6 +80,9 @@ namespace Lyu.Utility.Extensions
         /// </summary>
         public static bool IsIpAddress(this string value)
         {
+            if (string.IsNullOrEmpty(value))
+                return false;
+
             const string pattern = @"^(\d(25[0-5]|2[0-4][0-9]|1?[0-9]?[0-9])\d\.){3}\d(25[0-5]|2[0-4][0-9]|1?[0-9]?[0-9])\d$";
             return value.IsMatch(pattern);
         }
@@ -86,6 +92,9 @@ namespace Lyu.Utility.Extensions
         /// </summary>
         public static bool IsNumeric(this string value)
         {
+            if (string.IsNullOrEmpty(value))
+                return false;
+
             const string pattern = @"^\-?[0-9]+$";
             return value.IsMatch(pattern);
         }
@@ -95,6 +104,9 @@ namespace Lyu.Utility.Extensions
         /// </summary>
         public static bool IsUnicode(this string value)
         {
+            if (string.IsNullOrEmpty(value))
+                return false;
+
             const string pattern = @"^[\u4E00-\u9FA5\uE815-\uFA29]+$";
             return value.IsMatch(pattern);
         }
@@ -104,6 +116,9 @@ namespace Lyu.Utility.Extensions
         /// </summary>
         public static bool IsUrl(this string value)
         {
+            if (string.IsNullOrEmpty(value))
+                return false;
+
             const string pattern = @"^(http|https|ftp|rtsp|mms):(\/\/|\\\\)[A-Za-z0-9%\-_@]+\.[A-Za-z0-9%\-_@]+[A-Za-z0-9\.\/=\?%\-&_~`@:\+!;]*$";
             return value.IsMatch(pattern);
         }
@@ -116,6 +131,9 @@ namespace Lyu.Utility.Extensions
         /// </summary>
         public static bool IsIdentityCard(this string value)
         {
+            if (string.IsNullOrEmpty(value))
+                return false;
+
             const string pattern = @"^(^\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$";
             return value.IsMatch(pattern);
         }
@@ -127,6 +145,9 @@ namespace Lyu.Utility.Extensions
         /// <param name="isRestrict">是否按严格格式验证</param>
         public static bool IsMobileNumber(this string value, bool isRestrict = false)
         {
+            if (string.IsNullOrEmpty(value))
+                return false;
+
             string pattern = isRestrict ? @"^[1][3-8]\d{9}$" : @"^[1]\d{10}$";
             return value.IsMatch(pattern);
         }
