@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyu.Utility", "Lyu.Utility\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyu.Scaffolding", "Lyu.Scaffolding\Lyu.Scaffolding.csproj", "{6578B162-5074-423F-B2EE-32A09FB8D3B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyu.Abp.Core", "Lyu.Abp.Core\Lyu.Abp.Core.csproj", "{8DD17EA1-0CD1-4C02-BA97-522AF29BA982}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp", "..\..\aspnetboilerplate\src\Abp\Abp.csproj", "{2C221D3B-5F54-4C5B-8082-318636415132}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AbpLibrary", "AbpLibrary", "{7854B812-F16D-4D07-ABB8-0DBB4E81AB2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +27,19 @@ Global
 		{6578B162-5074-423F-B2EE-32A09FB8D3B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6578B162-5074-423F-B2EE-32A09FB8D3B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6578B162-5074-423F-B2EE-32A09FB8D3B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DD17EA1-0CD1-4C02-BA97-522AF29BA982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DD17EA1-0CD1-4C02-BA97-522AF29BA982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DD17EA1-0CD1-4C02-BA97-522AF29BA982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DD17EA1-0CD1-4C02-BA97-522AF29BA982}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C221D3B-5F54-4C5B-8082-318636415132}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C221D3B-5F54-4C5B-8082-318636415132}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C221D3B-5F54-4C5B-8082-318636415132}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C221D3B-5F54-4C5B-8082-318636415132}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2C221D3B-5F54-4C5B-8082-318636415132} = {7854B812-F16D-4D07-ABB8-0DBB4E81AB2F}
 	EndGlobalSection
 EndGlobal
