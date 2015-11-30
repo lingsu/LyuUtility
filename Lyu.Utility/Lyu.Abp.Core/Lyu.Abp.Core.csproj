@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Messages\IMessageTemplatesSettings.cs" />
+    <Compile Include="Messages\ITokenizer.cs" />
+    <Compile Include="Messages\Tokenizer.cs" />
+    <Compile Include="Messages\Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
