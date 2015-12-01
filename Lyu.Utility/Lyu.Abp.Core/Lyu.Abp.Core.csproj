@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LyuAbpCoreModule.cs" />
+    <Compile Include="Messages\DefaultMessageTemplatesConfiguration.cs" />
     <Compile Include="Messages\IMessageTemplatesSettings.cs" />
     <Compile Include="Messages\ITokenizer.cs" />
+    <Compile Include="Messages\MessageTemplatesSettingNames.cs" />
+    <Compile Include="Messages\MessageTemplatesSettingProvider.cs" />
     <Compile Include="Messages\Tokenizer.cs" />
     <Compile Include="Messages\Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

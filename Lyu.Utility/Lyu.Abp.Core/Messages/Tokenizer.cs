@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Abp.Dependency;
 
 namespace Lyu.Abp.Core.Messages
 {
-    public partial class Tokenizer : ITokenizer
+    public partial class Tokenizer : ITokenizer, ITransientDependency
     {
         private readonly StringComparison _stringComparison;
 
