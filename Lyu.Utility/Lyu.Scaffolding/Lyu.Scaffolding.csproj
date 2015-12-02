@@ -80,6 +80,21 @@
 .\AreaScaffolder.text
 </LastOutputs>
     </Content>
+    <Content Include="Scaffolders\Abp\BXModuleScaffolder.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BXModuleScaffolder.text</LastGenOutput>
+      <LastOutputs>
+..\..\_GeneratedCode\Application\Reimbursements\BusinessTripItemAppService.cs
+..\..\_GeneratedCode\Application\Reimbursements\BusinessTripItemPermissions.cs
+..\..\_GeneratedCode\Application\Reimbursements\Dtos\BusinessTripItemDto.cs
+..\..\_GeneratedCode\Application\Reimbursements\Dtos\BusinessTripItemQueryDto.cs
+..\..\_GeneratedCode\Application\Reimbursements\Dtos\GetBusinessTripItemQueryInput.cs
+..\..\_GeneratedCode\Application\Reimbursements\IBusinessTripItemAppService.cs
+..\..\_GeneratedCode\Domain\Reimbursements\Repositories\IBusinessTripItemRepository.cs
+..\..\_GeneratedCode\Repository\Reimbursements\Repositories\BusinessTripItemRepository.cs
+.\BXModuleScaffolder.text
+</LastOutputs>
+    </Content>
     <Content Include="Scaffolders\Abp\ModuleScaffolder.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastOutputs>
@@ -121,6 +136,11 @@
     </None>
     <None Include="Scaffolders\Abp\AreaScaffolder.text">
       <DependentUpon>AreaScaffolder.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </None>
+    <None Include="Scaffolders\Abp\BXModuleScaffolder.text">
+      <DependentUpon>BXModuleScaffolder.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </None>

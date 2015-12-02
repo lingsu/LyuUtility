@@ -1,0 +1,146 @@
+<#@ template language="C#" debug="True" #>
+<#@ output extension="text" #>
+
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="$(ProjectDir)\bin\Debug\Lyu.Scaffolding.dll" #>
+
+<#@ Assembly Name="$(SolutionDir)\LyuAdmin.Web\bin\Abp.dll" #>
+<#@ Assembly Name="$(SolutionDir)\LyuAdmin.Core\bin\Debug\LyuAdmin.Core.dll" #>
+
+<#@ assembly name="EnvDTE" #>
+<#@ import namespace="EnvDTE" #>
+<#@ import namespace="System.IO" #>
+<#@ Import Namespace="System.Linq" #>
+<#@ Import Namespace="System.Text" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="System.ComponentModel" #>
+<#@ Import Namespace="System.Collections.Generic" #>
+<#@ Import Namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#@ import namespace="Lyu.Scaffolding.Models" #>
+<#@ import namespace="Lyu.Scaffolding.Scaffolders.Abp" #>
+<#@ import namespace="Lyu.Scaffolding.Utils" #>
+<#@ import namespace="Lyu.Scaffolding.Models" #>
+
+
+//模型
+<#@ import namespace="LyuAdmin.Domain.Costs" #>
+<#@ import namespace="LyuAdmin.Domain.Reimbursements" #>
+
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="AbpTemplate.tt" #>
+<#@ include file="../CSharpHelpers.tt" #>
+
+<#@ include file="Templates\Module\Application\IEntityAppService.tt" #>
+<#@ include file="Templates\Module\Application\EntityAppService.tt" #>
+<#@ include file="Templates\Module\Application\Permissions.tt" #>
+<#@ include file="Templates\Module\Domain\Repositories\IRepository.tt" #>
+<#@ include file="Templates\Module\Repository\Repositories\Repository.tt" #>
+<#@ include file="Templates\Module\Application\Dtos\EntityDto.tt" #>
+<#@ include file="Templates\Module\Application\Dtos\EntityQueryDto.tt" #>
+<#@ include file="Templates\Module\Application\Dtos\GetEntityQueryInput.tt" #>
+<#
+
+// Default Namespace needed for Import Statements
+	var hostServiceProvider = (IServiceProvider)Host;
+	var dte = (EnvDTE.DTE)hostServiceProvider.GetService(typeof(EnvDTE.DTE));
+	var activeSolutionProjects = (Array)dte.ActiveSolutionProjects;
+	var dteProject = (EnvDTE.Project)activeSolutionProjects.GetValue(0);
+	var defaultNamespace = dteProject.Properties.Item("DefaultNamespace").Value;
+	//var ff = dteProject.GetDefaultNamespace();
+   IServiceProvider serviceProvider = (IServiceProvider)this.Host;
+   var currentProjects = dte.Solution.Projects;
+
+
+
+#>
+1.defaultNamespace : <#=defaultNamespace#>
+
+<#=activeSolutionProjects.Length#>
+
+<#
+
+
+   ScaffolderByType();
+#>
+
+<#+
+		public void ScaffolderByAssembly(string path){
+
+			 byte[] fileData = System.IO.File.ReadAllBytes(path);
+			 //byte[] fileData = System.IO.File.ReadAllBytes(@"C:\Users\q25a2\Downloads\LyuTemplate\LyuTemplate.Core\bin\Debug\Lyutemplate.Core.dll");
+			// byte[] fileData = System.IO.File.ReadAllBytes(@"N:\Vs\Lyutemplate\Lyutemplate.Core\bin\Debug\Lyutemplate.Core.dll");
+
+            Assembly assembly = Assembly.Load(fileData);
+             WriteLine("assembly.FullName:"+assembly.FullName);   
+			 foreach (var type in assembly.GetTypes().Where(m => m.GetInterface("IEntity",true) != null && !m.IsAbstract))
+            {
+				var templateParams = GetModelTemplateParams(type);
+				AddModelFile(templateParams);
+			}
+		}
+		public void ScaffolderByType(){
+			//var type = typeof(LyuAdmin.Domain.Costs.Project);
+			//var type = typeof(Vehicle);
+			//var type = typeof(Reimbursement);
+			var type = typeof(BusinessTripItem);
+			var templateParams = GetModelTemplateParams(type);
+			AddModelFile(templateParams);
+		}
+		public TemplateParams GetModelTemplateParams(Type type){
+			
+			var templateParams = new TemplateParams();
+				templateParams.EntityName = type.Name;
+				templateParams.ProjectNamespace = getProjectNamespace(type);
+				templateParams.entityName = ToCamelCase(templateParams.EntityName);
+				templateParams.EntityNamespace = type.Namespace;
+				templateParams.ModuleNamespace = getModuleNamespace(templateParams.EntityNamespace);
+				templateParams.ModuleName = getModuleName(templateParams.ModuleNamespace);
+				templateParams.FunctionFolderName = getModuleName(templateParams.EntityNamespace);
+				//templateParams.FunctionName ="角色管理";
+				templateParams.AllowBatchDelete = true;
+				
+				var descriptions = type.GetCustomAttributes(typeof(DescriptionAttribute), true);
+                templateParams.FunctionName = descriptions.Length > 0 ? ((DescriptionAttribute)descriptions[0]).Description : null;
+
+				WriteLog(templateParams);
+
+                MetaTableInfo dataModel = new MetaTableInfo();
+                foreach (var propertyInfo in type.GetProperties())
+                {
+                    var metaColumnInfo = new MetaColumnInfo(propertyInfo);
+					if(metaColumnInfo.Name != "Id")
+						dataModel.Columns.Add(metaColumnInfo);
+                }
+                templateParams.DtoMetaTable = dataModel;
+
+				return templateParams;
+		}
+		public void AddModelFile(TemplateParams templateParams){
+
+			var templates = new AbpTemplate[]{
+						new IEntityAppService(templateParams),
+						new EntityAppService(templateParams),
+						new Repository(templateParams),
+						new IRepository(templateParams),
+						new EntityDto(templateParams),
+						new EntityQueryDto(templateParams),
+						new Permissions(templateParams),
+						new GetEntityQueryInput(templateParams)
+				 };
+				string currentPath = Path.GetDirectoryName(Host.TemplateFile);
+				string projectPath = currentPath.Substring(0, currentPath.IndexOf(@"\Scaffolders"));
+
+				
+				string outputPath = Path.Combine(projectPath,@"_GeneratedCode\");
+				foreach(var template in templates){
+					
+					template.Output.Encoding = Encoding.UTF8;
+					template.RenderToFile(Path.Combine(outputPath,template.FileName()));
+				}
+		}
+		
+
+		
+
+		
+#>
