@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using Abp.Dependency;
 
 namespace Lyu.Abp.Core.Messages
 {
-    public interface ITokenizer
+    public interface ITokenizer:ITransientDependency
     {
         /// <summary>
         /// Replace all of the token key occurences inside the specified template text with corresponded token values

@@ -1,10 +1,11 @@
 ﻿using System.Reflection;
+using Abp;
 using Abp.Modules;
 using Lyu.Abp.Core.Messages;
 
 namespace Lyu.Abp.Core
 {
-    [DependsOn(typeof(AbpModule))]
+    [DependsOn(typeof(AbpKernelModule))]
     public class LyuAbpCoreModule : AbpModule
     {
         public override void PreInitialize()
