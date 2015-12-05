@@ -3,11 +3,11 @@ using Abp.Dependency;
 
 namespace Lyu.Abp.Core.Messages
 {
-    public class DefaultMessageTemplatesConfiguration: IMessageTemplatesSettings, ITransientDependency
+    public class MessageTemplatesSettings: IMessageTemplatesSettings
     {
         protected readonly ISettingManager SettingManager;
 
-        public DefaultMessageTemplatesConfiguration(ISettingManager settingManager)
+        public MessageTemplatesSettings(ISettingManager settingManager)
         {
             SettingManager = settingManager;
         }

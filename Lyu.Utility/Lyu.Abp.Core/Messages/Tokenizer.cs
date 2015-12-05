@@ -4,7 +4,7 @@ using Abp.Dependency;
 
 namespace Lyu.Abp.Core.Messages
 {
-    public partial class Tokenizer : ITokenizer, ITransientDependency
+    public partial class Tokenizer : ITokenizer
     {
         private readonly StringComparison _stringComparison;
 

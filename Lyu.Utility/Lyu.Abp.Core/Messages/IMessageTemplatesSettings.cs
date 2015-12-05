@@ -1,6 +1,8 @@
-﻿namespace Lyu.Abp.Core.Messages
+﻿using Abp.Dependency;
+
+namespace Lyu.Abp.Core.Messages
 {
-    public interface IMessageTemplatesSettings
+    public interface IMessageTemplatesSettings: ITransientDependency
     {
         /// <summary>
         /// Gets or sets a value indicating whether to replace message tokens according to case invariant rules
