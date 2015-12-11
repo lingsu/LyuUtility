@@ -15,6 +15,54 @@ public class Edit : AbpTemplate
 		base.TransformText();
 #>
 @model <#= EntityName #>Dto
+@{
+	var inserted = Model.User.Id > 0;
+}
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+    <h4 class="modal-title">
+        @if (inserted)
+        {
+            <span>修改<#= FunctionName #>:</span>
+        }
+        else
+        {
+            <span>添加<#= FunctionName #></span>
+        }
+    </h4>
+</div>
+
+
+<div class="modal-body">
+
+    <div class="tabbable-line">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#<#= entityName #>InformationsTab" data-toggle="tab" aria-expanded="true">
+                    <#= FunctionName #>信息
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="UserInformationsTab">
+                <form name="<#= entityName #>InformationsForm" id="<#= entityName #>InformationsForm" role="form" class="form-validation">
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn default close-button" data-dismiss="modal">取消</button>
+    <button type="button" class="btn blue save-button">
+        <i class="fa fa-save"></i> <span>保存</span>
+    </button>
+</div>
+
+
 <!--html代码区域-->
 <div class="page-content">
     <form id="myform" method="post">
@@ -47,6 +95,8 @@ public class Edit : AbpTemplate
 <#+          }
             else
             { #>
+
+			
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label class="col-sm-3 control-label"><#= GetFormControlLabel(column) #></label>

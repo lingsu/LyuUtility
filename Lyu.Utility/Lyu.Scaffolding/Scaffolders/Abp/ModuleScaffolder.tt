@@ -82,7 +82,8 @@
 		}
 		public void ScaffolderByType(){
 			//var type = typeof(User);
-			var type = typeof(Role);
+			//var type = typeof(LyuAdmin.Domain.Pages.Content);
+			var type = typeof(LyuAdmin.Domain.Join.Job);
 			var templateParams = GetModelTemplateParams(type);
 			AddModelFile(templateParams);
 		}

@@ -8,12 +8,12 @@
 
 
 ---------------------------
-type.FullName:LyuAdmin.Authorization.Roles.Role
-templateParams.EntityName:Role
-templateParams.entityName:role
-templateParams.EntityNamespace:LyuAdmin.Authorization.Roles
-templateParams.ModuleNamespace:LyuAdmin.Authorization.Roles
-templateParams.ModuleName:Roles
+type.FullName:LyuAdmin.Domain.Pages.Content
+templateParams.EntityName:Content
+templateParams.entityName:content
+templateParams.EntityNamespace:LyuAdmin.Domain.Pages
+templateParams.ModuleNamespace:LyuAdmin
+templateParams.ModuleName:LyuAdmin
 templateParams.ProjectNamespace:LyuAdmin
 
 

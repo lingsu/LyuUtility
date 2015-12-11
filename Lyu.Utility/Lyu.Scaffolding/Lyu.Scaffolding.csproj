@@ -72,11 +72,12 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AreaScaffolder.text</LastGenOutput>
       <LastOutputs>
-..\..\_GeneratedCode\Areas\Roles\Controllers\RoleController.cs
-..\..\_GeneratedCode\Areas\Roles\js\Roles\index.js
-..\..\_GeneratedCode\Areas\Roles\RolesAreaRegistration.cs
-..\..\_GeneratedCode\Areas\Roles\Views\Role\Edit.cshtml
-..\..\_GeneratedCode\Areas\Roles\Views\Role\Index.cshtml
+..\..\_GeneratedCode\Areas\LyuAdmin\Controllers\ContentController.cs
+..\..\_GeneratedCode\Areas\LyuAdmin\js\LyuAdmin\_CreateOrEditModal.js
+..\..\_GeneratedCode\Areas\LyuAdmin\js\LyuAdmin\index.js
+..\..\_GeneratedCode\Areas\LyuAdmin\LyuAdminAreaRegistration.cs
+..\..\_GeneratedCode\Areas\LyuAdmin\Views\Content\Edit.cshtml
+..\..\_GeneratedCode\Areas\LyuAdmin\Views\Content\Index.cshtml
 .\AreaScaffolder.text
 </LastOutputs>
     </Content>
@@ -98,20 +99,21 @@
     <Content Include="Scaffolders\Abp\ModuleScaffolder.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastOutputs>
-..\..\_GeneratedCode\Application\Roles\Dtos\GetRoleQueryInput.cs
-..\..\_GeneratedCode\Application\Roles\Dtos\RoleDto.cs
-..\..\_GeneratedCode\Application\Roles\Dtos\RoleQueryDto.cs
-..\..\_GeneratedCode\Application\Roles\IRoleAppService.cs
-..\..\_GeneratedCode\Application\Roles\RoleAppService.cs
-..\..\_GeneratedCode\Application\Roles\RolePermissions.cs
-..\..\_GeneratedCode\Domain\Roles\Repositories\IRoleRepository.cs
-..\..\_GeneratedCode\Repository\Roles\Repositories\RoleRepository.cs
+..\..\_GeneratedCode\Application\Join\Dtos\GetJobQueryInput.cs
+..\..\_GeneratedCode\Application\Join\Dtos\JobDto.cs
+..\..\_GeneratedCode\Application\Join\Dtos\JobQueryDto.cs
+..\..\_GeneratedCode\Application\Join\IJobAppService.cs
+..\..\_GeneratedCode\Application\Join\JobAppService.cs
+..\..\_GeneratedCode\Application\Join\JobPermissions.cs
+..\..\_GeneratedCode\Domain\Join\Repositories\IJobRepository.cs
+..\..\_GeneratedCode\Repository\Join\Repositories\JobRepository.cs
 .\ModuleScaffolder.text
 </LastOutputs>
       <LastGenOutput>ModuleScaffolder.text</LastGenOutput>
     </Content>
     <Content Include="Scaffolders\Abp\Templates\Areas\AreaRegistration.tt" />
     <Content Include="Scaffolders\Abp\Templates\Areas\Controllers\Controller.tt" />
+    <Content Include="Scaffolders\Abp\Templates\Areas\js\CreateOrEditModal.tt" />
     <Content Include="Scaffolders\Abp\Templates\Areas\js\Entity.tt" />
     <Content Include="Scaffolders\Abp\Templates\Areas\Views\Entity\Edit.tt" />
     <Content Include="Scaffolders\Abp\Templates\Areas\Views\Entity\Index.tt" />

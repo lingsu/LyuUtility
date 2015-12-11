@@ -14,79 +14,70 @@ public class Index : AbpTemplate
 	{
 		base.TransformText();
 #>
-<!--html代码区域-->
-<div class="page-content">
-    <div class="page-header">
-        <div class="page-title"><#= FunctionName #>管理</div>
-        <!-- 过滤条件start -->
-        <div id="filterbar" class="alert alert-lightsGray fs12 clearfix">
-            <div class="clearfix" style="margin-right:30px;">
-                @*<div class="clearfix pull-left" style="line-height: 30px; margin: 3px 5px; ">
-                    <div class="pull-left">状态：</div>
-                    <div class="pull-left">
-                        @Html.DropDownList("ArticleCategoryId", new SelectList(ViewBag.ArticleCategoryList, "Id", "CategoryName", ""), "请选择分类", new { @class = "form-control input-sm w120", filterfield = "ArticleCategoryId", autopostback = "true" })
-                    </div>
-                </div>*@
-                <div class="clearfix pull-left" style="line-height: 30px; margin: 3px 5px;">
-                    <div class="pull-left">搜索：</div>
-                    <div class="input-group input-group-sm w150">
-                        <input class="form-control pull-left" placeholder="要搜索的关键字" name="Keywords" filterfield="Keywords" autopostback="true" type="text">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default btnSearch" type="button"><i class="icon-search2 fs14"></i></button>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- 过滤条件end -->
-    </div>
-    <!-- 列表上的功能按钮放在这里 -->
-    <div class="buttons-panel">
-        @if (IsGranted(<#= ModuleName #>Permissions.<#= EntityName #>_Create<#= EntityName #>))
-        {
-            <button id="btnNew" class="btn btn-primary"><i class="icon-plus2"></i>新增<#= FunctionName #></button>
-        }
-        @if (IsGranted(<#= ModuleName #>Permissions.<#= EntityName #>_Update<#= EntityName #>))
-        {
-            <button id="btnEdit" class="btn btn-default"><i class="icon-edit"></i>编辑</button>
-        }
-        @if (IsGranted(<#= ModuleName #>Permissions.<#= EntityName #>_Delete<#= EntityName #>))
-        {
-            <button id="btnDelete" class="btn btn-default"><i class="icon-trash"></i>删除</button>
-        }
-<#+ if (IsDisplayOrderable) { #>
-        @if (IsGranted(<#= ModuleName #>Permissions.<#= EntityName #>_Update<#= EntityName #>DisplayOrder))
-        {
-            <button id="btnSaveDisplayOrder" class="btn btn-default disabled"><i class="icon-save"></i>保存排序</button>
-        }
-<#+ } #>
-        <button id="btnReload" class="btn btn-default"><i class="icon-refresh"></i>刷新</button>
-    </div>
-    <table id="mytable" class="wx-listview table table-bordered"></table>
-</div>
+@using Lyu.Utility.Extensions
+@{
+    //ViewBag.Title = "<#= FunctionName #>管理";
+    ViewBag.ActiveMenu = Permissions.Pages_Administration;
+    var deletePermission = IsGranted(<#= ModuleName #>Permissions.<#= EntityName #>_DeleteUser);
+    var updatePermission = IsGranted(<#= ModuleName #>Permissions.<#= EntityName #>_UpdateUser);
+}
 
+<!--html代码区域-->
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            <#= FunctionName #>管理
+        </h1>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <!-- /.box -->
+                <div class="box">
+                    <div class="box-header buttons-panel">
+                        @if (IsGranted(<#= ModuleName #>Permissions.<#= EntityName #>_CreateUser))
+                        {
+                            <button id="btnNew" class="btn btn-primary"><i class="icon-plus2"></i>新增<#= FunctionName #></button>
+                        }
+                        @if (deletePermission)
+                        {
+                            <button id="btnDelete" class="btn btn-default"><i class="icon-trash"></i>删除</button>
+                        }
+                        <button id="btnReload" class="btn btn-default"><i class="icon-refresh"></i>刷新</button>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="jqtable" class="table table-bordered table-striped"></table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
 @section Styles{
     <!-- DataTables -->
-    <link rel="stylesheet" href="~/Content/AdminLTE/plugins/datatables/dataTables.bootstrap.css">    
+    <link rel="stylesheet" href="~/Content/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
 }
 
 @section Scripts{
-
-  <!--公共js区域-->
-    @Scripts.Render("~/js/datatables")
-	<#+ if (IsDisplayOrderable) { #>
-		@Scripts.Render("~/js/jqueryui")
-	<#+ } #>
-    <!--模块js-->
-    <script src="~/Areas/<#= ModuleName #>/js/<#= EntityName #>.js"></script>
-    <!-- DataTables -->
-    <script src="~/Content/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">
-        
+        var _permissions = { edit: @updatePermission.ToJsonString(), changePermissions:  @updatePermission.ToJsonString(), 'delete':  @deletePermission.ToJsonString() };
     </script>
-}
+   @Scripts.Render("~/js/form")
+   @Scripts.Render("~/js/datatables")
 
-
+    <script src="~/areas/admin/js/<#= ModuleName #>/index.js"></script>
+  }
 
 <#+
         return this.GenerationEnvironment.ToString();
