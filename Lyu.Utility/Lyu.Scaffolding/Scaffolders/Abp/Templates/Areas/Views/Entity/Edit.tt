@@ -45,36 +45,17 @@ public class Edit : AbpTemplate
             </li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane active" id="UserInformationsTab">
+            <div class="tab-pane active" id="<#= entityName #>InformationsTab">
                 <form name="<#= entityName #>InformationsForm" id="<#= entityName #>InformationsForm" role="form" class="form-validation">
-                    
-                </form>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<div class="modal-footer">
-    <button type="button" class="btn default close-button" data-dismiss="modal">取消</button>
-    <button type="button" class="btn blue save-button">
-        <i class="fa fa-save"></i> <span>保存</span>
-    </button>
-</div>
-
-
-<!--html代码区域-->
-<div class="page-content">
-    <form id="myform" method="post">
-        <input type="hidden" name="Id" value="@Model.Id" />
-        <div class="container form-horizontal padding-top-30">
+						
+						  <input type="hidden" name="Id" value="@Model.Id" />
 <#+
     if (DtoMetaTable.Columns.Count >= 10)
     {
 #>
             <!--<div class="alert alert-info fs16 bold mt10">分节标题</div>-->
 <#+  } #>
-            <div class="clearfix">
+         
 <#+
     foreach (MetaColumnInfo column in DtoMetaTable.Columns) 
     {
@@ -84,14 +65,11 @@ public class Edit : AbpTemplate
             if (IsFullWidthCol(column))  //整行宽度的列(Textarea、TextEditor)
             {
 #>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <label class="col-sm-3 colspan-xs-3 control-label"><#= GetFormControlLabel(column) #></label>
-                        <div class="col-sm-8 colspan-xs-8 clearfix">
-<#+                          WriteColControl(column, "    "); #>
-                        </div>
-                    </div>
-                </div>
+				<div class="form-group form-md-line-input">
+<label for="<#= column.Name #>"><#= GetFormControlLabel(column) #></label>
+<#+ WriteColControl(column, "    "); #>
+			</div>
+               
 <#+          }
             else
             { #>
@@ -101,7 +79,7 @@ public class Edit : AbpTemplate
                     <div class="form-group">
                         <label class="col-sm-3 control-label"><#= GetFormControlLabel(column) #></label>
                         <div class="col-sm-8">
-<#+                          WriteColControl(column, "    "); #>
+<#+                          WriteColControl(column, ""); #>
                             <span class="help-inline"></span>
                         </div>
                     </div>
@@ -120,28 +98,19 @@ public class Edit : AbpTemplate
 <#+      }
     }
 #>
+                </form>
             </div>
         </div>
-        <div class="wx-form-footer fixed">
-            <button id="btn-save" type="submit" class="btn btn-primary btn-lg w100">保存</button>
-            <button id="btn-cancel" type="button" class="btn btn-default btn-lg w100">取消</button>
-        </div>
-    </form>
+    </div>
+
 </div>
 
-@section js{
-    <!--模块js-->
-    @Scripts.Render("~/js/form")
-    <script>
-        //调用表单验证
-        abp.form.submit("#myform", {
-            url: abp.appPath + 'api/services/<#= ModuleName #>/<#= EntityName #>/CreateOrUpdate<#= EntityName #>',
-        }, {
-            rules: { 
-            },
-        });
-    </script>
-}
+<div class="modal-footer">
+    <button type="button" class="btn default close-button" data-dismiss="modal">取消</button>
+    <button type="button" class="btn blue save-button">
+        <i class="fa fa-save"></i> <span>保存</span>
+    </button>
+</div>
 
 <#+
         return this.GenerationEnvironment.ToString();

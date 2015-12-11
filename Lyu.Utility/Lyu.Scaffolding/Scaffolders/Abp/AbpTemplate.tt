@@ -37,7 +37,7 @@ public abstract class AbpTemplate : CSharpTemplate
 		   public void WriteColControl(MetaColumnInfo column, string indent)
     {
       if (column.ControlType == euControlType.Textarea) { #>
-<#= indent #>                        <textarea class="form-control input-xxlarge<#= GetFormControlCssClass(column) #>" rows="4" id="<#= column.Name #>" name="<#= column.Name #>"<#= GetFormControlMaxlength(column) #>>@Model.<#= GetFormControlValue(column) #></textarea>
+<#= indent #>                        <textarea class="form-control" rows="4" id="<#= column.Name #>" name="<#= column.Name #>"<#= GetFormControlMaxlength(column) #>>@Model.<#= GetFormControlValue(column) #></textarea>
 <#+     } else if (column.ControlType == euControlType.TextEditor) { #>
 <#= indent #>                        <script type="text/plain" id="<#= column.Name #>Editor" name="<#= column.Name #>" class="input-xxlarge" style="height:240px;">@Html.Raw(Model.<#= column.Name #>)</script>
 <#+     } else if (column.ControlType == euControlType.DropdownList) { #>
@@ -47,11 +47,11 @@ public abstract class AbpTemplate : CSharpTemplate
 <#+     } else if (column.ControlType == euControlType.Hidden) { #>
 <#= indent #>                        <input class="<#= GetFormControlCssClass(column) #>" type="hidden" id="<#= column.Name #>" name="<#= column.Name #>"<#= GetFormControlMaxlength(column) #> value="@Model.<#= GetFormControlValue(column) #>" />
 <#+     } else if (column.ControlType == euControlType.DateTimePicker) { #>
-<#= indent #>                        <input class="form-control date-picker inline w300<#= GetFormControlCssClass(column) #>" type="text" id="<#= column.Name #>" name="<#= column.Name #>"<#= GetFormControlMaxlength(column) #> value="@Model.<#= GetFormControlValue(column) #>" />
+<#= indent #>                        <input class="form-control date-picker" type="text" id="<#= column.Name #>" name="<#= column.Name #>"<#= GetFormControlMaxlength(column) #> value="@Model.<#= GetFormControlValue(column) #>" />
 <#+     } else if (column.ControlType == euControlType.DatePicker) { #>
-<#= indent #>                        <input class="form-control datetime-picker inline w300<#= GetFormControlCssClass(column) #>" type="text" id="<#= column.Name #>" name="<#= column.Name #>"<#= GetFormControlMaxlength(column) #> value="@Model.<#= GetFormControlValue(column) #>" />
+<#= indent #>                        <input class="form-control datetime-picker inline" type="text" id="<#= column.Name #>" name="<#= column.Name #>"<#= GetFormControlMaxlength(column) #> value="@Model.<#= GetFormControlValue(column) #>" />
 <#+     } else { #>
-<#= indent #>                        <input class="form-control inline w300<#= GetFormControlCssClass(column) #>" type="text" id="<#= column.Name #>" name="<#= column.Name #>"<#= GetFormControlMaxlength(column) #> value="@Model.<#= GetFormControlValue(column) #>" />
+<#= indent #>                        <input class="form-control" type="text" id="<#= column.Name #>" name="<#= column.Name #>"<#= GetFormControlMaxlength(column) #> value="@Model.<#= GetFormControlValue(column) #>" />
 <#+
         }
     }
@@ -99,9 +99,9 @@ public abstract class AbpTemplate : CSharpTemplate
 
     public string GetFormControlLabel(MetaColumnInfo col)
     {
-        var lbl = col.DisplayName + "：";
-        if (col.Required)
-            lbl += "<span class=\"asterisk\">*</span>";
+        var lbl = col.DisplayName ;//+ "："
+        //if (col.Required)
+        //    lbl += "<span class=\"asterisk\">*</span>";
         return lbl;
     }
 

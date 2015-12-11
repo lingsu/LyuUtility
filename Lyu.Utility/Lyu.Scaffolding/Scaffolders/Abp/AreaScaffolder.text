@@ -13,7 +13,7 @@ templateParams.EntityName:Content
 templateParams.entityName:content
 templateParams.EntityNamespace:LyuAdmin.Domain.Pages
 templateParams.ModuleNamespace:LyuAdmin
-templateParams.ModuleName:LyuAdmin
+templateParams.ModuleName:Pages
 templateParams.ProjectNamespace:LyuAdmin
 
 

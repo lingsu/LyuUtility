@@ -180,14 +180,14 @@ namespace Lyu.Scaffolding.Models
 
         public euControlType GetControlType()
         {
-            if (Name.EndsWith("Id") && DataType == euColumnType.guidCT)
+            if (Name.EndsWith("Id") && Name != "Id")
                 return euControlType.DropdownList;
 
             if (Name == "Summary" || Name == "Remark")
                 return euControlType.Textarea;
 
-            if (Name == "Content")
-                return euControlType.Textarea;
+            if (Name == "Content" || Name == "Body")
+                return euControlType.TextEditor;
 
             if (DataType == euColumnType.boolCT)
                 return euControlType.Checkbox;
@@ -196,7 +196,7 @@ namespace Lyu.Scaffolding.Models
                 return euControlType.DateTimePicker;
 
             if (DataType == euColumnType.stringCT && !MaxLength.HasValue)
-                return euControlType.Textarea;
+                return euControlType.Text;
 
             return euControlType.Text;
         }

@@ -39,7 +39,7 @@ namespace <#= ProjectNamespace #>.Web.Areas.Admin.Controllers
             return View();
         }
 
-        public async Task<ActionResult> Edit(Guid? id)
+        public async Task<ActionResult> Edit(int? id)
         {
             <#= EntityName #>Dto model;
             if (!id.HasValue)  //新建

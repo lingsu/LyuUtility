@@ -53,7 +53,7 @@
 				templateParams.entityName = ToCamelCase(templateParams.EntityName);
 				templateParams.EntityNamespace = type.Namespace;
 				templateParams.ModuleNamespace = getModuleNamespace(templateParams.EntityNamespace);
-				templateParams.ModuleName = getModuleName(templateParams.ModuleNamespace);
+				templateParams.ModuleName = getModuleName(templateParams.EntityNamespace);
 				templateParams.FunctionFolderName = getModuleName(templateParams.EntityNamespace);
 				//templateParams.FunctionName ="FunctionName";
 
@@ -62,6 +62,7 @@
 
 				templateParams.ProjectNamespace = getProjectNamespace(type);
 				templateParams.AllowBatchDelete = true;
+				templateParams.GenerateTwoCol = true;
 				templateParams.IsDisplayOrderable = IsDisplayOrderable(type);
 				WriteLine("---------------------------");
 				WriteLine("type.FullName:"+type.FullName);
