@@ -39,7 +39,7 @@ namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>.Dto
 #>
 
   [AutoMap(typeof(<#= EntityName #>))]
-    public class <#= EntityName #>Dto : EntityDto, IValidate
+    public class <#= EntityName #>Dto : EntityDto, IInputDto
     {
 <#+
     foreach (MetaColumnInfo column in DtoMetaTable.Columns) {

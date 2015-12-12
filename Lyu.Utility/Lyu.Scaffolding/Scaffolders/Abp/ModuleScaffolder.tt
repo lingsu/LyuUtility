@@ -84,6 +84,7 @@
 			//var type = typeof(User);
 			//var type = typeof(LyuAdmin.Domain.Pages.Content);
 			var type = typeof(LyuAdmin.Domain.Pages.Content);
+			//var type = typeof(LyuAdmin.Domain.Join.Job);
 			var templateParams = GetModelTemplateParams(type);
 			AddModelFile(templateParams);
 		}
@@ -95,7 +96,7 @@
 				templateParams.entityName = ToCamelCase(templateParams.EntityName);
 				templateParams.EntityNamespace = type.Namespace;
 				templateParams.ModuleNamespace = getModuleNamespace(templateParams.EntityNamespace);
-				templateParams.ModuleName = getModuleName(templateParams.ModuleNamespace);
+				templateParams.ModuleName = getModuleName(templateParams.EntityNamespace);
 				templateParams.FunctionFolderName = getModuleName(templateParams.EntityNamespace);
 				//templateParams.FunctionName ="角色管理";
 				templateParams.AllowBatchDelete = true;

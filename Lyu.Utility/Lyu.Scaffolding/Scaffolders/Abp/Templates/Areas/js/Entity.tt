@@ -5,7 +5,7 @@ public class Entity : AbpTemplate
 
 	public Entity(TemplateParams templateParams) : base(templateParams)
         {
-            _filename = @"Areas\{Module}\js\{Module}\index.js";
+            _filename = @"Areas\{Module}\js\{Entity}\index.js";
         }
 
 	public override string TransformText()
@@ -23,7 +23,7 @@ public class Entity : AbpTemplate
 
         var _createOrEditModal = new app.ModalManager({
             viewUrl: '/admin/<#= entityName #>/edit/',
-            scriptUrl: abp.appPath + 'Areas/admin/js/<#= ModuleName #>/_CreateOrEditModal.js',
+            scriptUrl: abp.appPath + 'Areas/admin/js/<#= entityName #>/_CreateOrEditModal.js',
             modalClass: 'CreateOrEdit<#= EntityName #>Modal'
         });
 
@@ -43,19 +43,11 @@ public class Entity : AbpTemplate
                             });
                     }
 
-                    if (_permissions.changePermissions) {
-                        $('<button class="btn btn-default btn-xs" title="权限"><i class="fa fa-list"></i></button>')
-                            .appendTo($span)
-                            .on('click', function () {
-                                //_userPermissionsModal.open({ id: cellData });
-                            });
-                    }
-
                     if (_permissions.delete) {
                         $('<button class="btn btn-default btn-xs" title="删除"><i class="fa fa-trash-o"></i></button>')
                             .appendTo($span)
                             .on('click', function () {
-                                deleteUser(rowData);
+                                delete<#= EntityName #>(rowData);
                             });
                     }
                     $span.appendTo($(cell));
@@ -80,11 +72,11 @@ public class Entity : AbpTemplate
         var databales = new abp.Datatables({
             table: '#jqtable',
             columns: columns,
-            ajax: abp.appPath + "api/services/app/<#= ModuleName #>/<#= EntityName #>/Get<#= EntityName #>Query",
+            ajax: abp.appPath + "api/services/app/<#= EntityName #>/Get<#= EntityName #>Query",
             "autoWidth": true
         });
 
-        abp.event.on('app.createOrEditUserModalSaved', function () {
+        abp.event.on('app.createOrEdit<#= EntityName #>ModalSaved', function () {
             databales.reloadList();
         });
 
@@ -93,13 +85,13 @@ public class Entity : AbpTemplate
             _createOrEditModal.open();
         });
 
-        function deleteUser(<#= entityName #>) {
+        function delete<#= EntityName #>(<#= entityName #>) {
            
             abp.message.confirm(
                 abp.utils.formatString("您确认要删除{0}吗？", <#= entityName #>.userName),
                 function (isConfirmed) {
                     if (isConfirmed) {
-                        _<#= entityName #>Service.deleteUser({
+                        _<#= entityName #>Service.delete<#= EntityName #>({
                             id: <#= entityName #>.id
                         }).done(function () {
                             databales.reloadList();
@@ -118,7 +110,7 @@ public class Entity : AbpTemplate
         //        if (!result) return; //取消
         //        var data = { id: row.id };
         //        abp.ajax({
-        //            url: abp.appPath + 'api/services/<#= ModuleName #>/<#= EntityName #>/Delete<#= EntityName #>',
+        //            url: abp.appPath + 'api/services/<#= EntityName #>/Delete<#= EntityName #>',
         //            data: data
         //        }).done(function (ret) {
         //            abp.success("删除成功");
@@ -132,13 +124,12 @@ public class Entity : AbpTemplate
             if (idList.length === 0) return;
             abp.message.confirm(abp.utils.formatString("您确认要删除选中的{0}行吗？", idList.length), function (isConfirmed) {
                 if (!isConfirmed) return; //取消
-                abp.ajax({
-                    url: '/api/services/<#= ModuleName #>/<#= EntityName #>/BatchDeleteUser',
-                    data: idList
-                }).done(function (ret) {
-                    abp.message.success("删除成功");
+
+				 _<#= entityName #>Service.batchDelete<#= EntityName #>($.map(idList, function (o) { return o.id; })).done(function () {
                     databales.reloadList();
+                    abp.notify.success('删除成功');
                 });
+              
             });
         });
 

@@ -26,7 +26,7 @@ using Lyu.Utility.Application.Services.Dto;
 
 namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>
 {
-    [AbpAuthorize(<#= ModuleName #>Permissions.<#= EntityName #>)]
+    [AbpAuthorize(PermissionNames.<#= EntityName #>)]
     public class <#= EntityName #>AppService : AppServiceBase, I<#= EntityName #>AppService
     {
         private readonly I<#= EntityName #>Repository _<#= entityName #>Repository;
@@ -55,7 +55,7 @@ namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>
 <#+
     }
 #>
-                //.WhereIf(!input.Keywords.IsNullOrWhiteSpace(), m => m.Title.Contains(input.Keywords))
+                //.WhereIf(!string.IsNullOrWhiteSpace(input.Search.Value), m => m.Title.Contains(input.Search.Value))
 <#+
     }
 #>
@@ -117,7 +117,7 @@ namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>
         /// <summary>
         /// 新增<#= FunctionName #>
         /// </summary>
-        [AbpAuthorize(<#= ModuleName #>Permissions.<#= EntityName #>_Create<#= EntityName #>)]
+        [AbpAuthorize(PermissionNames.<#= EntityName #>_Create<#= EntityName #>)]
         public virtual async Task<<#= EntityName #>Dto> Create<#= EntityName #>(<#= EntityName #>Dto input)
         {
             //if (await _<#= entityName #>Repository.IsExists<#= EntityName #>ByName(input.CategoryName))
@@ -131,7 +131,7 @@ namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>
         /// <summary>
         /// 更新<#= FunctionName #>
         /// </summary>
-        [AbpAuthorize(<#= ModuleName #>Permissions.<#= EntityName #>_Update<#= EntityName #>)]
+        [AbpAuthorize(PermissionNames.<#= EntityName #>_Update<#= EntityName #>)]
         public virtual async Task Update<#= EntityName #>(<#= EntityName #>Dto input)
         {
             //if (await _<#= entityName #>Repository.IsExists<#= EntityName #>ByName(input.CategoryName, input.Id))
@@ -145,7 +145,7 @@ namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>
         /// <summary>
         /// 删除<#= FunctionName #>
         /// </summary>
-        [AbpAuthorize(<#= ModuleName #>Permissions.<#= EntityName #>_Delete<#= EntityName #>)]
+        [AbpAuthorize(PermissionNames.<#= EntityName #>_Delete<#= EntityName #>)]
         public async Task Delete<#= EntityName #>(EntityRequestInput input)
         {
             //TODO:删除前的逻辑判断，是否允许删除
@@ -158,7 +158,7 @@ namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>
         /// <summary>
         /// 批量删除<#= FunctionName #>
         /// </summary>
-        [AbpAuthorize(<#= ModuleName #>Permissions.<#= EntityName #>_Delete<#= EntityName #>)]
+        [AbpAuthorize(PermissionNames.<#= EntityName #>_Delete<#= EntityName #>)]
         public async Task BatchDelete<#= EntityName #>(IEnumerable<int> input)
         {
             //TODO:批量删除前的逻辑判断，是否允许删除
@@ -174,7 +174,7 @@ namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>
         /// <summary>
         /// 更新<#= FunctionName #>排序
         /// </summary>
-        [AbpAuthorize(<#= ModuleName #>Permissions.<#= EntityName #>_Update<#= EntityName #>DisplayOrder)]
+        [AbpAuthorize(PermissionNames.<#= EntityName #>_Update<#= EntityName #>DisplayOrder)]
         public async Task Update<#= EntityName #>DisplayOrder(IEnumerable<int> input)
         {
             await _<#= entityName #>Repository.BatchUpdateDisplayOrderAsync(input);

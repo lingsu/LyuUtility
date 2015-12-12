@@ -50,7 +50,7 @@ namespace <#= ProjectNamespace #>.Web.Areas.Admin.Controllers
             {
                 model = await _<#= entityName #>AppService.Get<#= EntityName #>(id.Value);
             }
-            return View(model);
+            return PartialView(model);
         }
     }
 }

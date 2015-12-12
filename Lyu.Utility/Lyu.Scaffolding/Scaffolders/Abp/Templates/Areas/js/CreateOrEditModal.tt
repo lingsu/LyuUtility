@@ -5,7 +5,7 @@ public class CreateOrEditModal : AbpTemplate
 
 	public CreateOrEditModal(TemplateParams templateParams) : base(templateParams)
         {
-            _filename = @"Areas\{Module}\js\{Module}\_CreateOrEditModal.js";
+            _filename = @"Areas\{Module}\js\{Entity}\_CreateOrEditModal.js";
         }
 
 	public override string TransformText()
@@ -42,9 +42,7 @@ public class CreateOrEditModal : AbpTemplate
 
        
             _modalManager.setBusy(true);
-            _<#= entityName #>Service.createOrUpdate<#= EntityName #>({
-                <#= entityName #>: <#= entityName #>
-            }).done(function () {
+            _<#= entityName #>Service.createOrUpdate<#= EntityName #>(<#= entityName #>).done(function () {
                 abp.notify.info('保存成功.');
                 _modalManager.close();
                 abp.event.trigger('app.createOrEdit<#= EntityName #>ModalSaved');

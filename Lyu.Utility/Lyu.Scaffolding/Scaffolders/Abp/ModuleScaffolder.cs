@@ -26,7 +26,7 @@ namespace Lyu.Scaffolding.Scaffolders.Abp
                 templateParams.entityName = ToCamelCase(templateParams.EntityName);
                 templateParams.EntityNamespace = type.Namespace;
                 templateParams.ModuleNamespace = getModuleNamespace(templateParams.EntityNamespace);
-                templateParams.ModuleName = getModuleName(templateParams.ModuleNamespace);
+                templateParams.ModuleName = getModuleName(templateParams.EntityNamespace);
                 templateParams.FunctionFolderName = VmUtils.ToPlural(templateParams.ModuleName);
                 templateParams.AllowBatchDelete = true;
 

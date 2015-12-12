@@ -8,12 +8,12 @@
 
 
 ---------------------------
-type.FullName:LyuAdmin.Domain.Pages.Content
-templateParams.EntityName:Content
-templateParams.entityName:content
-templateParams.EntityNamespace:LyuAdmin.Domain.Pages
+type.FullName:LyuAdmin.Domain.Join.Job
+templateParams.EntityName:Job
+templateParams.entityName:job
+templateParams.EntityNamespace:LyuAdmin.Domain.Join
 templateParams.ModuleNamespace:LyuAdmin
-templateParams.ModuleName:Pages
+templateParams.ModuleName:Join
 templateParams.ProjectNamespace:LyuAdmin
 
 

@@ -16,17 +16,17 @@ public class Permissions : AbpTemplate
 
 namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>
 {
-    public partial class <#= ModuleName #>Permissions
+    public partial class <#= EntityName #>Permissions
     {
-        //TODO:★请将以下内容剪切到<#= ModuleName #>Permissions.cs
+        //TODO:★请将以下内容剪切到<#= EntityName #>Permissions.cs
 
         /// <summary>
         /// <#= FunctionName #>管理权限
         /// </summary>
-        public const string <#= EntityName #> = "<#= ModuleName #>";
-        public const string <#= EntityName #>_Create<#= EntityName #> = "<#= ModuleName #>.Create<#= EntityName #>";
-        public const string <#= EntityName #>_Update<#= EntityName #> = "<#= ModuleName #>.Update<#= EntityName #>";
-        public const string <#= EntityName #>_Delete<#= EntityName #> = "<#= ModuleName #>.Delete<#= EntityName #>";
+        public const string <#= EntityName #> = "<#= EntityName #>";
+        public const string <#= EntityName #>_Create<#= EntityName #> = "<#= EntityName #>.Create<#= EntityName #>";
+        public const string <#= EntityName #>_Update<#= EntityName #> = "<#= EntityName #>.Update<#= EntityName #>";
+        public const string <#= EntityName #>_Delete<#= EntityName #> = "<#= EntityName #>.Delete<#= EntityName #>";
 <#+
     if (IsDisplayOrderable) {
 #>
@@ -40,14 +40,14 @@ namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>
 //TODO:★请将以下内容剪切到<#= ModuleName #>AuthorizationProvider.cs
 /*
             //<#= FunctionName #>管理
-            var <#= entityName #> = module.CreateChildPermission(<#= ModuleName #>Permissions.<#= EntityName #>, new LocalizableString("<#= EntityName #>", LyuAdminConsts.PermissionsSourceName));
-            <#= entityName #>.CreateChildPermission(<#= ModuleName #>Permissions.<#= EntityName #>_Create<#= EntityName #>, new LocalizableString("Create<#= EntityName #>", LyuAdminConsts.PermissionsSourceName));
-            <#= entityName #>.CreateChildPermission(<#= ModuleName #>Permissions.<#= EntityName #>_Update<#= EntityName #>, new LocalizableString("Update<#= EntityName #>", LyuAdminConsts.PermissionsSourceName));
-            <#= entityName #>.CreateChildPermission(<#= ModuleName #>Permissions.<#= EntityName #>_Delete<#= EntityName #>, new LocalizableString("Delete<#= EntityName #>", LyuAdminConsts.PermissionsSourceName));
+            var <#= entityName #> = module.CreateChildPermission(PermissionNames.<#= EntityName #>, L("<#= EntityName #>"));
+            <#= entityName #>.CreateChildPermission(PermissionNames.<#= EntityName #>_Create<#= EntityName #>, L("Create<#= EntityName #>"));
+            <#= entityName #>.CreateChildPermission(PermissionNames.<#= EntityName #>_Update<#= EntityName #>, L("Update<#= EntityName #>"));
+            <#= entityName #>.CreateChildPermission(PermissionNames.<#= EntityName #>_Delete<#= EntityName #>, L("Delete<#= EntityName #>"));
 <#+
     if (IsDisplayOrderable) {
 #>
-            <#= entityName #>.CreateChildPermission(<#= ModuleName #>Permissions.<#= EntityName #>_Update<#= EntityName #>DisplayOrder, L("Update<#= EntityName #>DisplayOrder"));
+            <#= entityName #>.CreateChildPermission(PermissionNames.<#= EntityName #>_Update<#= EntityName #>DisplayOrder, L("Update<#= EntityName #>DisplayOrder"));
 <#+
     }
 #>
@@ -72,12 +72,12 @@ namespace <#= ProjectNamespace #>.<#= FunctionFolderName #>
 //TODO:★请将以下内容剪切到AdministrationNavigationProvider.cs
 /*
 	 var <#= entityName #> = new MenuItemDefinition(
-                <#= ModuleName #>Permissions.<#= EntityName #>,
-                new LocalizableString("<#= EntityName #>", LyuAdminConsts.PermissionsSourceName),
+                PermissionNames.<#= EntityName #>,
+                L("<#= EntityName #>"),
                 "fa fa-th",
                 "/admin/<#= entityName #>",
                 true,
-                <#= ModuleName #>Permissions.<#= EntityName #>
+                PermissionNames.<#= EntityName #>
                 );
 
 */

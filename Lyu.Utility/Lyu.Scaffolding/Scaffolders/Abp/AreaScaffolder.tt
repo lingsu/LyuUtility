@@ -47,7 +47,8 @@
 				string projectPath = currentPath.Substring(0, currentPath.IndexOf(@"\Scaffolders"));
             
 				//var type = typeof(Role);
-				var type = typeof(LyuAdmin.Domain.Pages.Content);
+				//var type = typeof(LyuAdmin.Domain.Pages.Content);
+				var type = typeof(LyuAdmin.Domain.Join.Job);
 				var templateParams = new TemplateParams();
 				templateParams.EntityName = type.Name;
 				templateParams.entityName = ToCamelCase(templateParams.EntityName);

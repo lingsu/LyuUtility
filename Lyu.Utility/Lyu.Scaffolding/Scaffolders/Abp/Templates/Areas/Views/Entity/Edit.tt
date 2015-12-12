@@ -16,7 +16,7 @@ public class Edit : AbpTemplate
 #>
 @model <#= EntityName #>Dto
 @{
-	var inserted = Model.User.Id > 0;
+	var inserted = Model.Id > 0;
 }
 
 <div class="modal-header">
@@ -62,9 +62,10 @@ public class Edit : AbpTemplate
         if (!column.IsDtoVisible) continue;
         if (GenerateTwoCol)  //两栏布局
         {
-            if (IsFullWidthCol(column))  //整行宽度的列(Textarea、TextEditor)
+            if (true)  //整行宽度的列(Textarea、TextEditor)  IsFullWidthCol(column)
             {
 #>
+
 				<div class="form-group form-md-line-input">
 <label for="<#= column.Name #>"><#= GetFormControlLabel(column) #></label>
 <#+ WriteColControl(column, "    "); #>
