@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DependencyRegistrar.cs" />
+    <Compile Include="Domain\Entities\IDisplayOrderable.cs" />
     <Compile Include="IWebHelper.cs" />
     <Compile Include="LyuAbpCoreModule.cs" />
     <Compile Include="Messages\MessageTemplatesSettings.cs" />

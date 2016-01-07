@@ -99,14 +99,14 @@
     <Content Include="Scaffolders\Abp\ModuleScaffolder.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastOutputs>
-..\..\_GeneratedCode\Application\Pages\ContentAppService.cs
-..\..\_GeneratedCode\Application\Pages\ContentPermissions.cs
-..\..\_GeneratedCode\Application\Pages\Dtos\ContentDto.cs
-..\..\_GeneratedCode\Application\Pages\Dtos\ContentQueryDto.cs
-..\..\_GeneratedCode\Application\Pages\Dtos\GetContentQueryInput.cs
-..\..\_GeneratedCode\Application\Pages\IContentAppService.cs
-..\..\_GeneratedCode\Domain\Pages\Repositories\IContentRepository.cs
-..\..\_GeneratedCode\Repository\Pages\Repositories\ContentRepository.cs
+..\..\_GeneratedCode\Application\Companys\CompanyAppService.cs
+..\..\_GeneratedCode\Application\Companys\CompanyPermissions.cs
+..\..\_GeneratedCode\Application\Companys\Dtos\CompanyDto.cs
+..\..\_GeneratedCode\Application\Companys\Dtos\CompanyQueryDto.cs
+..\..\_GeneratedCode\Application\Companys\Dtos\GetCompanyQueryInput.cs
+..\..\_GeneratedCode\Application\Companys\ICompanyAppService.cs
+..\..\_GeneratedCode\Domain\Companys\Repositories\ICompanyRepository.cs
+..\..\_GeneratedCode\Repository\Companys\Repositories\CompanyRepository.cs
 .\ModuleScaffolder.text
 </LastOutputs>
       <LastGenOutput>ModuleScaffolder.text</LastGenOutput>
