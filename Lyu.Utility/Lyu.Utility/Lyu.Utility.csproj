@@ -83,6 +83,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -107,6 +108,9 @@
     <Compile Include="Extensions\ThreadExtensions.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="Filter\CollectionPropertySorter.cs" />
+    <Compile Include="Html\BBCodeHelper.cs" />
+    <Compile Include="Html\HtmlHelper.cs" />
+    <Compile Include="Html\ResolveLinksHelper.cs" />
     <Compile Include="Mvc\ComponentModel\DataAnnotations\CreditCardAttribute.cs" />
     <Compile Include="Mvc\ComponentModel\DataAnnotations\DateAttribute.cs" />
     <Compile Include="Mvc\ComponentModel\DataAnnotations\DigitsAttribute.cs" />
