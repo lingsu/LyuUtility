@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Abp, Version=0.7.7.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>E:\开发\开源项目\NET\LYU网站管理系统\LyuAdmin\packages\Abp.0.7.7.2\lib\net452\Abp.dll</HintPath>
+    <Reference Include="Abp, Version=0.7.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.0.7.8.0\lib\net452\Abp.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -60,7 +60,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>E:\开发\开源项目\NET\LYU网站管理系统\LyuAdmin\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Nito.AsyncEx, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
