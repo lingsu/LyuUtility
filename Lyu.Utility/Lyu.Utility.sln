@@ -9,10 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyu.Scaffolding", "Lyu.Scaf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyu.Abp.Core", "Lyu.Abp.Core\Lyu.Abp.Core.csproj", "{8DD17EA1-0CD1-4C02-BA97-522AF29BA982}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp", "..\..\aspnetboilerplate\src\Abp\Abp.csproj", "{2C221D3B-5F54-4C5B-8082-318636415132}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AbpLibrary", "AbpLibrary", "{7854B812-F16D-4D07-ABB8-0DBB4E81AB2F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyu.Web.Framework", "Lyu.Web.Framework\Lyu.Web.Framework.csproj", "{B7EE6D7B-E5F3-4978-BBF2-87FB19960AB1}"
 EndProject
 Global
@@ -33,10 +29,6 @@ Global
 		{8DD17EA1-0CD1-4C02-BA97-522AF29BA982}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DD17EA1-0CD1-4C02-BA97-522AF29BA982}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DD17EA1-0CD1-4C02-BA97-522AF29BA982}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C221D3B-5F54-4C5B-8082-318636415132}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C221D3B-5F54-4C5B-8082-318636415132}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C221D3B-5F54-4C5B-8082-318636415132}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C221D3B-5F54-4C5B-8082-318636415132}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B7EE6D7B-E5F3-4978-BBF2-87FB19960AB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B7EE6D7B-E5F3-4978-BBF2-87FB19960AB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7EE6D7B-E5F3-4978-BBF2-87FB19960AB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -44,8 +36,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{2C221D3B-5F54-4C5B-8082-318636415132} = {7854B812-F16D-4D07-ABB8-0DBB4E81AB2F}
 	EndGlobalSection
 EndGlobal
