@@ -2,7 +2,7 @@
 using Abp.Configuration;
 using Abp.Localization;
 
-namespace Lyu.Abp.Core.Messages
+namespace Lyu.Application.Messages
 {
     public class MessageTemplatesSettingProvider : SettingProvider
     {

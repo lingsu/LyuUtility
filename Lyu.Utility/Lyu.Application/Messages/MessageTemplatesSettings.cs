@@ -1,7 +1,6 @@
 ﻿using Abp.Configuration;
-using Abp.Dependency;
 
-namespace Lyu.Abp.Core.Messages
+namespace Lyu.Application.Messages
 {
     public class MessageTemplatesSettings: IMessageTemplatesSettings
     {

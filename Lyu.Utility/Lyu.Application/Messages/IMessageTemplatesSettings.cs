@@ -1,6 +1,6 @@
 ﻿using Abp.Dependency;
 
-namespace Lyu.Abp.Core.Messages
+namespace Lyu.Application.Messages
 {
     public interface IMessageTemplatesSettings: ITransientDependency
     {

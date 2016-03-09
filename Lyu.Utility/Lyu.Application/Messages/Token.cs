@@ -1,4 +1,4 @@
-﻿namespace Lyu.Abp.Core.Messages
+﻿namespace Lyu.Application.Messages
 {
     public sealed class Token
     {

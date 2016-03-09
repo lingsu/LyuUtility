@@ -3,8 +3,9 @@ using System.Threading.Tasks;
 using Abp.Domain.Repositories;
 using Abp.Domain.Services;
 using Abp.Runtime.Caching;
+using Lyu.Application.Domain.Message;
 
-namespace Lyu.Abp.Core.Messages
+namespace Lyu.Application.Messages
 {
     public class MessageManager: IDomainService
     {

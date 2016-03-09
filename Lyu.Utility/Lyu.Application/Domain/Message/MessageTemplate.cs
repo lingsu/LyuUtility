@@ -1,6 +1,6 @@
 ﻿using Abp.Domain.Entities;
 
-namespace Lyu.Abp.Core.Messages
+namespace Lyu.Application.Domain.Message
 {
     public class MessageTemplate:Entity
     {

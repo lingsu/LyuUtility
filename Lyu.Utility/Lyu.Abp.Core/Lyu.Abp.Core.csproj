@@ -80,21 +80,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonHelper.cs" />
-    <Compile Include="DependencyRegistrar.cs" />
     <Compile Include="Domain\Entities\IDisplayOrderable.cs" />
     <Compile Include="IWebHelper.cs" />
     <Compile Include="LyuAbpCoreModule.cs" />
-    <Compile Include="Messages\MessageTemplatesSettings.cs" />
-    <Compile Include="Messages\IMessageTemplatesSettings.cs" />
-    <Compile Include="Messages\ITokenizer.cs" />
-    <Compile Include="Messages\MessageTemplate.cs" />
-    <Compile Include="Messages\MessageManager.cs" />
-    <Compile Include="Messages\MessageTemplatesSettingNames.cs" />
-    <Compile Include="Messages\MessageTemplatesSettingProvider.cs" />
-    <Compile Include="Messages\Tokenizer.cs" />
-    <Compile Include="Messages\Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

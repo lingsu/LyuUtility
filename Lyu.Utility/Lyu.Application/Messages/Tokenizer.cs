@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Abp.Dependency;
 
-namespace Lyu.Abp.Core.Messages
+namespace Lyu.Application.Messages
 {
     public partial class Tokenizer : ITokenizer
     {
