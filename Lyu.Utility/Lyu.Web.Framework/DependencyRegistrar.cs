@@ -6,6 +6,7 @@ using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using Lyu.Core;
+using Lyu.Web.Framework.UI;
 
 namespace Lyu.Web.Framework
 {
@@ -13,6 +14,7 @@ namespace Lyu.Web.Framework
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
+
             container.Register(Component.For<HttpContextBase>()
                   .LifeStyle.PerWebRequest
                   .UsingFactoryMethod(() => new HttpContextWrapper(HttpContext.Current)));
@@ -67,6 +69,8 @@ namespace Lyu.Web.Framework
             container.Register(Component.For<IWebHelper>().ImplementedBy<WebHelper>()
                   .LifeStyle.PerWebRequest
                   );
+
+            container.Register(Component.For<IPageHeadBuilder>().ImplementedBy<PageHeadBuilder>().LifestylePerWebRequest());
         }
     }
 }
