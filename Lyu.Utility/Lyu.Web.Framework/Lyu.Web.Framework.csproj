@@ -71,7 +71,9 @@
       <HintPath>..\packages\System.Collections.Immutable.1.1.37\lib\dotnet\System.Collections.Immutable.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -106,6 +108,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DependencyRegistrar.cs" />
+    <Compile Include="Drawing\ValidateCoder.cs" />
+    <Compile Include="Drawing\ValidateCodeType.cs" />
     <Compile Include="IocInstaller.cs" />
     <Compile Include="LyuWebFrameworkModule.cs" />
     <Compile Include="Mvc\Authorization\WeChatAuthorizeAttribute.cs" />
@@ -114,6 +118,7 @@
     <Compile Include="UI\LayoutExtensions.cs" />
     <Compile Include="UI\PageHeadBuilder.cs" />
     <Compile Include="UI\ResourceLocation.cs" />
+    <Compile Include="UI\UserAgentHelper.cs" />
     <Compile Include="WebHelper.cs" />
   </ItemGroup>
   <ItemGroup>

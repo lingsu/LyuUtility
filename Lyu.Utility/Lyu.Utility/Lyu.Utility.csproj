@@ -92,59 +92,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\Services\Dto\Extensions\QueryResultOutputExtension.cs" />
-    <Compile Include="Application\Services\Dto\QueryResultOutput.cs" />
-    <Compile Include="Application\Services\Dto\QueryRequestInput.cs" />
-    <Compile Include="DataAnnotations\PasswordAttribute.cs" />
-    <Compile Include="Drawing\ValidateCoder.cs" />
-    <Compile Include="Drawing\ValidateCodeType.cs" />
-    <Compile Include="EntityFramework\Extensions\RepositoryExtension.cs" />
-    <Compile Include="Extensions\CollectionExtensions.cs" />
-    <Compile Include="Extensions\EnumExtensions.cs" />
-    <Compile Include="Extensions\ExceptionExtensions.cs" />
-    <Compile Include="Extensions\QueryableExtensions.cs" />
-    <Compile Include="Extensions\RandomExtensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Extensions\ThreadExtensions.cs" />
-    <Compile Include="Extensions\TypeExtensions.cs" />
-    <Compile Include="Filter\CollectionPropertySorter.cs" />
-    <Compile Include="Html\BBCodeHelper.cs" />
-    <Compile Include="Html\HtmlHelper.cs" />
-    <Compile Include="Html\ResolveLinksHelper.cs" />
-    <Compile Include="Mvc\ComponentModel\DataAnnotations\CreditCardAttribute.cs" />
-    <Compile Include="Mvc\ComponentModel\DataAnnotations\DateAttribute.cs" />
-    <Compile Include="Mvc\ComponentModel\DataAnnotations\DigitsAttribute.cs" />
-    <Compile Include="Mvc\ComponentModel\DataAnnotations\EmailAttribute.cs" />
-    <Compile Include="Mvc\ComponentModel\DataAnnotations\EqualToAttribute.cs" />
-    <Compile Include="Mvc\ComponentModel\DataAnnotations\FileExtensionsAttribute.cs" />
-    <Compile Include="Mvc\ComponentModel\DataAnnotations\IntegerAttribute.cs" />
-    <Compile Include="Mvc\ComponentModel\DataAnnotations\MaxAttribute.cs" />
-    <Compile Include="Mvc\ComponentModel\DataAnnotations\MinAttribute.cs" />
-    <Compile Include="Mvc\ComponentModel\DataAnnotations\NumericAttribute.cs" />
-    <Compile Include="Mvc\ComponentModel\DataAnnotations\RequiredHttpAttribute.cs" />
-    <Compile Include="Mvc\ComponentModel\DataAnnotations\UrlAttribute.cs" />
-    <Compile Include="Mvc\ComponentModel\DataAnnotations\UrlOptions.cs" />
-    <Compile Include="Mvc\ComponentModel\DataAnnotations\YearAttribute.cs" />
-    <Compile Include="Mvc\ComponentModel\DataAnnotations\Expressions.cs" />
-    <Compile Include="Mvc\ComponentModel\Resources\ValidatorResources.cs" />
-    <Compile Include="Net\IpLocation.cs" />
-    <Compile Include="Net\IpLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ramer\CodeRamer.cs" />
-    <Compile Include="Ramer\CodeTimer.cs" />
-    <Compile Include="Reflection\FastInvokeHandler.cs" />
-    <Compile Include="Secutiry\CommunicationCryptor.cs" />
-    <Compile Include="Secutiry\DesHelper.cs" />
-    <Compile Include="Secutiry\HashHelper.cs" />
-    <Compile Include="Secutiry\RsaHelper.cs" />
     <Compile Include="T4\T4ModelInfo.cs" />
-    <Compile Include="Web\UserAgentHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Lyu.Abp.Core\Lyu.Abp.Core.csproj">
+      <Project>{8dd17ea1-0cd1-4c02-ba97-522af29ba982}</Project>
+      <Name>Lyu.Abp.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
