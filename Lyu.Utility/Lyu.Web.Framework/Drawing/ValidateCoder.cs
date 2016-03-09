@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Text;
-using Lyu.Abp.Core.Extensions;
+using Lyu.Core.Extensions;
 
 namespace Lyu.Web.Framework.Drawing
 {

@@ -5,10 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using Lyu.Abp.Core.Secutiry;
+using Lyu.Core.Secutiry;
 using Newtonsoft.Json;
 
-namespace Lyu.Abp.Core.Extensions
+namespace Lyu.Core.Extensions
 {
     /// <summary>
     /// 字符串<see cref="string"/>类型的扩展辅助操作类

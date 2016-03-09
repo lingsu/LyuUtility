@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
-using Lyu.Abp.Core.Extensions;
+using Lyu.Core.Extensions;
 
-namespace Lyu.Abp.Core.Secutiry
+namespace Lyu.Core.Secutiry
 {
     /// <summary>
     /// 结合RSA，DES的通信加密解密操作类

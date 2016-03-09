@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Lyu.Abp.Core.Extensions;
+using Lyu.Core.Extensions;
 
-namespace Lyu.Abp.Core.DataAnnotations
+namespace Lyu.Core.DataAnnotations
 {
     /// <summary>
     /// 确认一个密码数据类型

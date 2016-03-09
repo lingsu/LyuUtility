@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lyu.Abp.Core.Extensions
+namespace Lyu.Core.Extensions
 {
     public static class RandomExtensions
     {

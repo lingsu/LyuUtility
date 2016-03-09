@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace Lyu.Abp.Core.Secutiry
+namespace Lyu.Core.Secutiry
 {
     /// <summary>
     /// 字符串Hash操作类

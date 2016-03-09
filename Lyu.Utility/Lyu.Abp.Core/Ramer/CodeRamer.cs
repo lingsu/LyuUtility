@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Threading;
 
-namespace Lyu.Abp.Core.Ramer
+namespace Lyu.Core.Ramer
 {
     /// <summary>
     /// 代码性能测试内存计算工具

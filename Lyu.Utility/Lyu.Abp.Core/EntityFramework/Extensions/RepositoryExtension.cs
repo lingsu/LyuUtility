@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
 
-namespace Lyu.Abp.Core.EntityFramework.Extensions
+namespace Lyu.Core.EntityFramework.Extensions
 {
     public static class RepositoryExtension
     {

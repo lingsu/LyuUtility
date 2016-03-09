@@ -100,9 +100,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lyu.Abp.Core\Lyu.Abp.Core.csproj">
+    <ProjectReference Include="..\Lyu.Abp.Core\Lyu.Core.csproj">
       <Project>{8dd17ea1-0cd1-4c02-ba97-522af29ba982}</Project>
-      <Name>Lyu.Abp.Core</Name>
+      <Name>Lyu.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

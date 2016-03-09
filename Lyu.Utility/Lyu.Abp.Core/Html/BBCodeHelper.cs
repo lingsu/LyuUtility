@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace Lyu.Abp.Core.Html
+namespace Lyu.Core.Html
 {
     /// <summary>
     /// Represents a BBCode helper

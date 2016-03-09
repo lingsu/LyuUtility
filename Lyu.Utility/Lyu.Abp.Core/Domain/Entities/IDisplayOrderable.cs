@@ -1,4 +1,4 @@
-﻿namespace Lyu.Abp.Core.Domain.Entities
+﻿namespace Lyu.Core.Domain.Entities
 {
     public interface IDisplayOrderable
     {

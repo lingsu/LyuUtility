@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace Lyu.Abp.Core.Html
+namespace Lyu.Core.Html
 {
     public partial class HtmlHelper
     {

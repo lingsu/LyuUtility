@@ -2,7 +2,7 @@
 using Abp;
 using Abp.Modules;
 
-namespace Lyu.Abp.Core
+namespace Lyu.Core
 {
     [DependsOn(typeof(AbpKernelModule))]
     public class LyuAbpCoreModule : AbpModule

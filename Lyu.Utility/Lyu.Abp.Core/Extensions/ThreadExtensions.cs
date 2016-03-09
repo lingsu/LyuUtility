@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace Lyu.Utility.Extensions
+namespace Lyu.Core.Extensions
 {
     /// <summary>
     /// 线程扩展操作类

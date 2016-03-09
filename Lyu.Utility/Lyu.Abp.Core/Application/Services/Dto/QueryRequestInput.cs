@@ -1,4 +1,4 @@
-﻿namespace Lyu.Utility.Application.Services.Dto
+﻿namespace Lyu.Core.Application.Services.Dto
 {
     public class QueryRequestInput
     {

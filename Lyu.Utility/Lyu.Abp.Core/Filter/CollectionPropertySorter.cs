@@ -6,7 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Lyu.Abp.Core.Filter
+namespace Lyu.Core.Filter
 {
     /// <summary>
     /// 集合类型字符串排序操作类

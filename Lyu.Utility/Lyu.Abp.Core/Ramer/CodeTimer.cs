@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 
-namespace Lyu.Abp.Core.Ramer
+namespace Lyu.Core.Ramer
 {
     /// <summary>
     /// 代码性能测试计时器（来自博客园-老赵）

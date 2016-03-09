@@ -5,7 +5,7 @@ using System.Web.Routing;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using Lyu.Abp.Core;
+using Lyu.Core;
 
 namespace Lyu.Web.Framework
 {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Lyu.Abp.Core.Mvc.ComponentModel.Resources;
+using Lyu.Core.Mvc.ComponentModel.Resources;
 
-namespace Lyu.Abp.Core.Mvc.ComponentModel.DataAnnotations
+namespace Lyu.Core.Mvc.ComponentModel.DataAnnotations
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class CreditCardAttribute : DataTypeAttribute

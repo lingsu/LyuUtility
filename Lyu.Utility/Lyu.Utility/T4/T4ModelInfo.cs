@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
-using Lyu.Utility.Extensions;
+using Lyu.Core.Extensions;
 
 namespace Lyu.Utility.T4
 {

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyu.Utility", "Lyu.Utility\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyu.Scaffolding", "Lyu.Scaffolding\Lyu.Scaffolding.csproj", "{6578B162-5074-423F-B2EE-32A09FB8D3B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyu.Abp.Core", "Lyu.Abp.Core\Lyu.Abp.Core.csproj", "{8DD17EA1-0CD1-4C02-BA97-522AF29BA982}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyu.Core", "Lyu.Abp.Core\Lyu.Core.csproj", "{8DD17EA1-0CD1-4C02-BA97-522AF29BA982}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyu.Web.Framework", "Lyu.Web.Framework\Lyu.Web.Framework.csproj", "{B7EE6D7B-E5F3-4978-BBF2-87FB19960AB1}"
 EndProject

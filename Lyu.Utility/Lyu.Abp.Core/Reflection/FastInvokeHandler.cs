@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace Lyu.Abp.Core.Reflection
+namespace Lyu.Core.Reflection
 {
     using InvokeHandler = Func<object, object[], object>;
 

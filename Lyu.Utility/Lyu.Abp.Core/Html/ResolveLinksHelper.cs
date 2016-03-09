@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace Lyu.Abp.Core.Html
+namespace Lyu.Core.Html
 {
     /// <summary>
     /// Represents a ResolveLinks helper

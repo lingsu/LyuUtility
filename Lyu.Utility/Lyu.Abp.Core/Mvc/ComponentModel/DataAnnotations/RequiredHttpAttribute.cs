@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lyu.Abp.Core.Mvc.ComponentModel.DataAnnotations
+namespace Lyu.Core.Mvc.ComponentModel.DataAnnotations
 {
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false)]
     public sealed class RequiredHttpAttribute : System.ComponentModel.DataAnnotations.RequiredAttribute

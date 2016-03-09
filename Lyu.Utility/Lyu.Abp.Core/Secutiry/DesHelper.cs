@@ -3,9 +3,9 @@ using System.Globalization;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using Lyu.Abp.Core.Extensions;
+using Lyu.Core.Extensions;
 
-namespace Lyu.Abp.Core.Secutiry
+namespace Lyu.Core.Secutiry
 {
     /// <summary>
     /// DES / TripleDES加密解密操作类

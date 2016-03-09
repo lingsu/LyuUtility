@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Hosting;
-using Lyu.Abp.Core;
+using Lyu.Core;
 
 namespace Lyu.Web.Framework
 {

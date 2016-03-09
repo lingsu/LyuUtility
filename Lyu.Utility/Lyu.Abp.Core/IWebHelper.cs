@@ -1,6 +1,6 @@
 ﻿using System.Web;
 
-namespace Lyu.Abp.Core
+namespace Lyu.Core
 {
     /// <summary>
     /// Represents a common helper

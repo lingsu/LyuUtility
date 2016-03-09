@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using Lyu.Abp.Core.Mvc.ComponentModel.Resources;
+using Lyu.Core.Mvc.ComponentModel.Resources;
 
-namespace Lyu.Abp.Core.Mvc.ComponentModel.DataAnnotations
+namespace Lyu.Core.Mvc.ComponentModel.DataAnnotations
 {
     /// <summary>
     /// Validates that the property has the same value as the given 'otherProperty' 

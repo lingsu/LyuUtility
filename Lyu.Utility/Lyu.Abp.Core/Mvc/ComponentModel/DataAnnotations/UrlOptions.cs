@@ -1,4 +1,4 @@
-﻿namespace Lyu.Abp.Core.Mvc.ComponentModel.DataAnnotations
+﻿namespace Lyu.Core.Mvc.ComponentModel.DataAnnotations
 {
     public enum UrlOptions
     {

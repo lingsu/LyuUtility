@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Lyu.Abp.Core.Extensions
+namespace Lyu.Core.Extensions
 {
     public static class CollectionExtensions
     {

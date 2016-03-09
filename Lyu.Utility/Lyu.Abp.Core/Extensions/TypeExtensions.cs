@@ -7,7 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Lyu.Utility.Extensions
+namespace Lyu.Core.Extensions
 {
     /// <summary>
     /// 类型<see cref="Type"/>辅助扩展方法类

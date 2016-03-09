@@ -1,4 +1,4 @@
-﻿namespace Lyu.Abp.Core.Mvc.ComponentModel.Resources
+﻿namespace Lyu.Core.Mvc.ComponentModel.Resources
 {
     public static class ValidatorResources
     {

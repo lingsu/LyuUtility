@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Lyu.Abp.Core.Secutiry
+namespace Lyu.Core.Secutiry
 {
     /// <summary>
     /// RSA加密解密操作类

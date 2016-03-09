@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Lyu.Abp.Core.Net
+namespace Lyu.Core.Net
 {
     /// <summary>
     /// IP位置查找操作类

@@ -2,9 +2,8 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using Lyu.Utility.Extensions;
 
-namespace Lyu.Abp.Core.Extensions
+namespace Lyu.Core.Extensions
 {
     /// <summary>
     /// 枚举<see cref="Enum"/>的扩展辅助操作方法

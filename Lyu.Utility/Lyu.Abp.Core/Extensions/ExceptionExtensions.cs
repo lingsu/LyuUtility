@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Lyu.Abp.Core.Extensions
+namespace Lyu.Core.Extensions
 {
     /// <summary>
     /// 异常操作扩展
