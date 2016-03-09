@@ -80,6 +80,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\PagedList\BasePageableModel.cs" />
+    <Compile Include="Application\PagedList\BasePagedList.cs" />
+    <Compile Include="Application\PagedList\IPageableModel.cs" />
+    <Compile Include="Application\PagedList\IPagedList.cs" />
+    <Compile Include="Application\PagedList\PagedList.cs" />
+    <Compile Include="Application\PagedList\PagedListExtensions.cs" />
+    <Compile Include="Application\PagedList\StaticPagedList.cs" />
     <Compile Include="Application\Services\Dto\Extensions\QueryResultOutputExtension.cs" />
     <Compile Include="Application\Services\Dto\QueryRequestInput.cs" />
     <Compile Include="Application\Services\Dto\QueryResultOutput.cs" />
@@ -129,6 +136,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -113,6 +113,11 @@
     <Compile Include="IocInstaller.cs" />
     <Compile Include="LyuWebFrameworkModule.cs" />
     <Compile Include="Mvc\Authorization\WeChatAuthorizeAttribute.cs" />
+    <Compile Include="Mvc\PagedList\PagedListDisplayMode.cs" />
+    <Compile Include="Mvc\PagedList\PagedListRenderOptions.cs" />
+    <Compile Include="Mvc\PagedList\PagerBuilder.cs" />
+    <Compile Include="Mvc\PagedList\PagerHtml.cs" />
+    <Compile Include="Mvc\PagedList\PagerItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\IPageHeadBuilder.cs" />
     <Compile Include="UI\LayoutExtensions.cs" />
