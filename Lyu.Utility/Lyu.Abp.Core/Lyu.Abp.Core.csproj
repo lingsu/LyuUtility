@@ -79,7 +79,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommonHelper.cs" />
     <Compile Include="Domain\Entities\IDisplayOrderable.cs" />
     <Compile Include="IWebHelper.cs" />
     <Compile Include="LyuAbpCoreModule.cs" />
