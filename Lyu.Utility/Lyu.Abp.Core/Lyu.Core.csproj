@@ -94,6 +94,8 @@
     <Compile Include="Domain\Entities\IDisplayOrderable.cs" />
     <Compile Include="EntityFramework\Extensions\RepositoryExtension.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\DateTimeRangeExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Extensions\RandomExtensions.cs" />
