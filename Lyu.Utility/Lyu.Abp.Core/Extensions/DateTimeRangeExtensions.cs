@@ -16,13 +16,13 @@ namespace Lyu.Core.Extensions
                 DateTime now = Now;
                 DayOfWeek[] weeks =
                 {
-                    DayOfWeek.Sunday,
                     DayOfWeek.Monday,
                     DayOfWeek.Tuesday,
                     DayOfWeek.Wednesday,
                     DayOfWeek.Thursday,
                     DayOfWeek.Friday,
-                    DayOfWeek.Saturday
+                    DayOfWeek.Saturday,
+                    DayOfWeek.Sunday
                 };
                 int index = Array.IndexOf(weeks, now.DayOfWeek);
                 return new DateTimeRange(now.Date.AddDays(-index - 7), now.Date.AddDays(-index).AddMilliseconds(-1));
@@ -39,13 +39,13 @@ namespace Lyu.Core.Extensions
                 DateTime now = DateTime.Now;
                 DayOfWeek[] weeks =
                 {
-                    DayOfWeek.Sunday,
                     DayOfWeek.Monday,
                     DayOfWeek.Tuesday,
                     DayOfWeek.Wednesday,
                     DayOfWeek.Thursday,
                     DayOfWeek.Friday,
-                    DayOfWeek.Saturday
+                    DayOfWeek.Saturday,
+                    DayOfWeek.Sunday
                 };
                 int index = Array.IndexOf(weeks, now.DayOfWeek);
                 return new DateTimeRange(now.Date.AddDays(-index), now.Date.AddDays(7 - index).AddMilliseconds(-1));
@@ -62,13 +62,13 @@ namespace Lyu.Core.Extensions
                 DateTime now = DateTime.Now;
                 DayOfWeek[] weeks =
                 {
-                    DayOfWeek.Sunday,
                     DayOfWeek.Monday,
                     DayOfWeek.Tuesday,
                     DayOfWeek.Wednesday,
                     DayOfWeek.Thursday,
                     DayOfWeek.Friday,
-                    DayOfWeek.Saturday
+                    DayOfWeek.Saturday,
+                    DayOfWeek.Sunday
                 };
                 int index = Array.IndexOf(weeks, now.DayOfWeek);
                 return new DateTimeRange(now.Date.AddDays(-index + 7), now.Date.AddDays(14 - index).AddMilliseconds(-1));
