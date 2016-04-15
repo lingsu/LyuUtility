@@ -13,10 +13,10 @@ namespace Lyu.Core.Extensions
         {
             get
             {
-                DateTime now = Now;
+                DateTime now = DateTime.Now;
                 DayOfWeek[] weeks =
                 {
-                     DayOfWeek.Sunday,
+                    DayOfWeek.Sunday,
                     DayOfWeek.Monday,
                     DayOfWeek.Tuesday,
                     DayOfWeek.Wednesday,

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Lyu.Core.Extensions;
 
-namespace Lyu.Core.DataAnnotations
+namespace Lyu.Core.Mvc.ComponentModel.DataAnnotations
 {
     /// <summary>
     /// 确认一个密码数据类型

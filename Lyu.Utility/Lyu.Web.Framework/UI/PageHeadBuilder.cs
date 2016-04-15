@@ -19,9 +19,9 @@ namespace Lyu.Web.Framework.UI
         private readonly Dictionary<ResourceLocation, List<string>> _cssParts;
         private readonly List<string> _canonicalUrlParts;
         private readonly List<string> _headCustomParts;
-        const string DefaultTitle = "费用预算与报销系统";
-        const string DefaultMetaDescription = "";
-        const string DefaultMetaKeywords = "";
+        public static string DefaultTitle = "";
+        public static string DefaultMetaDescription = "";
+        public static string DefaultMetaKeywords = "";
         #endregion
 
         public PageHeadBuilder()

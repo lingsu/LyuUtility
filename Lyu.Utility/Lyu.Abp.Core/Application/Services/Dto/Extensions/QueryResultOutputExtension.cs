@@ -1,4 +1,6 @@
-﻿namespace Lyu.Core.Application.Services.Dto.Extensions
+﻿using System.Collections.Generic;
+
+namespace Lyu.Core.Application.Services.Dto.Extensions
 {
     public static class QueryResultOutputExtension
     {
@@ -19,6 +21,18 @@
         //        RecordsFiltered = recordsTotal
         //    };
         //}
+
+        public static QueryResultOutput<TDto> ToStaticOutput<TEntity, TDto>(this QueryResultOutput<TEntity> queryResult,IEnumerable<TDto> list)
+        {
+            return new QueryResultOutput<TDto>()
+            {
+                Data = list,
+                Draw = queryResult.Draw,
+                Error = queryResult.Error,
+                RecordsFiltered = queryResult.RecordsFiltered,
+                RecordsTotal = queryResult.RecordsTotal
+            };
+        } 
 
     }
 }

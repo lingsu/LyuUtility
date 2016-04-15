@@ -13,6 +13,7 @@ namespace Lyu.Core
         /// <returns>URL referrer</returns>
         string GetUrlReferrer();
 
+        string GetUrlPageReferrer();
         /// <summary>
         /// Get context IP address
         /// </summary>

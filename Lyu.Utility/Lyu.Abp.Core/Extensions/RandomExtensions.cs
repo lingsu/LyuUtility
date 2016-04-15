@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 
 namespace Lyu.Core.Extensions
 {
@@ -74,6 +75,12 @@ namespace Lyu.Core.Extensions
                 result += pattern[rnd];
             }
             return result;
+        }
+        public static int GenerateRandomInteger(int min = 0, int max = int.MaxValue)
+        {
+            var randomNumberBuffer = new byte[10];
+            new RNGCryptoServiceProvider().GetBytes(randomNumberBuffer);
+            return new Random(BitConverter.ToInt32(randomNumberBuffer, 0)).Next(min, max);
         }
     }
 }

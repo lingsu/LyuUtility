@@ -71,9 +71,9 @@ namespace Lyu.Core.Html
         /// <param name="resolveLinks">A value indicating whether to resolve links</param>
         /// <param name="addNoFollowTag">A value indicating whether to add "noFollow" tag</param>
         /// <returns>Formatted text</returns>
-        public static string FormatText(string text, bool stripTags,
-            bool convertPlainTextToHtml, bool allowHtml,
-            bool allowBBCode, bool resolveLinks, bool addNoFollowTag)
+        public static string FormatText(string text, bool stripTags = false,
+            bool convertPlainTextToHtml = false, bool allowHtml = false,
+            bool allowBBCode = false, bool resolveLinks = false, bool addNoFollowTag = false)
         {
 
             if (String.IsNullOrEmpty(text))
@@ -97,7 +97,7 @@ namespace Lyu.Core.Html
 
                 if (resolveLinks)
                 {
-                     text = ResolveLinksHelper.FormatText(text);
+                    text = ResolveLinksHelper.FormatText(text);
                 }
 
                 if (addNoFollowTag)

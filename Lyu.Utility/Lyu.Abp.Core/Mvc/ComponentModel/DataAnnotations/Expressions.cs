@@ -22,6 +22,15 @@
         /// then consider: http://nuget.org/packages/libphonenumber-csharp.
         /// </remarks>
         public const string PhoneNumber = @"^((\+|(0(\d+)?[-/.\s]?))[1-9]\d{0,2}[-/.\s]?)?((\(\d{1,6}\)|\d{1,6})[-/.\s]?)?(\d+[-/.\s]?)+\d+$";
+        /// <summary>
+        /// 匹配国内手机号码 
+        /// </summary>
+        public const string ChinaPhoneNumber = @"^1[34578]\d{9}$";
+        /// <summary>
+        /// 匹配国内电话号码
+        /// </summary>
+        public const string ChinaTel = @"\d{3}-\d{8}|\d{4}-\{7,8}";
+
 
         /// <summary>
         /// ISO 4217:2008: Currency codes. Confirms structure not validity.

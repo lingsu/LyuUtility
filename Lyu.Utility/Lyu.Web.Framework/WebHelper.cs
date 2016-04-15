@@ -103,7 +103,16 @@ namespace Lyu.Web.Framework
 
             return referrerUrl;
         }
+        public virtual string GetUrlPageReferrer()
+        {
+            string referrerUrl = string.Empty;
 
+            //URL referrer is null in some case (for example, in IE 8)
+            if (IsRequestAvailable(_httpContext) && _httpContext.Request.UrlReferrer != null)
+                referrerUrl = _httpContext.Request.UrlReferrer.AbsoluteUri;
+
+            return referrerUrl;
+        }
         /// <summary>
         /// Get context IP address
         /// </summary>

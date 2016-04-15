@@ -1,11 +1,19 @@
 ﻿using System.Web.Mvc;
 using Abp.Dependency;
+using Lyu.Core.Domain.Entities;
 
 namespace Lyu.Web.Framework.UI
 {
     public static class LayoutExtensions
     {
 
+        public static void AppendSeo(this HtmlHelper html, ISeo seo)
+        {
+            var pageHeadBuilder = IocManager.Instance.Resolve<IPageHeadBuilder>();
+            pageHeadBuilder.AddTitleParts(seo.MetaTitle);
+            pageHeadBuilder.AddMetaDescriptionParts(seo.MetaDescription);
+            pageHeadBuilder.AddMetaKeywordParts(seo.MetaKeywords);
+        }
         /// <summary>
         /// Add title element to the <![CDATA[<head>]]>
         /// </summary>
