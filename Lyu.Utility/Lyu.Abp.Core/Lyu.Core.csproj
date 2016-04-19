@@ -63,6 +63,10 @@
       <HintPath>..\packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.Enlightenment.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Pinyin4net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>E:\公司定制\G国技互联官网\developer\LyuAdmin\packages\pinyin4net.1.0.0\lib\net40\Pinyin4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections.Immutable, Version=1.1.37.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.1.37\lib\dotnet\System.Collections.Immutable.dll</HintPath>
@@ -92,7 +96,7 @@
     <Compile Include="Application\Services\Dto\QueryResultOutput.cs" />
     <Compile Include="Mvc\ComponentModel\DataAnnotations\PasswordAttribute.cs" />
     <Compile Include="Domain\Entities\IDisplayOrderable.cs" />
-    <Compile Include="Domain\Entities\ISeo.cs" />
+    <Compile Include="Seo\ISeo.cs" />
     <Compile Include="EntityFramework\Extensions\QueryableExtension.cs" />
     <Compile Include="EntityFramework\Extensions\RepositoryExtension.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
@@ -136,6 +140,7 @@
     <Compile Include="Secutiry\DesHelper.cs" />
     <Compile Include="Secutiry\HashHelper.cs" />
     <Compile Include="Secutiry\RsaHelper.cs" />
+    <Compile Include="Seo\SeoExtensions.cs" />
     <Compile Include="Seo\UrlRecord.cs" />
   </ItemGroup>
   <ItemGroup>
